@@ -1,0 +1,17 @@
+util\economy\EconomyTest$MoneyTest$SubtractionTest$SubtractionLogicTest.class
+util\economy\EconomyTest$MoneyTest$TransferTest.class
+util\economy\EconomyTest$MoneyTest$SubtractionTest$SmallSubtractionTest.class
+util\economy\EconomyTest$MoneyTest$AdditionTest$BigAdditionsTest.class
+util\economy\EconomyTest$MoneyTest$TransferTest$ExceptionInheritanceTest.class
+util\economy\EconomyTest$MoneyTest$SetterTest$OutOfBoundsTest.class
+util\economy\EconomyTest$MoneyTest$SetterTest$RoundingValueTest.class
+util\economy\EconomyTest$MoneyTest$AdditionTest.class
+util\economy\EconomyTest$MoneyTest$AdditionTest$SmallAdditionsTest.class
+util\economy\EconomyTest$MoneyTest.class
+util\economy\EconomyTest$MoneyTest$SetterTest.class
+Manual.class
+util\economy\EconomyTest$MoneyTest$SubtractionTest.class
+util\economy\EconomyTest$MoneyTest$SetterTest$EdgeValueTests.class
+util\economy\EconomyTest.class
+util\economy\EconomyTest$MoneyTest$SetterTest$NormalValueTest.class
+util\economy\EconomyTest$MoneyTest$SubtractionTest$SubtractionInsufficientFundsTest.class
