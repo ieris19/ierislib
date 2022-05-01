@@ -34,9 +34,9 @@
     </build>
     <distributionManagement>
         <repository>
-            <id>IerisLib</id>
+            <id>ierislib</id>
             <name>IerisLib</name>
-            <url>http://localhost:8081/repository/IerisLib/</url>
+            <url>http://localhost:8081/repository/ierislib/</url>
         </repository>
     </distributionManagement>
 </project>

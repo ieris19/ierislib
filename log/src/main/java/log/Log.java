@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import static log.ChronoFormat.*;
 import static log.TextColor.*;
 
 /**
@@ -71,7 +72,7 @@ public class Log {
 	 * @return
 	 */
 	private String logLine(String message) {
-		return currentTime.getFormattedTimeStamp("ISO") + " - " + message;
+		return currentTime.getFormattedTimeStamp(ISO) + " - " + message;
 	}
 
 	private synchronized void writeToFile(String logLine) throws IOException {

@@ -4,6 +4,8 @@ import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import static log.ChronoFormat.*;
+
 /**
  * A class that can return the current date and time appropriately formatted for the log console
  */
@@ -38,7 +40,7 @@ public class CurrentTime {
 	 * @return Current time with ISO Formatting
 	 */
 	public String getFormattedTimeStamp() {
-		return getFormattedTimeStamp(.);
+		return getFormattedTimeStamp(ISO);
 	}
 
 	/**
@@ -48,21 +50,8 @@ public class CurrentTime {
 	 *
 	 * @return A formatted string
 	 */
-	public String getFormattedTimeStamp(DateTimeFormatter formatter) {
-		return getTime().format(formatter);
-	}
-
-	/**
-	 * Returns the date appropriately formatted according to the selected formatter
-	 * @param format the logFormat object
-	 * @return a formatted string fitting of the rules of the provided formatter
-	 */
-	public String getFormattedTimeStamp(String format) {
-		return switch (format.toUpperCase()) {
-			case "ISO" -> getFormattedTimeStamp(ISO_DATE_FORMATTER);
-			case "EUROPEAN", "EUROPE" -> getFormattedTimeStamp(EUROPEAN_TIME_FORMATTER);
-			default -> throw new IllegalArgumentException("Invalid Time Format");
-		};
+	public String getFormattedTimeStamp(ChronoFormat formatter) {
+		return getTime().format(formatter.format());
 	}
 
 	/**
@@ -72,7 +61,7 @@ public class CurrentTime {
 	 * @return The current date in UTC time
 	 */
 	public String getFormattedDate() {
-		return getFormattedTimeStamp(DATE_FORMATTER);
+		return getFormattedTimeStamp(DATE_ONLY);
 	}
 
 	/**
