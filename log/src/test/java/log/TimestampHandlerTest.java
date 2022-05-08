@@ -9,24 +9,25 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
-import static log.ChronoFormat.*;
+import static log.ChronoFormat.EUROPEAN;
+import static log.ChronoFormat.ISO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-@DisplayName ("Time Log Test") class CurrentTimeTest {
-	static CurrentTime currentTime;
+@DisplayName ("Time Log Test") class TimestampHandlerTest {
+	static TimestampHandler timestamp;
 
 	@BeforeAll @DisplayName ("Setup") static void setup() {
-		currentTime = CurrentTime.getInstance();
+		timestamp = TimestampHandler.getInstance();
 	}
 
 	@Nested @DisplayName ("Singleton Test") class SingletonTest {
 		@Test @DisplayName ("A single instance exists") void instanceTest() {
-			assertSame(currentTime, CurrentTime.getInstance());
-			CurrentTime time1 = CurrentTime.getInstance();
-			assertSame(currentTime, time1);
-			CurrentTime time2 = CurrentTime.getInstance();
-			assertSame(currentTime, time2);
+			assertSame(timestamp, TimestampHandler.getInstance());
+			TimestampHandler time1 = TimestampHandler.getInstance();
+			assertSame(timestamp, time1);
+			TimestampHandler time2 = TimestampHandler.getInstance();
+			assertSame(timestamp, time2);
 		}
 	}
 
@@ -46,7 +47,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 		@Test @DisplayName ("Accurate Time Test") void accuraccy() {
 			DateTimeFormatter comparisonFormat = DateTimeFormatter.ofPattern("dd,MM,yyyy,hh,mm,ss");
 			assertEquals(LocalDateTime.now(ZoneId.of("Z")).format(comparisonFormat),
-									 currentTime.getTime().format(comparisonFormat));
+									 timestamp.getTime().format(comparisonFormat));
 		}
 	}
 }

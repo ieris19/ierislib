@@ -5,7 +5,10 @@ public enum TextColor {
 	RED("\u001B[31m"),
 	GREEN("\u001B[32m"),
 	YELLOW("\u001B[33m"),
-	BLUE("\u001B[34m");
+	BLUE("\u001B[34m"),
+	MAGENTA("\u001b[35m"),
+	CYAN("\u001b[36m"),
+	WHITE("\u001b[37m");
 
 	private final String ANSICode;
 
