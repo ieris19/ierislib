@@ -30,9 +30,9 @@ public class Scoreboard {
 	public void scoreDecrease(int index, int points) {
 		if (validNumber(points))
 			if (playerScores[index] - points > 0)
-			playerScores[index] -= points;
-		else
-			throw new IllegalArgumentException("Points needs to be a positive integer");
+				playerScores[index] -= points;
+			else
+				throw new IllegalArgumentException("Points needs to be a positive integer");
 	}
 
 	public void resetScoreboard() {

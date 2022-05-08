@@ -44,7 +44,6 @@ public class Manual {
 		wallet.addMoney(100);
 		System.out.println(wallet);
 		System.out.println(account);
-
 	}
 }
 /*

@@ -23,10 +23,10 @@ public abstract class Console {
 	 */
 	public void launch() {
 		System.out.println("""
-														Welcome to the console\s
-														This console will let you control this program through some simple commands\s
-														Type help to see a list of available commands
-														""");
+													 Welcome to the console\s
+													 This console will let you control this program through some simple commands\s
+													 Type help to see a list of available commands
+													 """);
 		console();
 	}
 
@@ -54,7 +54,8 @@ public abstract class Console {
 				System.out.println(exception.getMessage() + " string is not a valid command");
 			} catch (InputMismatchException exception) {
 				System.out.println("There was an error parsing the command, please try again");
-			} finally {
+			}
+			finally {
 				System.out.println("Try the command \"help\" if in doubt");
 			}
 		}
@@ -92,11 +93,10 @@ public abstract class Console {
 	}
 
 	/**
-	 * This method is a list of all available commands: <br><br> <strong>Developer's
-	 * note:</strong> In the abstract Console class it only contains the very basics that every
-	 * program should have. Thus, it is very important to overwrite this method and list the available
-	 * commands in the classes that extend this one, both in the implementation and documentation of
-	 * the class
+	 * This method is a list of all available commands: <br><br> <strong>Developer's note:</strong> In
+	 * the abstract Console class it only contains the very basics that every program should have.
+	 * Thus, it is very important to overwrite this method and list the available commands in the
+	 * classes that extend this one, both in the implementation and documentation of the class
 	 * <ul>
 	 *   <li><code>help</code>: This command will print to the console a list of all available commands</li>
 	 *   <li><code>exit</code>: It will close the console by shutting down the program,
@@ -105,10 +105,10 @@ public abstract class Console {
 	 */
 	public void availableCommands() {
 		System.out.println("""
-														This is a list of all available commands and a little explanation:
-														help: This command will print to the console a list of all available commands
-														exit: It will close the console by shutting down the program, it accepts an exit code, but will default to 1 if none is specified
-														""");
+													 This is a list of all available commands and a little explanation:
+													 help: This command will print to the console a list of all available commands
+													 exit: It will close the console by shutting down the program, it accepts an exit code, but will default to 1 if none is specified
+													 """);
 	}
 
 	/**

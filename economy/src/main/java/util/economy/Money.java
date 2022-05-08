@@ -24,8 +24,8 @@ public class Money {
 	public final static double MAX_MONEY = 1000000000;
 
 	/**
-	 * Constant containing the maximum amount of debt allowed in the system, changing this will
-	 * change it everywhere in the program. It is arbitrarily one billion
+	 * Constant containing the maximum amount of debt allowed in the system, changing this will change
+	 * it everywhere in the program. It is arbitrarily one billion
 	 */
 	public final static double MIN_MONEY = -1000000000;
 
@@ -102,9 +102,9 @@ public class Money {
 	 * @param amount    the desired amount to transfer
 	 */
 	public static void transfer(Money sender, Money recipient, double amount) {
-			amount = fix(amount);
-			sender.subtractMoney(amount, false);
-			recipient.addMoney(amount);
+		amount = fix(amount);
+		sender.subtractMoney(amount, false);
+		recipient.addMoney(amount);
 	}
 
 	/**
