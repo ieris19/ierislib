@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static log.TextColor.*;
+import static log.Log.TextColor.*;
 
 /**
  * A class that can writeToFile messages to a file with a UTC Timestamp
@@ -29,6 +29,30 @@ public class Log {
 	 * Stores the name of the program being logged, if not set, it will default to "Log".
 	 */
 	private String name;
+
+	/**
+	 * Enum containing the ANSI character strings that format the color of the logs to the console
+	 */
+	enum TextColor {
+		RESET("\u001B[0m"),
+		RED("\u001B[31m"),
+		GREEN("\u001B[32m"),
+		YELLOW("\u001B[33m"),
+		BLUE("\u001B[34m"),
+		MAGENTA("\u001b[35m"),
+		CYAN("\u001b[36m"),
+		WHITE("\u001b[37m");
+
+		private final String ANSICode;
+
+		TextColor(String code) {
+			this.ANSICode = code;
+		}
+
+		@Override public String toString() {
+			return ANSICode;
+		}
+	}
 
 	/**
 	 * Class that allows logging of activity into a writeToFile file
@@ -137,26 +161,50 @@ public class Log {
 		}
 	}
 
+	/**
+	 * Logs a generic message
+	 * @param message message to be logged
+	 */
 	public void log(String message) {
-		log(message, "MAIN", CYAN);
+		log(message, "ACTION", CYAN);
 	}
 
+	/**
+	 * Logs a success message
+	 * @param message message to be logged
+	 */
 	public void success(String message) {
 		log(message, "SUCCESS", GREEN);
 	}
 
+	/**
+	 * Logs an informational message
+	 * @param message message to be logged
+	 */
 	public void info(String message) {
 		log(message, "INFO", BLUE);
 	}
 
+	/**
+	 * Logs a warning
+	 * @param message messaged to be logged
+	 */
 	public void warning(String message) {
 		log(message, "WARN", YELLOW);
 	}
 
+	/**
+	 * Logs an error that doesn't interrupt the functioning of the program
+	 * @param message messaged to be logged
+	 */
 	public void error(String message) {
 		log(message, "ERROR", RED);
 	}
 
+	/**
+	 * Logs an error that interrupts the functioning of the program
+	 * @param message messaged to be logged
+	 */
 	public void fatal(String message) {
 		log(message, "FATAL", MAGENTA);
 	}

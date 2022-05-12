@@ -9,13 +9,13 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
-import static log.ChronoFormat.EUROPEAN;
-import static log.ChronoFormat.ISO;
+import static log.TimestampHandler.ChronoFormat.EUROPEAN;
+import static log.TimestampHandler.ChronoFormat.ISO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 @DisplayName ("Time Log Test") class TimestampHandlerTest {
-	static TimestampHandler timestamp;
+	private static TimestampHandler timestamp;
 
 	@BeforeAll @DisplayName ("Setup") static void setup() {
 		timestamp = TimestampHandler.getInstance();

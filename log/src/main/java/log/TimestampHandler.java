@@ -2,44 +2,58 @@ package log;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-import static log.ChronoFormat.*;
+import static log.TimestampHandler.ChronoFormat.*;
 
 /**
  * A class that can return the current date and time appropriately formatted for the log console
  */
 public class TimestampHandler {
-	private static TimestampHandler timestampHandler;
+	/**
+	 * Singleton instance of the timestamp handler
+	 */
+	private static TimestampHandler instance;
+
+	/**
+	 * Enumeration containing the {@link DateTimeFormatter} to be used in timestamping
+	 */
+	public enum ChronoFormat {
+		EUROPEAN(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")),
+		ISO(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")),
+		DATE_ONLY(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+		TIME_ONLY(DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+		private final DateTimeFormatter formatter;
+
+		ChronoFormat(DateTimeFormatter formatter) {
+			this.formatter = formatter;
+		}
+
+		public DateTimeFormatter format() {
+			return this.formatter;
+		}
+	}
 
 	/**
 	 * Private constructor to avoid accidentally creating multiple instances of
 	 * {@link TimestampHandler}. Please refer to {@link #getInstance()} for more information
 	 */
-	private TimestampHandler() {
-	}
+	private TimestampHandler() {}
 
 	/**
-	 * Factory method for the {@link TimestampHandler}, it will only create a new instance on its
-	 * first call and return the already created instance every call after that. This means there will
-	 * always be one single instance of the <code>CurrentTime</code> class
+	 * Method to obtain the {@link TimestampHandler} instance, it will only create a new instance on
+	 * its first call and return the already created instance every call after that. This means there
+	 * will always be one single instance of the <code>TimestampHandler</code> class
 	 *
-	 * @return The instance of <code>CurrentTime</code> for the current runtime, regardless of if it's
-	 * new or it had been previously created
+	 * @return The instance of <code>TimestampHandler</code> for the current runtime, regardless of if
+	 * it's new, or it had been previously created
 	 */
 	public synchronized static TimestampHandler getInstance() {
-		if (timestampHandler == null) {
-			timestampHandler = new TimestampHandler();
+		if (instance == null) {
+			instance = new TimestampHandler();
 		}
-		return timestampHandler;
-	}
-
-	/**
-	 * Returns the current date and time in the least ambiguous format according to ISO normalization
-	 *
-	 * @return Current time with ISO Formatting
-	 */
-	public String getFormatted() {
-		return getFormatted(ISO);
+		return instance;
 	}
 
 	/**
@@ -51,6 +65,15 @@ public class TimestampHandler {
 	 */
 	public String getFormatted(ChronoFormat formatter) {
 		return getTime().format(formatter.format());
+	}
+
+	/**
+	 * Returns the current date and time in the least ambiguous format according to ISO normalization
+	 *
+	 * @return Current time with ISO Formatting
+	 */
+	public String getFormatted() {
+		return getFormatted(ISO);
 	}
 
 	/**
