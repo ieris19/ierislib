@@ -14,6 +14,7 @@
         <module>log</module>
         <module>scoreboard</module>
         <module>user-interface</module>
+        <module>patterns</module>
     </modules>
     <properties>
         <maven.compiler.source>18</maven.compiler.source>
