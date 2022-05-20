@@ -4,11 +4,14 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import static lib.ieris19.util.cli.TextColor.*;
+
 /**
- * The console will take several commands and execute actions accordingly
+ * The console class will require a little setup from the user. First you will need to add your own
+ * commands to the console in some sort of initializer method. Once the console has rev
  *
  * @author Jason Abreu
- * @version 1.0
+ * @version 2.0
  */
 public class Console {
 	/**
@@ -18,11 +21,16 @@ public class Console {
 	/**
 	 * Scanner reading user input from the CLI
 	 */
-	private Scanner input;
+	private final Scanner input;
 	/**
 	 * Map of the available commands. A command is identified by a unique id and a command object
 	 */
-	private HashMap<String, Command> commandMap;
+	private final HashMap<String, Command> commandMap;
+
+	/**
+	 * Defines whether the console has started or not, in order to limit some functionality
+	 */
+	private boolean launched;
 
 	/**
 	 * Private constructor to avoid accidentally creating multiple instances of {@link Console}.
@@ -39,7 +47,15 @@ public class Console {
 													 this::exit));
 	}
 
-	public void addCommand(Command command) {
+	/**
+	 * Adds a command to the console. Once added, the command can be called by typing its named and
+	 * the needed arguments into the console
+	 *
+	 * @param command the command object to be added, in most cases it will be a new Command
+	 *
+	 * @see Command
+	 */
+	public synchronized void addCommand(Command command) {
 		commandMap.put(command.getName(), command);
 	}
 
@@ -50,7 +66,7 @@ public class Console {
 	 *
 	 * @return The only existing instance of this class
 	 */
-	public static Console getInstance() {
+	public static synchronized Console getInstance() {
 		if (instance == null) {
 			instance = new Console();
 		}
@@ -64,10 +80,10 @@ public class Console {
 	 * {@linkplain Console#parseCommand(String)} contains a list of all available commands
 	 */
 	public void launch() {
-		System.out.println(
-				"Welcome to the console \n This command line application will let you control"
-				+ " this program through some simple commands \n Type help to see a list of "
-				+ "available commands");
+		println("Welcome to the console \n This command line application will let you control"
+						+ " this program through some simple commands \n Type help to see a list of "
+						+ "available commands", WHITE);
+		launched = true;
 		console();
 	}
 
@@ -84,20 +100,20 @@ public class Console {
 			try {
 				parseCommand(command);
 			} catch (InvalidCommandException exception) {
-				System.out.println('\"' + command + '\"' + " is not recognized by the console");
+				println('\"' + command + '\"' + " is not recognized by the console", RED);
 			} catch (IllegalArgumentException exception) {
-				System.out.println('\"' + command + '\"' + " contains illegal arguments");
+				println('\"' + command + '\"' + " contains illegal arguments", RED);
 				if (exception.getMessage() != null)
-					System.out.println(exception.getMessage());
+					println(exception.getMessage(), MAGENTA);
 			} catch (ArrayIndexOutOfBoundsException exception) {
-				System.out.println('\"' + command + '\"' + " contains insufficient arguments");
+				println('\"' + command + '\"' + " contains insufficient arguments", YELLOW);
 			} catch (NullPointerException exception) {
-				System.out.println(exception.getMessage() + " string is not a valid command");
+				println(exception.getMessage() + " string is not a valid command", MAGENTA);
 			} catch (InputMismatchException exception) {
-				System.out.println("There was an error parsing the command, please try again");
+				println("There was an error parsing the command, please try again", YELLOW);
 			}
 			finally {
-				System.out.println("Try the command \"help\" if in doubt");
+				println("Try the command \"help\" if in doubt", BLUE);
 			}
 		}
 	}
@@ -107,7 +123,7 @@ public class Console {
 	 * command line into multiple tokens, it will execute the code with the specified parameters. The
 	 * break between tokens is a blank space. It will ignore unnecessary parameters.<br><br>
 	 *
-	 * A list of commands can be found {@link Console#availableCommands() here}
+	 * A list of commands can be found {@link Console#availableCommands(String[]) here}
 	 *
 	 * @param commandLine The command line that includes the command and the arguments, separated by
 	 *                    spaces
@@ -134,13 +150,13 @@ public class Console {
 	}
 
 	/**
-	 * This method lists of all available commands and their description
+	 * This method lists all available commands and their description
 	 *
 	 * @param arguments Parameter so that this method fits the type {@link Script#execute(String[])}
 	 */
 	public void availableCommands(String[] arguments) {
-		for (Command command : commandMap.values().toArray(new Command[0])) {
-
+		for (String key : commandMap.keySet()) {
+			println(key + ": " + commandMap.get(key).help(), GREEN);
 		}
 	}
 
@@ -152,7 +168,7 @@ public class Console {
 	 */
 	public void exit(String[] arguments) {
 		try {
-			System.out.print("The program will exit");
+			print("The program will exit", MAGENTA);
 			System.exit(Integer.parseInt(arguments[1]));
 		} catch (Exception exception) {
 			System.exit(1);
