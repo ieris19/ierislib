@@ -1,5 +1,6 @@
-package util.console;
+package lib.ieris19.util.console;
 
+import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -9,24 +10,64 @@ import java.util.Scanner;
  * @author Jason Abreu
  * @version 1.0
  */
-public abstract class Console {
-	protected final Scanner console;
+public class Console {
+	/**
+	 * Singleton instance of the console
+	 */
+	private static Console instance;
+	/**
+	 * Scanner reading user input from the CLI
+	 */
+	private Scanner input;
+	/**
+	 * Map of the available commands. A command is identified by a unique id and a command object
+	 */
+	private HashMap<String, Command> commandMap;
 
-	public Console() {
-		console = new Scanner(System.in);
+	/**
+	 * Private constructor to avoid accidentally creating multiple instances of {@link Console}.
+	 * Please refer to {@link #getInstance()} for more information
+	 */
+	private Console() {
+		input = new Scanner(System.in);
+		commandMap = new HashMap<>();
+		addCommand(new Command("help",
+													 "This command will print to the console a list of all available commands",
+													 this::availableCommands));
+		addCommand(new Command("exit",
+													 "It will close the console by shutting down the program, it accepts an exit code, but will default to 1 if none is specified",
+													 this::exit));
+	}
+
+	public void addCommand(Command command) {
+		commandMap.put(command.getName(), command);
 	}
 
 	/**
-	 * Starts the console with a short welcome message and starts the infinite loop <br>
+	 * Returns the only instance of the console that can exist during runtime. The first time it's
+	 * called, it will create said instance, but any subsequent call will return the existing
+	 * instance
+	 *
+	 * @return The only existing instance of this class
+	 */
+	public static Console getInstance() {
+		if (instance == null) {
+			instance = new Console();
+		}
+		return instance;
+	}
+
+	/**
+	 * Starts the console with a short welcome message and starts the command line interface loop
+	 * (CLI) <br>
 	 *
 	 * {@linkplain Console#parseCommand(String)} contains a list of all available commands
 	 */
 	public void launch() {
-		System.out.println("""
-													 Welcome to the console\s
-													 This console will let you control this program through some simple commands\s
-													 Type help to see a list of available commands
-													 """);
+		System.out.println(
+				"Welcome to the console \n This command line application will let you control"
+				+ " this program through some simple commands \n Type help to see a list of "
+				+ "available commands");
 		console();
 	}
 
@@ -39,7 +80,7 @@ public abstract class Console {
 	public void console() {
 		String command;
 		while (true) {
-			command = console.nextLine();
+			command = input.nextLine();
 			try {
 				parseCommand(command);
 			} catch (InvalidCommandException exception) {
@@ -85,30 +126,22 @@ public abstract class Console {
 		if (commandLine.equals(""))
 			throw new NullPointerException("Empty");
 		String[] arguments = commandLine.split(" ");
-		switch (arguments[0].toLowerCase()) {
-			case "help" -> availableCommands();
-			case "exit" -> exit(arguments);
-			default -> throw new InvalidCommandException();
-		}
+		Command command = commandMap.get(arguments[0]);
+		if (command != null)
+			command.execute(arguments);
+		else
+			throw new InvalidCommandException();
 	}
 
 	/**
-	 * This method is a list of all available commands: <br><br> <strong>Developer's note:</strong> In
-	 * the abstract Console class it only contains the very basics that every program should have.
-	 * Thus, it is very important to overwrite this method and list the available commands in the
-	 * classes that extend this one, both in the implementation and documentation of the class
-	 * <ul>
-	 *   <li><code>help</code>: This command will print to the console a list of all available commands</li>
-	 *   <li><code>exit</code>: It will close the console by shutting down the program,
-	 *   it accepts an exit code, but will default to 1 if none is specified</li>
-	 * </ul>
+	 * This method lists of all available commands and their description
+	 *
+	 * @param arguments Parameter so that this method fits the type {@link Script#execute(String[])}
 	 */
-	public void availableCommands() {
-		System.out.println("""
-													 This is a list of all available commands and a little explanation:
-													 help: This command will print to the console a list of all available commands
-													 exit: It will close the console by shutting down the program, it accepts an exit code, but will default to 1 if none is specified
-													 """);
+	public void availableCommands(String[] arguments) {
+		for (Command command : commandMap.values().toArray(new Command[0])) {
+
+		}
 	}
 
 	/**

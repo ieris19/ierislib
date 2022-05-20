@@ -1,4 +1,4 @@
 /**
  * Package that contains the console library
  */
-package util.console;
+package lib.ieris19.util.console;
