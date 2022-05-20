@@ -1,4 +1,4 @@
-package util.economy;
+package lib.ieris19.util.economy;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

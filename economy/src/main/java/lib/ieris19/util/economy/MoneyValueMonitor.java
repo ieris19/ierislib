@@ -1,4 +1,4 @@
-package util.economy;
+package lib.ieris19.util.economy;
 
 public class MoneyValueMonitor implements Runnable {
 	private Money monitored;

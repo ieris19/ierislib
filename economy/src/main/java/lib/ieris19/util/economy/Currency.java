@@ -1,4 +1,4 @@
-package util.economy;
+package lib.ieris19.util.economy;
 
 /**
  * A currency is a more specific version of Money, it includes everything from the

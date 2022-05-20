@@ -1,12 +1,13 @@
 package util.economy;
 
+import lib.ieris19.util.economy.Money;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static util.economy.Money.*;
+import static lib.ieris19.util.economy.Money.*;
 
 @DisplayName ("Economy Library Test") class EconomyTest {
 	private Money account;

@@ -1,4 +1,4 @@
 /**
  * A utility package containing features required for any kind of economy
  */
-package util.economy;
+package lib.ieris19.util.economy;

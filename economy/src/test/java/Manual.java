@@ -1,4 +1,4 @@
-import util.economy.Money;
+import lib.ieris19.util.economy.Money;
 
 public class Manual {
 
