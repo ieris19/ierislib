@@ -2,21 +2,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>lib.ieris19.util</groupId>
-    <artifactId>log</artifactId>
-    <version>1.1.1-release</version>
     <parent>
         <groupId>lib.ieris19</groupId>
         <artifactId>IerisLib</artifactId>
         <version>1.0</version>
     </parent>
+
+    <artifactId>log</artifactId>
+    <groupId>lib.ieris19.util</groupId>
+    <version>1.1.2-release</version>
     <dependencies>
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.8.2</version>
-            <scope>test</scope>
+            <artifactId>cli</artifactId>
+            <groupId>lib.ieris19.util</groupId>
+            <version>1.0.0-release</version>
         </dependency>
     </dependencies>
 </project>

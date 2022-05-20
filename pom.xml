@@ -3,10 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>lib.ieris19</groupId>
     <artifactId>IerisLib</artifactId>
+    <groupId>lib.ieris19</groupId>
     <version>1.0</version>
     <packaging>pom</packaging>
+
     <modules>
         <module>cards</module>
         <module>console</module>
@@ -15,12 +16,24 @@
         <module>scoreboard</module>
         <module>user-interface</module>
         <module>patterns</module>
+        <module>cli</module>
     </modules>
+
     <properties>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.8.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -53,6 +66,7 @@
             </plugin>
         </plugins>
     </build>
+
     <distributionManagement>
         <repository>
             <id>ierislib</id>
