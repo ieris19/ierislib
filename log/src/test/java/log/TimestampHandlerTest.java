@@ -1,5 +1,6 @@
 package log;
 
+import lib.ieris19.util.log.TimestampHandler;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -9,8 +10,8 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
-import static log.TimestampHandler.ChronoFormat.EUROPEAN;
-import static log.TimestampHandler.ChronoFormat.ISO;
+import static lib.ieris19.util.log.TimestampHandler.ChronoFormat.EUROPEAN;
+import static lib.ieris19.util.log.TimestampHandler.ChronoFormat.ISO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 

@@ -1,18 +1,25 @@
-package log;
+package lib.ieris19.util.log;
+
+import lib.ieris19.util.cli.TextColor;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static log.Log.TextColor.*;
+import static lib.ieris19.util.cli.TextColor.*;
 
 /**
- * A class that can writeToFile messages to a file with a UTC Timestamp
+ * A class that can create a registry of messages both in the console and in a separate file
+ * concerning the functioning of an application. Information contained in these messages includes
+ * date (through the named files created for all logged activity during a day), time (as a timestamp
+ * before the rest of the message), execution thread (meaning, the thread executing the action being
+ * logged), type of message (ACTION, SUCCESS, INFO, etc..) and a custom message to better provide
+ * information
  */
 public class Log {
 	/**
-	 * Single log object for every instance of it to reference
+	 * Singleton instance of the log object to be referenced
 	 */
 	private static Log log;
 
@@ -31,37 +38,15 @@ public class Log {
 	private String name;
 
 	/**
-	 * Enum containing the ANSI character strings that format the color of the logs to the console
-	 */
-	enum TextColor {
-		RESET("\u001B[0m"),
-		RED("\u001B[31m"),
-		GREEN("\u001B[32m"),
-		YELLOW("\u001B[33m"),
-		BLUE("\u001B[34m"),
-		MAGENTA("\u001b[35m"),
-		CYAN("\u001b[36m"),
-		WHITE("\u001b[37m");
-
-		private final String ANSICode;
-
-		TextColor(String code) {
-			this.ANSICode = code;
-		}
-
-		@Override public String toString() {
-			return ANSICode;
-		}
-	}
-
-	/**
-	 * Class that allows logging of activity into a writeToFile file
+	 * Private constructor to avoid accidentally creating multiple instances of
+	 * {@link Log}. Please refer to {@link #getInstance()} for more information
 	 */
 	private Log() {
-		String homePath = System.getProperty("user.home");
-		logDirectory = new File(homePath, "Logs");
+		String homePath = System.getProperty("user.dir");
+		logDirectory = new File(homePath, "logs");
+		logDirectory.mkdir();
 		timestamp = TimestampHandler.getInstance();
-		name = "Log";
+		name = "GoMedia";
 	}
 
 	/**
@@ -102,9 +87,11 @@ public class Log {
 	 *
 	 * @return a Log file with an appropriate filename
 	 */
-	private File getLogFile() {
+	private File getLogFile() throws IOException {
 		String fileName = name + " - " + timestamp.getFormattedDate() + ".log";
-		return new File(logDirectory, fileName);
+		File logFile = new File(logDirectory, fileName);
+		logFile.createNewFile();
+		return logFile;
 	}
 
 	/**
@@ -153,7 +140,7 @@ public class Log {
 	 */
 	private void log(String message, String logMessage, TextColor color) {
 		String line = logHeader(logMessage) + message;
-		System.out.println(color + line + RESET);
+		TextColor.print(line, color, System.out);
 		try {
 			writeToFile(line);
 		} catch (IOException e) {
@@ -163,6 +150,7 @@ public class Log {
 
 	/**
 	 * Logs a generic message
+	 *
 	 * @param message message to be logged
 	 */
 	public void log(String message) {
@@ -171,6 +159,7 @@ public class Log {
 
 	/**
 	 * Logs a success message
+	 *
 	 * @param message message to be logged
 	 */
 	public void success(String message) {
@@ -179,6 +168,7 @@ public class Log {
 
 	/**
 	 * Logs an informational message
+	 *
 	 * @param message message to be logged
 	 */
 	public void info(String message) {
@@ -187,6 +177,7 @@ public class Log {
 
 	/**
 	 * Logs a warning
+	 *
 	 * @param message messaged to be logged
 	 */
 	public void warning(String message) {
@@ -195,6 +186,7 @@ public class Log {
 
 	/**
 	 * Logs an error that doesn't interrupt the functioning of the program
+	 *
 	 * @param message messaged to be logged
 	 */
 	public void error(String message) {
@@ -203,6 +195,7 @@ public class Log {
 
 	/**
 	 * Logs an error that interrupts the functioning of the program
+	 *
 	 * @param message messaged to be logged
 	 */
 	public void fatal(String message) {
