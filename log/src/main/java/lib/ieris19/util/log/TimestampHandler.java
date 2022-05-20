@@ -1,10 +1,10 @@
-package log;
+package lib.ieris19.util.log;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static log.TimestampHandler.ChronoFormat.*;
+import static lib.ieris19.util.log.TimestampHandler.ChronoFormat.*;
 
 /**
  * A class that can return the current date and time appropriately formatted for the log console
@@ -14,26 +14,6 @@ public class TimestampHandler {
 	 * Singleton instance of the timestamp handler
 	 */
 	private static TimestampHandler instance;
-
-	/**
-	 * Enumeration containing the {@link DateTimeFormatter} to be used in timestamping
-	 */
-	public enum ChronoFormat {
-		EUROPEAN(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")),
-		ISO(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")),
-		DATE_ONLY(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-		TIME_ONLY(DateTimeFormatter.ofPattern("HH:mm:ss"));
-
-		private final DateTimeFormatter formatter;
-
-		ChronoFormat(DateTimeFormatter formatter) {
-			this.formatter = formatter;
-		}
-
-		public DateTimeFormatter format() {
-			return this.formatter;
-		}
-	}
 
 	/**
 	 * Private constructor to avoid accidentally creating multiple instances of
@@ -103,5 +83,50 @@ public class TimestampHandler {
 	 */
 	public LocalDateTime getTime() {
 		return LocalDateTime.now(Clock.systemUTC());
+	}
+
+	/**
+	 * Enumeration containing the {@link DateTimeFormatter} to be used in timestamping
+	 */
+	public enum ChronoFormat {
+		/**
+		 * Formatter for the European standard of Date and Time (dd/MM/yyyy HH:mm:ss)
+		 */
+		EUROPEAN("dd/MM/yyyy HH:mm:ss"),
+		/**
+		 * Formatter for the ISO standard of Date and Time (yyyy-MM-dd'T'HH:mm:ss)
+		 */
+		ISO("yyyy-MM-dd'T'HH:mm:ss"),
+		/**
+		 * Formatter for the ISO standard of Date only (yyyy-MM-dd)
+		 */
+		DATE_ONLY("yyyy-MM-dd"),
+		/**
+		 * Formatter for the ISO standard of Time only (HH:mm:ss)
+		 */
+		TIME_ONLY("HH:mm:ss");
+
+		/**
+		 * The time formatter for this specific {@link ChronoFormat ChronoFormat}
+		 */
+		private final DateTimeFormatter formatter;
+
+		/**
+		 * Constructs a formatter from the provided pattern
+		 *
+		 * @param pattern the Pattern for the {@link DateTimeFormatter}
+		 */
+		ChronoFormat(String pattern) {
+			this.formatter = DateTimeFormatter.ofPattern(pattern);
+		}
+
+		/**
+		 * The formatter corresponding to the selected {@link Enum#name()}
+		 *
+		 * @return {@link DateTimeFormatter} of the pattern corresponding to the instance's name
+		 */
+		public DateTimeFormatter format() {
+			return this.formatter;
+		}
 	}
 }
