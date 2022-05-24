@@ -1,4 +1,4 @@
-package util.scoreboard;
+package lib.ieris19.util.scoreboard;
 
 import java.util.Arrays;
 

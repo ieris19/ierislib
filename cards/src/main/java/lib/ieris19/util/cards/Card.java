@@ -1,4 +1,4 @@
-package util.cards;
+package lib.ieris19.util.cards;
 
 /**
  * Card is a class that will handle each card within a {@link Deck} <br> Cards are defined by 3

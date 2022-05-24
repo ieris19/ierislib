@@ -1,9 +1,7 @@
-package util.cards;
+package lib.ieris19.util.cards;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
-import static util.cards.Card.SUITS;
 
 /**
  * A deck is a collection of {@linkplain Card Cards}. It represents a traditional 52 card poker
@@ -30,10 +28,10 @@ public class Deck {
 	 */
 	public Deck(int amountOfJokers) {
 		deck = new ArrayList<>();
-		createSuit(SUITS[0]);
-		createSuit(SUITS[1]);
-		createSuit(SUITS[2]);
-		createSuit(SUITS[3]);
+		createSuit(Card.SUITS[0]);
+		createSuit(Card.SUITS[1]);
+		createSuit(Card.SUITS[2]);
+		createSuit(Card.SUITS[3]);
 		for (int i = 0; i < amountOfJokers; i++) {
 			deck.add(new Card(0, Card.SUITS[4]));
 		}
@@ -50,13 +48,13 @@ public class Deck {
 	public Deck(int amountOfJokers, int numberOfDecks) {
 		deck = new ArrayList<>();
 		for (int i = 0; i < numberOfDecks; i++) {
-			createSuit(SUITS[0]);
-			createSuit(SUITS[1]);
-			createSuit(SUITS[2]);
-			createSuit(SUITS[3]);
+			createSuit(Card.SUITS[0]);
+			createSuit(Card.SUITS[1]);
+			createSuit(Card.SUITS[2]);
+			createSuit(Card.SUITS[3]);
 		}
 		for (int i = 0; i < amountOfJokers; i++) {
-			deck.add(new Card(0, SUITS[4]));
+			deck.add(new Card(0, Card.SUITS[4]));
 		}
 	}
 

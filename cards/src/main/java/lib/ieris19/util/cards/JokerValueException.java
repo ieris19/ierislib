@@ -1,4 +1,4 @@
-package util.cards;
+package lib.ieris19.util.cards;
 
 /**
  * Thrown by the card to let some games know that Jokers have non-standard value
