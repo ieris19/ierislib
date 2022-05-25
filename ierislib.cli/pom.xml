@@ -10,5 +10,5 @@
 
     <artifactId>cli</artifactId>
     <groupId>lib.ieris19.util</groupId>
-    <version>1.0.0-release</version>
+    <version>1.0.0</version>
 </project>
