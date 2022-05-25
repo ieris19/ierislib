@@ -18,6 +18,5 @@
             <artifactId>cli</artifactId>
             <version>1.0.0-release</version>
         </dependency>
-
     </dependencies>
 </project>
