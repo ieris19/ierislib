@@ -5,6 +5,7 @@
 
     <artifactId>patterns</artifactId>
     <groupId>lib.ieris19.patterns</groupId>
+    <version>1.0</version>
     <packaging>pom</packaging>
     <modules>
         <module>ierislib.singleton</module>
