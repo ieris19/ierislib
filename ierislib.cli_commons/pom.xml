@@ -8,7 +8,7 @@
         <version>1.0</version>
     </parent>
 
-    <artifactId>cli</artifactId>
+    <artifactId>cli_commons</artifactId>
     <groupId>lib.ieris19.util</groupId>
     <version>1.0.0</version>
 </project>

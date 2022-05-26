@@ -11,4 +11,16 @@ wrote when I barely knew anything at all, while other pieces of code could have
 been written at different stages of my journey.
 
 Overall, this repository should host many small pet projects in order for me to
-use
+be able to reuse or just as pure practice. Occasionally some might be built to
+showcase.
+
+For now, the list of projects is the following:
+* Cards Library (cards)
+* Command Line Common Features (cli_commons)
+* Command Console (console)
+* Money Library (economy)
+* Logging module (log)
+* Basic Scoreboard (scoreboard)
+* Patterns Project
+  * Singleton
+    * Multiton
