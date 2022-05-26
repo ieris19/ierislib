@@ -1,4 +1,4 @@
-package util.economy;
+package ib.ieris19.util.economy;
 
 import lib.ieris19.util.economy.Money;
 import org.junit.jupiter.api.BeforeEach;
@@ -193,11 +193,11 @@ import static lib.ieris19.util.economy.Money.*;
 
 			@Test @DisplayName ("Transfer math is correct") void correctTransfer() {
 				transfer(wallet, account, 5.2558);
-				assertEquals(INITIAL_VALUE - 5.26, wallet.amount);
-				assertEquals(INITIAL_VALUE + 5.26, account.amount);
+				assertEquals(INITIAL_VALUE - 5.26, wallet.getAmount());
+				assertEquals(INITIAL_VALUE + 5.26, account.getAmount());
 				transfer(account, wallet, 5.26);
-				assertEquals(INITIAL_VALUE, wallet.amount);
-				assertEquals(INITIAL_VALUE, account.amount);
+				assertEquals(INITIAL_VALUE, wallet.getAmount());
+				assertEquals(INITIAL_VALUE, account.getAmount());
 			}
 		}
 	}

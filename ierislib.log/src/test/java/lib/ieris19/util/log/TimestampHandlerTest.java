@@ -1,4 +1,4 @@
-package log;
+package lib.ieris19.util.log;
 
 import lib.ieris19.util.log.TimestampHandler;
 import org.junit.jupiter.api.BeforeAll;
