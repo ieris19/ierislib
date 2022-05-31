@@ -13,8 +13,8 @@
     <version>1.1.2-release</version>
     <dependencies>
         <dependency>
-            <groupId>lib.ieris19.util</groupId>
             <artifactId>cli_commons</artifactId>
+            <groupId>lib.ieris19.util</groupId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>
