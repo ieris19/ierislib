@@ -18,6 +18,7 @@
     <bytecodeTargetLevel>
       <module name="cli" target="18" />
       <module name="ierislib.cli_commons" target="18" />
+      <module name="ierislib.properties" target="18" />
       <module name="user-interface" target="18" />
     </bytecodeTargetLevel>
   </component>

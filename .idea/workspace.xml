@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f4cbd14-9edd-4356-a68d-39e98665d4fe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ierislib.utilities/src/main/java/lib/ieris19/util/cli/CLIColor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ierislib.utilities/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ierislib.cli_commons/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ierislib.utilities/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ierislib.cli_commons/src/main/java/lib/ieris19/util/cli/TextColor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ierislib.cli_commons/src/main/java/module-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ierislib.console/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ierislib.console/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ierislib.console/src/main/java/lib/ieris19/util/console/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/ierislib.console/src/main/java/lib/ieris19/util/console/Console.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ierislib.console/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/ierislib.console/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +78,7 @@
       <workItem from="1654609282003" duration="131000" />
       <workItem from="1654609431177" duration="60000" />
       <workItem from="1654609508533" duration="839000" />
-      <workItem from="1654620982782" duration="3482000" />
+      <workItem from="1654620982782" duration="5457000" />
     </task>
     <servers />
   </component>
