@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static lib.ieris19.util.cli.TextColor.*;
+import static lib.ieris19.util.cli.CLIColor.*;
 
 /**
  * The console class will require a little setup from the user. First you will need to add your own

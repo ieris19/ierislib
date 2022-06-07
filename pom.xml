@@ -10,11 +10,11 @@
 
     <modules>
         <module>ierislib.cards</module>
-        <module>ierislib.cli_commons</module>
         <module>ierislib.console</module>
         <module>ierislib.economy</module>
         <module>ierislib.log</module>
         <module>ierislib.scoreboard</module>
+        <module>ierislib.utilities</module>
     </modules>
 
     <properties>
