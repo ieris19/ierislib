@@ -1,8 +1,6 @@
 package lib.ieris.util.properties;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Properties;
 
 /**
@@ -11,7 +9,7 @@ import java.util.Properties;
  * individual values of each property, the system should still work as long as the key remains
  * unchanged
  */
-public class IerisProperties {
+public class IerisProperties implements Closeable {
 	/**
 	 * Singleton instance of the property container
 	 */
@@ -53,7 +51,8 @@ public class IerisProperties {
 	/**
 	 * Returns the only instance of this class that can exist during runtime. The first time it's
 	 * called, it will create said instance, but any subsequent call will return the existing
-	 * instance. <br><br>
+	 * instance. If the instance has been previously closed, it will be treated as the first call
+	 * again <br><br>
 	 *
 	 * If properties have not been named before it will instantiate a default "properties.properties".
 	 * Make sure to name them before calling this method if your properties file has a different name
@@ -76,12 +75,59 @@ public class IerisProperties {
 	 *
 	 * @throws IllegalArgumentException if the property does not exist
 	 */
-	public String getProperty(String key) {
+	public synchronized String getProperty(String key) {
 		String property = properties.getProperty(key);
 		if (property == null) {
 			throw new IllegalArgumentException("Invalid Property Name");
 		}
 		return property;
+	}
+
+	/**
+	 * Inserts a key/value pair as a property. This method should only be called by another method in
+	 * order to perform any logic checks necessary
+	 *
+	 * @param key   name of the property
+	 * @param value actual value of the property
+	 */
+	private synchronized void setProperties(String key, String value) {
+		properties.put(key, value);
+	}
+
+	/**
+	 * Modifies a property, it will throw an exception if the property doesn't exist. If the new value
+	 * is the same as the current, it will not change it
+	 *
+	 * @param key   name of the property
+	 * @param value actual value of the property
+	 */
+	public synchronized void modifyProperty(String key, String value) {
+		try {
+			String oldValue = properties.getProperty(key);
+			if (oldValue != null) {
+				if (!oldValue.equals(value)) {
+					setProperties(key, value);
+				}
+			} else {
+				throw new IllegalStateException("Property doesn't exist");
+			}
+		} catch (IllegalArgumentException e) {
+			throw new IllegalArgumentException("Property doesn't exist");
+		}
+	}
+
+	/**
+	 * Creates a property, it will throw an exception if the property already exists.
+	 *
+	 * @param key   name of the property
+	 * @param value actual value of the property
+	 */
+	public synchronized void createProperty(String key, String value) {
+		String property = properties.getProperty(key);
+		if (property == null) {
+			setProperties(key, value);
+		}
+		throw new IllegalArgumentException("Property already exists");
 	}
 
 	/**
@@ -156,5 +202,22 @@ public class IerisProperties {
 			return false;
 		else
 			throw new PropertyTypeException(properties, key, "Boolean");
+	}
+
+	/**
+	 * Closes this stream and releases any system resources associated with it. If the stream is
+	 * already closed then invoking this method has no effect.
+	 *
+	 * @throws IOException if an I/O error occurs
+	 */
+	@Override public void close() throws IOException {
+		try {
+			if (instance != null) {
+				properties.store(new FileWriter("properties.properties"), name);
+			}
+			instance = null;
+		} catch (IOException e) {
+			throw new IOException("Could not store the properties, the properties have been deleted", e);
+		}
 	}
 }
