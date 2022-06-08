@@ -1,4 +1,4 @@
-package lib.ieris19.util.cli;
+package lib.ieris19.util.console;
 
 import java.io.PrintStream;
 

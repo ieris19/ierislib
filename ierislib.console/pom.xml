@@ -11,12 +11,4 @@
     <artifactId>console</artifactId>
     <groupId>lib.ieris19.util</groupId>
     <version>2.0.0-release</version>
-
-    <dependencies>
-        <dependency>
-            <groupId>lib.ieris19</groupId>
-            <artifactId>ierislib.utilities</artifactId>
-            <version>1.0</version>
-        </dependency>
-    </dependencies>
 </project>

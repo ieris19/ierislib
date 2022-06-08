@@ -1,13 +1,11 @@
 package lib.ieris19.util.log;
 
-import lib.ieris19.util.cli.TextColor;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static lib.ieris19.util.cli.TextColor.*;
+import static lib.ieris19.util.log.CLIColor.*;
 
 /**
  * A class that can create a registry of messages both in the console and in a separate file
@@ -138,9 +136,9 @@ public class Log {
 	 * @param logMessage type of element being logged, it can be SUCCESS, ERROR...
 	 * @param color      TextColor object corresponding to the desired
 	 */
-	private void log(String message, String logMessage, TextColor color) {
+	private void log(String message, String logMessage, CLIColor color) {
 		String line = logHeader(logMessage) + message;
-		TextColor.print(line, color, System.out);
+		CLIColor.print(line, color, System.out);
 		try {
 			writeToFile(line);
 		} catch (IOException e) {

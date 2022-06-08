@@ -14,8 +14,6 @@
         <module>ierislib.economy</module>
         <module>ierislib.log</module>
         <module>ierislib.scoreboard</module>
-        <module>ierislib.utilities</module>
-        <module>ierislib.properties</module>
     </modules>
 
     <properties>
