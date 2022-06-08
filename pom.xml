@@ -9,14 +9,11 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>cards</module>
-        <module>console</module>
-        <module>economy</module>
-        <module>log</module>
-        <module>scoreboard</module>
-        <module>user-interface</module>
-        <module>patterns</module>
-        <module>cli</module>
+        <module>ierislib.cards</module>
+        <module>ierislib.console</module>
+        <module>ierislib.economy</module>
+        <module>ierislib.log</module>
+        <module>ierislib.scoreboard</module>
     </modules>
 
     <properties>
