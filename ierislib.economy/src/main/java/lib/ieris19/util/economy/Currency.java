@@ -1,5 +1,6 @@
 package lib.ieris19.util.economy;
 
+//TODO: Finish implementation of the currency class, as it was never properly implemented
 /**
  * A currency is a more specific version of Money, it includes everything from the
  */
@@ -10,6 +11,11 @@ public class Currency extends Money {
 	 */
 	protected String currencySymbol;
 
+	/**
+	 * Creates a new account that will track money in this particular currency
+	 * @param balance original balance of the account
+	 * @param currencySymbol symbol attached to this currency
+	 */
 	public Currency(double balance, String currencySymbol) {
 		super(balance);
 		setCurrencySymbol(currencySymbol);

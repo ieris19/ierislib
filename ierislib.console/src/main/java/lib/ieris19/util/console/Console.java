@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static lib.ieris19.util.console.CLIColor.*;
+import static lib.ieris19.util.cli.TextColor.*;
 
 /**
  * The console class will require a little setup from the user. First you will need to add your own
@@ -56,7 +56,10 @@ public class Console {
 	 * @see Command
 	 */
 	public synchronized void addCommand(Command command) {
-		commandMap.put(command.getName(), command);
+		if (!launched)
+			commandMap.put(command.getName(), command);
+		else
+			throw new IllegalStateException("Console has already launched");
 	}
 
 	/**

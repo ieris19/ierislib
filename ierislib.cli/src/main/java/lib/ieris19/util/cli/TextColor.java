@@ -1,11 +1,11 @@
-package lib.ieris19.util.console;
+package lib.ieris19.util.cli;
 
 import java.io.PrintStream;
 
 /**
  * Enum containing the ANSI character strings that format the color of the logs to the console
  */
-public enum CLIColor {
+public enum TextColor {
 	/**
 	 * ANSI code that changes the color back to default
 	 */
@@ -55,12 +55,12 @@ public enum CLIColor {
 	 *
 	 * @param code the ANSI code corresponding to the <code>name</code>
 	 */
-	CLIColor(String code) {
+	TextColor(String code) {
 		this.ANSICode = code;
 	}
 
 	/**
-	 * A {@link CLIColor TextColor} turned string corresponds to the ANSI code. Thus, the method
+	 * A {@link TextColor TextColor} turned string corresponds to the ANSI code. Thus, the method
 	 * <code>toString()</code> is overriding in order to return the ANSI code instead of the
 	 * {@link Enum#name() name} of the color
 	 *
@@ -79,7 +79,7 @@ public enum CLIColor {
 	 * @param color  Desired Text color
 	 * @param stream {@link PrintStream} to print the colored {@code String}
 	 */
-	public static void print(String string, CLIColor color, PrintStream stream) {
+	public static void print(String string, TextColor color, PrintStream stream) {
 		stream.print(color + string + RESET);
 	}
 
@@ -91,7 +91,7 @@ public enum CLIColor {
 	 * @param string Text to be colored
 	 * @param color  Desired Text color
 	 */
-	public static void print(String string, CLIColor color) {
+	public static void print(String string, TextColor color) {
 		print(string, color, System.out);
 	}
 
@@ -104,7 +104,7 @@ public enum CLIColor {
 	 * @param color  Desired Text color
 	 * @param stream {@link PrintStream} to print the colored {@code String}
 	 */
-	public static void println(String string, CLIColor color, PrintStream stream) {
+	public static void println(String string, TextColor color, PrintStream stream) {
 		stream.println(color + string + RESET);
 	}
 
@@ -116,7 +116,7 @@ public enum CLIColor {
 	 * @param string Text to be colored
 	 * @param color  Desired Text color
 	 */
-	public static void println(String string, CLIColor color) {
+	public static void println(String string, TextColor color) {
 		println(string, color, System.out);
 	}
 }

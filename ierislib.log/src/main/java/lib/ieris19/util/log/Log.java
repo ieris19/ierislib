@@ -1,11 +1,13 @@
 package lib.ieris19.util.log;
 
+import lib.ieris19.util.cli.TextColor;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static lib.ieris19.util.log.CLIColor.*;
+import static lib.ieris19.util.cli.TextColor.*;
 
 /**
  * A class that can create a registry of messages both in the console and in a separate file
@@ -40,11 +42,10 @@ public class Log {
 	 * {@link Log}. Please refer to {@link #getInstance()} for more information
 	 */
 	private Log() {
-		String homePath = System.getProperty("user.dir");
-		logDirectory = new File(homePath, "logs");
+		logDirectory = new File("logs");
 		logDirectory.mkdir();
 		timestamp = TimestampHandler.getInstance();
-		name = "GoMedia";
+		name = "Log";
 	}
 
 	/**
@@ -136,9 +137,9 @@ public class Log {
 	 * @param logMessage type of element being logged, it can be SUCCESS, ERROR...
 	 * @param color      TextColor object corresponding to the desired
 	 */
-	private void log(String message, String logMessage, CLIColor color) {
+	private void log(String message, String logMessage, TextColor color) {
 		String line = logHeader(logMessage) + message;
-		CLIColor.print(line, color, System.out);
+		TextColor.print(line, color, System.out);
 		try {
 			writeToFile(line);
 		} catch (IOException e) {

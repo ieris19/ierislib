@@ -16,7 +16,10 @@ import java.util.Collections;
  * @see Card
  */
 public class Deck {
-
+	/**
+	 * A collection of cards. It can represent a traditional 52 card deck, a shoe of multiple 52 card
+	 * decks or if processed, a custom deck with custom amounts of cards
+	 */
 	private ArrayList<Card> deck;
 
 	/**

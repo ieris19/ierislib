@@ -1,6 +1,6 @@
 #IntelliJ Configuration Files
 .idea/
-*.iml
+**/*.iml
 
 # Compiled class file
 *.class

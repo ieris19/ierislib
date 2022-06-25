@@ -16,9 +16,22 @@ package lib.ieris19.util.cards;
  * @see Deck
  */
 public class Card {
+	/**
+	 * A constant containing the valid suits a card can be
+	 */
 	public static final String[] SUITS = {"Spades", "Diamonds", "Hearts", "Clubs", "Joker"};
+	/**
+	 * The suit that this card belongs to
+	 */
 	private final String suit;
+	/**
+	 * The card value which is a number between 0-13, 0 represents a Joker and the rest represent the
+	 * cards in the following order: Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King
+	 */
 	private final int value;
+	/**
+	 * Whether the card is face down or face up
+	 */
 	private boolean faceDown;
 
 	/**
@@ -35,9 +48,10 @@ public class Card {
 		} else {
 			this.value = 0;
 		}
-
-		// The value of the suit is parsed through a chain of if else statements.
-		// If none of the acceptable values is recognized ignoring case, it will be assumed a joker.
+		/*
+		 The value of the suit is parsed through a chain of if else statements.
+		 If none of the acceptable values is recognized ignoring case, it will be assumed a joker.
+		 */
 		if (suit.equalsIgnoreCase(SUITS[0]))
 			this.suit = SUITS[0];
 		else if (suit.equalsIgnoreCase(SUITS[1]))
@@ -71,11 +85,9 @@ public class Card {
 	 * <code>suit</code>
 	 */
 	public String getCardName() {
-		String cardType = "";
 		if (getCardValue().equals(SUITS[4]) || suit.equals(SUITS[4]))
 			return SUITS[4];
-		cardType += getCardValue() + " of " + suit;
-		return cardType;
+		return getCardValue() + " of " + suit;
 	}
 
 	/**
@@ -103,6 +115,10 @@ public class Card {
 		};
 	}
 
+	/**
+	 * Flips the card around, meaning that if the card is face up, it will make it face down and vice
+	 * versa
+	 */
 	public void flip() {
 		this.faceDown = !faceDown;
 	}

@@ -1,5 +1,7 @@
 package lib.ieris19.util.economy;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -30,6 +32,11 @@ public class Money {
 	public final static double MIN_MONEY = -1000000000;
 
 	/**
+	 * Support for objects listening to this object property changes
+	 */
+	private PropertyChangeSupport support;
+
+	/**
 	 * Creates an instance with default values
 	 */
 	public Money() {
@@ -41,6 +48,7 @@ public class Money {
 	 */
 	public Money(double balance) {
 		this.amount = fix(balance);
+		this.support = new PropertyChangeSupport(this);
 	}
 
 	/**
@@ -50,10 +58,13 @@ public class Money {
 	 */
 	public void setAmount(double value) {
 		value = fix(value);
-		if (value <= MAX_MONEY && value >= MIN_MONEY)
+		double oldValue = this.amount;
+		if (value <= MAX_MONEY && value >= MIN_MONEY) {
 			this.amount = value;
-		else
+		} else {
 			throw new IllegalArgumentException("Balance Exceeds Limits");
+		}
+		support.firePropertyChange("Amount of Money", oldValue, getAmount());
 	}
 
 	/**
@@ -68,10 +79,14 @@ public class Money {
 	 */
 	public void addMoney(double addend) {
 		addend = fix(addend);
-		if (addend <= 0.01)
-			throw new IllegalArgumentException("Amount to add can't be negative");
-		else
+		double oldValue = this.amount;
+		if (addend >= 0.01) {
 			this.amount = Math.min(this.amount + addend, MAX_MONEY);
+		}
+		else {
+			throw new IllegalArgumentException("Amount to add can't be negative or too small");
+		}
+		support.firePropertyChange("Amount of Money", oldValue, getAmount());
 	}
 
 	/**
@@ -82,6 +97,7 @@ public class Money {
 	 */
 	public void subtractMoney(double subtrahend, boolean canOwe) {
 		subtrahend = fix(subtrahend);
+		double oldValue = this.amount;
 		if (subtrahend < 0.01)
 			throw new IllegalArgumentException("Amount to subtract can't be negative");
 		if (!canOwe) {
@@ -92,6 +108,7 @@ public class Money {
 		} else {
 			this.amount = Math.max(this.amount - subtrahend, MIN_MONEY);
 		}
+		support.firePropertyChange("Amount of Money", oldValue, getAmount());
 	}
 
 	/**
@@ -150,5 +167,21 @@ public class Money {
 				unformatted = false;
 		}
 		return temp;
+	}
+
+	/**
+	 * Adds a listener to the properties of this class
+	 * @param listener object that will listen to the properties of this class
+	 */
+	public void addListener(PropertyChangeListener listener) {
+		this.support.addPropertyChangeListener(listener);
+	}
+
+	/**
+	 * Removes an object that was listening to this class
+	 * @param listener object that will no longer listen to the values of this class
+	 */
+	public void removeListener(PropertyChangeListener listener) {
+		this.support.removePropertyChangeListener(listener);
 	}
 }

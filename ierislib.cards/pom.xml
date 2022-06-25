@@ -9,5 +9,6 @@
     </parent>
 
     <artifactId>cards</artifactId>
-    <version>1.0.0-release</version>
+    <groupId>lib.ieris19.util</groupId>
+    <version>1.0.1-release</version>
 </project>
