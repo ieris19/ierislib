@@ -18,7 +18,7 @@ class LoggerTest {
 		this.log = Log.getInstance();
 		this.timestamp = TimestampHandler.getInstance();
 		this.appName = "TEST";
-		this.logFile = new File("C:/Users/Ieris19/Logs/",
+		this.logFile = new File("logs/",
 														appName + " - " + timestamp.getFormattedDate() + ".log");
 		log.setName(appName);
 	}

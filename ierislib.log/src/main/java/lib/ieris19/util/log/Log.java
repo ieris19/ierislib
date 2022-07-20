@@ -139,7 +139,7 @@ public class Log {
 	 */
 	private void log(String message, String logMessage, TextColor color) {
 		String line = logHeader(logMessage) + message;
-		TextColor.print(line, color, System.out);
+		TextColor.println(line, color);
 		try {
 			writeToFile(line);
 		} catch (IOException e) {
