@@ -6,64 +6,97 @@ import java.util.Properties;
 /**
  * A class container for properties and other constants in the system. They're defined in
  * <code>properties.properties</code> and access through this class, this ensures that even if the
- * individual values of each property, the system should still work as long as the key remains
- * unchanged
+ * individual values of each property, the system should still work as long as the key remains unchanged
  */
-public class IerisProperties implements Closeable {
+public class IerisProperties {
 	/**
-	 * Singleton instance of the property container
+	 * Name of the properties file. It's full path is from the working directory: <br>
+	 * "{@code /configDirectory/name.properties}"
 	 */
-	private static IerisProperties instance;
-
-	private static String name = "properties";
-
+	private final String name;
 	/**
-	 * A hashtable consisting of {@link String} keys and <code>String</code> values that define the
-	 * properties and constants to be used by the application
+	 * Directory for configuration files and home of the properties file. It will be {@code /config/} by default
+	 */
+	private final File configDir;
+	/**
+	 * A hashtable consisting of {@link String} keys and <code>String</code> values that define the properties and
+	 * constants to be used by the application
 	 */
 	private Properties properties;
 
 	/**
-	 * Initializes the class by reading the properties file
+	 * Initializes the class by reading the properties file. The constructor is not public as this should only be
+	 * instantiated through {@link GlobalProperties} or {@link DynamicProperties} wrappers
+	 *
+	 * @param name      the properties file name
+	 * @param configDir the properties parent folder
 	 */
-	private IerisProperties() {
-		properties = new Properties();
-		try (InputStream input = new FileInputStream(name + ".properties")) {
-			properties.load(input);
+	IerisProperties(String name, File configDir) {
+		this.name = name;
+		this.configDir = configDir;
+		this.configDir.mkdir();
+		loadProperties();
+	}
+
+	/**
+	 * Creates properties provided a name and a path
+	 *
+	 * @param name          the properties file name
+	 * @param configDirPath path of the properties parent folder
+	 */
+	IerisProperties(String name, String configDirPath) {
+		this(name, new File(configDirPath));
+	}
+
+	/**
+	 * Creates properties in the default directory
+	 *
+	 * @param name name of the properties file
+	 */
+	IerisProperties(String name) {
+		this(name, "config");
+	}
+
+	/**
+	 * Creates properties in the specified directory with the default name
+	 *
+	 * @param configDir the properties parent folder
+	 */
+	IerisProperties(File configDir) {
+		this("properties", configDir);
+	}
+
+	/**
+	 * Creates properties with the default values
+	 */
+	IerisProperties() {
+		this("properties", "config");
+	}
+
+	/**
+	 * Loads the file values into the {@link Properties} object
+	 */
+	protected void loadProperties() {
+		this.properties = new Properties();
+		try (InputStream input = new FileInputStream(getPropertyFile())) {
+			this.properties.load(input);
 		} catch (IOException exception) {
 			throw new IllegalStateException("Properties could not be loaded", exception);
 		}
 	}
 
 	/**
-	 * Sets the name for the properties file. This operation cannot be performed once the singleton
-	 * has been instantiated.
+	 * Prepares a property file with the appropriate directory and name
 	 *
-	 * @param name of the properties file minus the file extension ".properties"
+	 * @return the Properties file being used
+	 *
+	 * @throws IOException if an I/O error occurs
 	 */
-	public void nameProperties(String name) {
-		if (instance == null)
-			IerisProperties.name = name;
-		else
-			throw new IllegalStateException("Properties have already been instantiated");
-	}
-
-	/**
-	 * Returns the only instance of this class that can exist during runtime. The first time it's
-	 * called, it will create said instance, but any subsequent call will return the existing
-	 * instance. If the instance has been previously closed, it will be treated as the first call
-	 * again <br><br>
-	 *
-	 * If properties have not been named before it will instantiate a default "properties.properties".
-	 * Make sure to name them before calling this method if your properties file has a different name
-	 *
-	 * @return The instance of this class.
-	 */
-	public static synchronized IerisProperties getInstance() {
-		if (instance == null) {
-			instance = new IerisProperties();
-		}
-		return instance;
+	private File getPropertyFile() throws IOException {
+		String fileName = name + ".properties";
+		File configFile = new File(configDir, fileName);
+		configFile.createNewFile();
+		return configFile;
 	}
 
 	/**
@@ -75,45 +108,46 @@ public class IerisProperties implements Closeable {
 	 *
 	 * @throws IllegalArgumentException if the property does not exist
 	 */
-	public synchronized String getProperty(String key) {
-		String property = properties.getProperty(key);
-		if (property == null) {
+	public String getProperty(String key) {
+		String propertyValue;
+		synchronized (properties) {
+			propertyValue = properties.getProperty(key);
+		}
+		if (propertyValue == null) {
 			throw new IllegalArgumentException("Invalid Property Name");
 		}
-		return property;
+		return propertyValue;
 	}
 
 	/**
-	 * Inserts a key/value pair as a property. This method should only be called by another method in
-	 * order to perform any logic checks necessary
+	 * Inserts a key/value pair as a property. This method should only be called by another method in order to perform any
+	 * logic checks necessary
 	 *
 	 * @param key   name of the property
 	 * @param value actual value of the property
 	 */
-	private synchronized void setProperties(String key, String value) {
-		properties.put(key, value);
+	private void setProperties(String key, String value) {
+		synchronized (properties) {
+			properties.put(key, value);
+		}
 	}
 
 	/**
-	 * Modifies a property, it will throw an exception if the property doesn't exist. If the new value
-	 * is the same as the current, it will not change it
+	 * Modifies a property, it will throw an exception if the property doesn't exist. If the new value is the same as the
+	 * current, it will also throw an exception
 	 *
 	 * @param key   name of the property
 	 * @param value actual value of the property
 	 */
 	public synchronized void modifyProperty(String key, String value) {
-		try {
-			String oldValue = properties.getProperty(key);
-			if (oldValue != null) {
-				if (!oldValue.equals(value)) {
-					setProperties(key, value);
-				}
-			} else {
-				throw new IllegalStateException("Property doesn't exist");
-			}
-		} catch (IllegalArgumentException e) {
-			throw new IllegalArgumentException("Property doesn't exist");
+		String oldValue = getProperty(key);
+		if (oldValue == null) {
+			throw new IllegalStateException("Property doesn't exist");
 		}
+		if (oldValue.equals(value)) {
+			throw new IllegalArgumentException("Property value is already " + value);
+		}
+		setProperties(key, value);
 	}
 
 	/**
@@ -204,20 +238,11 @@ public class IerisProperties implements Closeable {
 			throw new PropertyTypeException(properties, key, "Boolean");
 	}
 
-	/**
-	 * Closes this stream and releases any system resources associated with it. If the stream is
-	 * already closed then invoking this method has no effect.
-	 *
-	 * @throws IOException if an I/O error occurs
-	 */
-	@Override public void close() throws IOException {
+	public void saveProperties() throws IOException {
 		try {
-			if (instance != null) {
-				properties.store(new FileWriter("properties.properties"), name);
-			}
-			instance = null;
+			properties.store(new FileWriter(getPropertyFile()), name);
 		} catch (IOException e) {
-			throw new IOException("Could not store the properties, the properties have been deleted", e);
+			throw new IOException("Could not store the properties", e);
 		}
 	}
 }
