@@ -31,7 +31,7 @@ public class IerisProperties {
 	 * @param name      the properties file name
 	 * @param configDir the properties parent folder
 	 */
-	IerisProperties(String name, File configDir) {
+	protected IerisProperties(String name, File configDir) {
 		this.name = name;
 		this.configDir = configDir;
 		this.configDir.mkdir();
@@ -44,7 +44,7 @@ public class IerisProperties {
 	 * @param name          the properties file name
 	 * @param configDirPath path of the properties parent folder
 	 */
-	IerisProperties(String name, String configDirPath) {
+	protected IerisProperties(String name, String configDirPath) {
 		this(name, new File(configDirPath));
 	}
 
@@ -53,7 +53,7 @@ public class IerisProperties {
 	 *
 	 * @param name name of the properties file
 	 */
-	IerisProperties(String name) {
+	protected IerisProperties(String name) {
 		this(name, "config");
 	}
 
@@ -62,14 +62,14 @@ public class IerisProperties {
 	 *
 	 * @param configDir the properties parent folder
 	 */
-	IerisProperties(File configDir) {
+	protected IerisProperties(File configDir) {
 		this("properties", configDir);
 	}
 
 	/**
 	 * Creates properties with the default values
 	 */
-	IerisProperties() {
+	protected IerisProperties() {
 		this("properties", "config");
 	}
 
@@ -85,6 +85,10 @@ public class IerisProperties {
 		}
 	}
 
+	protected String getName() {
+		return name;
+	}
+
 	/**
 	 * Prepares a property file with the appropriate directory and name
 	 *
@@ -92,7 +96,7 @@ public class IerisProperties {
 	 *
 	 * @throws IOException if an I/O error occurs
 	 */
-	private File getPropertyFile() throws IOException {
+	protected File getPropertyFile() throws IOException {
 		String fileName = name + ".properties";
 		File configFile = new File(configDir, fileName);
 		configFile.createNewFile();
@@ -126,7 +130,7 @@ public class IerisProperties {
 	 * @param key   name of the property
 	 * @param value actual value of the property
 	 */
-	private void setProperties(String key, String value) {
+	public void setProperties(String key, String value) {
 		synchronized (properties) {
 			properties.put(key, value);
 		}
