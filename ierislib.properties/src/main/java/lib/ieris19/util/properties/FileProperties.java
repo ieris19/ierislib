@@ -45,7 +45,7 @@ public class FileProperties extends IerisProperties implements Closeable {
 	 */
 	public static synchronized FileProperties getInstance(String key) {
 		IerisProperties instance = instances.get(key);
-		if (instances == null) {
+		if (instance == null) {
 			instance = new IerisProperties(key, configDir);
 			instances.put(key, instance);
 		}
