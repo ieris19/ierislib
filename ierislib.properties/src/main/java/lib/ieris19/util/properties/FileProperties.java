@@ -9,12 +9,17 @@ public class FileProperties extends IerisProperties implements Closeable {
 	/**
 	 * Multiton instance Hashmap
 	 */
-	private static HashMap<String, IerisProperties> instances;
+	private static final HashMap<String, IerisProperties> instances;
 
 	/**
 	 * Static configuration directory for {@code FileProperties}
 	 */
 	private static File configDir;
+
+	static {
+		instances = new HashMap<>();
+		configDir = new File("config");
+	}
 
 	/**
 	 * Sets the directory where the properties will be read from and stored to
