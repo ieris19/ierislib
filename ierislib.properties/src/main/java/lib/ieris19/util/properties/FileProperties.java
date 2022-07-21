@@ -21,6 +21,10 @@ public class FileProperties extends IerisProperties implements Closeable {
 		configDir = new File("config");
 	}
 
+	private FileProperties(String key) {
+		super(key, configDir);
+	}
+
 	/**
 	 * Sets the directory where the properties will be read from and stored to
 	 *
@@ -46,7 +50,7 @@ public class FileProperties extends IerisProperties implements Closeable {
 	public static synchronized FileProperties getInstance(String key) {
 		IerisProperties instance = instances.get(key);
 		if (instance == null) {
-			instance = new IerisProperties(key, configDir);
+			instance = new FileProperties(key);
 			instances.put(key, instance);
 		}
 		return (FileProperties) instance;

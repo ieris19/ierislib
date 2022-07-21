@@ -6,7 +6,7 @@ import java.util.Properties;
 /**
  * A class container for properties and other constants in the system. They're defined in
  * <code>properties.properties</code> and access through this class, this ensures that even if the
- * individual values of each property, the system should still work as long as the key remains
+ * individual values of each property changes, the system should still work as long as the key remains
  * unchanged
  */
 public class GlobalProperties extends IerisProperties implements Closeable {
