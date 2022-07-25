@@ -2,9 +2,6 @@ package lib.ieris19.util.console;
 
 /**
  * Thrown in the {@link Console} to indicate that the command is not valid
- *
- * @author Jason Abreu
- * @since 1.0
  */
 public class InvalidCommandException extends RuntimeException {
 
