@@ -8,7 +8,7 @@
         <version>1.0</version>
     </parent>
 
-    <artifactId>cards</artifactId>
+    <artifactId>games</artifactId>
     <groupId>lib.ieris19.util</groupId>
     <version>1.0.1-release</version>
 </project>

@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>ierislib.cards</module>
+        <module>ierislib.games</module>
         <module>ierislib.console</module>
         <module>ierislib.economy</module>
         <module>ierislib.log</module>
