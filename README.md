@@ -15,9 +15,13 @@ be able to reuse or just as pure practice. Occasionally some might be built to
 showcase specific skills or features.
 
 For now, the list of projects is the following:
-* Cards Library (cards)
-* Command Console (console)
+* Game Utility Library (games)
+* Command Console Builder (console)
 * Money Library (economy)
 * Logging module (log)
 * Basic Scoreboard (scoreboard)
 * Property reader/writer (properties)
+
+The library has plans for:
+* JavaFX MVVM Framework (ui)
+* Security Handler (security)
