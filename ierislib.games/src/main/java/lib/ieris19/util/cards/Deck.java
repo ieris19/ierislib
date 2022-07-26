@@ -11,8 +11,6 @@ import java.util.Collections;
  * managed by the "game" and not instructions should not be executed manually
  * <br> <br>
  *
- * @author Jason
- * @version 1.0
  * @see Card
  */
 public class Deck {

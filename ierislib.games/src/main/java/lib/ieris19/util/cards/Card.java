@@ -11,8 +11,6 @@ package lib.ieris19.util.cards;
  * or an ace is determined by this instance variable <br>
  * <br>
  *
- * @author Jason
- * @version 1.0
  * @see Deck
  */
 public class Card {
