@@ -28,7 +28,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.8.2</version>
+            <version>5.9.0-M1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -78,4 +78,27 @@
             <url>http://localhost:8081/repository/ierislib/</url>
         </repository>
     </distributionManagement>
+    <name>IerisLib</name>
+    <description>A library of reusable Java code to simplify the development of applications</description>
+    <url>https://github.com/Ieris19/IerisLib</url>
+    <inceptionYear>2021</inceptionYear>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>Ieris19</id>
+            <name>Jason Abreu</name>
+            <url>https://github.com/Ieris19/</url>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>Europe/Copenhagen</timezone>
+        </developer>
+    </developers>
 </project>
