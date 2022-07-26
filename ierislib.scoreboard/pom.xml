@@ -9,7 +9,7 @@
     </parent>
     <artifactId>scoreboard</artifactId>
     <groupId>lib.ieris19.util</groupId>
-    <version>1.0.0-snapshot</version>
+    <version>1.0.0</version>
 
     <name>Scoreboard</name>
     <description>A basic scoreboard to keep track of points in any context</description>

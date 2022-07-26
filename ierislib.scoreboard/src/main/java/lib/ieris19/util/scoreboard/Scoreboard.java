@@ -42,4 +42,12 @@ public class Scoreboard {
 	private boolean validNumber(int n) {
 		return n > 0;
 	}
+
+	@Override public String toString() {
+		StringBuilder builder = new StringBuilder("Scoreboard\n");
+		for (int i = 0; i < playerScores.length; i++) {
+			builder.append("Player " + (i + 1) + ":" + playerScores[i]);
+		}
+		return builder.toString();
+	}
 }

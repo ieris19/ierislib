@@ -10,7 +10,7 @@ package lib.ieris19.util.console;
 	/**
 	 * A concrete implementation of this method is the body of a command object
 	 *
-	 * @param arguments
+	 * @param arguments arguments to be used by the command
 	 */
 	void execute(String[] arguments);
 }
