@@ -16,6 +16,8 @@
         <module>ierislib.scoreboard</module>
         <module>ierislib.properties</module>
         <module>ierislib.cli</module>
+<!--        <module>ierislib.user-interface</module>-->
+<!--        <module>ierislib.crypto</module>-->
     </modules>
 
     <properties>

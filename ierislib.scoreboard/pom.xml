@@ -10,4 +10,9 @@
     <artifactId>scoreboard</artifactId>
     <groupId>lib.ieris19.util</groupId>
     <version>1.0.0-snapshot</version>
+
+    <name>Scoreboard</name>
+    <description>A basic scoreboard to keep track of points in any context</description>
+    <url>https://github.com/Ieris19/IerisLib/tree/prime/ierislib.scoreboard</url>
+    <inceptionYear>2021</inceptionYear>
 </project>

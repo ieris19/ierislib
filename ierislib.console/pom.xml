@@ -7,9 +7,18 @@
         <artifactId>IerisLib</artifactId>
         <version>1.0</version>
     </parent>
+
     <artifactId>console</artifactId>
     <groupId>lib.ieris19.util</groupId>
     <version>2.1.0-release</version>
+
+    <name>Shell Console</name>
+    <description>
+        A tool that takes over a shell in order to provide
+        easy command parsing from a Java application
+    </description>
+    <url>https://github.com/Ieris19/IerisLib/tree/prime/ierislib.console</url>
+    <inceptionYear>2021</inceptionYear>
 
     <dependencies>
         <dependency>

@@ -11,4 +11,9 @@
     <groupId>lib.ieris19.util</groupId>
     <artifactId>properties</artifactId>
     <version>2.0.0-release</version>
+
+    <name>Property Manager</name>
+    <description>An opinionated toolkit that manages properties for a project</description>
+    <url>https://github.com/Ieris19/IerisLib/tree/prime/ierislib.properties</url>
+    <inceptionYear>2022</inceptionYear>
 </project>

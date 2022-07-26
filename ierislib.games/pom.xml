@@ -11,4 +11,9 @@
     <artifactId>games</artifactId>
     <groupId>lib.ieris19.util</groupId>
     <version>1.0.1-release</version>
+
+    <name>Game Tool Library</name>
+    <description>A library of reusable Java code that implements simple common game tools</description>
+    <url>https://github.com/Ieris19/IerisLib/tree/prime/ierislib.games</url>
+    <inceptionYear>2021</inceptionYear>
 </project>
