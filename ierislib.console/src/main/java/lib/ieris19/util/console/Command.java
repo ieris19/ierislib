@@ -1,5 +1,7 @@
 package lib.ieris19.util.console;
 
+import lib.ieris19.util.Script;
+
 /**
  * A class used to define commands for use in the console, this class defines all that is needed for
  * the console to parse the command. It includes the amount of parameters the command has. The only

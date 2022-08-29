@@ -22,7 +22,7 @@ public class IerisProperties {
 	 * A hashtable consisting of {@link String} keys and <code>String</code> values that define the properties and
 	 * constants to be used by the application
 	 */
-	private Properties properties;
+	private final Properties properties;
 
 	/**
 	 * Initializes the class by reading the properties file. The constructor is not public as this should only be
@@ -35,6 +35,7 @@ public class IerisProperties {
 		this.name = name;
 		this.configDir = configDir;
 		this.configDir.mkdir();
+		this.properties = new Properties();
 		loadProperties();
 	}
 
@@ -77,7 +78,6 @@ public class IerisProperties {
 	 * Loads the file values into the {@link Properties} object
 	 */
 	protected void loadProperties() {
-		this.properties = new Properties();
 		try (InputStream input = new FileInputStream(getPropertyFile())) {
 			this.properties.load(input);
 		} catch (IOException exception) {
@@ -164,8 +164,9 @@ public class IerisProperties {
 		String property = properties.getProperty(key);
 		if (property == null) {
 			setProperties(key, value);
+		} else {
+			throw new IllegalArgumentException("Property already exists");
 		}
-		throw new IllegalArgumentException("Property already exists");
 	}
 
 	/**

@@ -1,10 +1,10 @@
 package lib.ieris19.util.console;
 
+import lib.ieris19.util.Script;
 import lib.ieris19.util.cli.TextColor;
 
 import java.util.HashMap;
 import java.util.InputMismatchException;
-import java.util.Objects;
 import java.util.Scanner;
 
 import static lib.ieris19.util.cli.TextColor.*;

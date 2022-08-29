@@ -12,7 +12,7 @@
     <groupId>lib.ieris19.util</groupId>
     <version>1.1.0-release</version>
 
-    <name>Command Line Commons</name>
+    <name>Economy</name>
     <description>A library of reusable Java code to provide easy handling of money</description>
     <url>https://github.com/Ieris19/IerisLib/tree/prime/ierislib.economy</url>
     <inceptionYear>2022</inceptionYear>

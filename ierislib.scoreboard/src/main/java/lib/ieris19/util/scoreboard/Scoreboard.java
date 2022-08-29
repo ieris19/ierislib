@@ -46,7 +46,7 @@ public class Scoreboard {
 	@Override public String toString() {
 		StringBuilder builder = new StringBuilder("Scoreboard\n");
 		for (int i = 0; i < playerScores.length; i++) {
-			builder.append("Player " + (i + 1) + ":" + playerScores[i]);
+			builder.append("Player ").append(i + 1).append(":").append(playerScores[i]).append('\n');
 		}
 		return builder.toString();
 	}
