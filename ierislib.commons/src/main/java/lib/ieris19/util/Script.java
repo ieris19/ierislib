@@ -1,4 +1,4 @@
-package lib.ieris19.util.console;
+package lib.ieris19.util;
 
 /**
  * Script is a {@link FunctionalInterface} designed to implement a command. The intended use is to
