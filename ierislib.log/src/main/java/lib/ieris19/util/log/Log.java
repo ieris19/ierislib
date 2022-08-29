@@ -137,7 +137,7 @@ public class Log {
 	 * @param logMessage type of element being logged, it can be SUCCESS, ERROR...
 	 * @param color      TextColor object corresponding to the desired
 	 */
-	private void log(String message, String logMessage, TextColor color) {
+	protected void log(String message, String logMessage, TextColor color) {
 		String line = logHeader(logMessage) + message;
 		TextColor.println(line, color);
 		try {
