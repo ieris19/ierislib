@@ -10,11 +10,11 @@
     </parent>
 
     <groupId>lib.ieris19.util</groupId>
-    <artifactId>cli</artifactId>
+    <artifactId>commons</artifactId>
     <version>1.0.0</version>
 
-    <name>Command Line Commons</name>
-    <description>A library of reusable Java code to simplify command line applications in Java</description>
-    <url>https://github.com/Ieris19/IerisLib/tree/prime/ierislib.cli</url>
+    <name>Common Dependencies</name>
+    <description>A package of shared classes in IerisLib</description>
+    <url>https://github.com/Ieris19/IerisLib/tree/prime/ierislib.commons</url>
     <inceptionYear>2022</inceptionYear>
 </project>
