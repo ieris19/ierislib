@@ -17,6 +17,8 @@
         <module>ierislib.scoreboard</module>
         <module>ierislib.games</module>
         <module>ierislib.user-interface</module>
+        <module>ierislib.archimedes</module>
+        <module>ierislib.reflection</module>
     </modules>
 
     <properties>

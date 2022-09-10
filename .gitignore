@@ -7,8 +7,6 @@
 
 # Log file
 *.log
-# Execption for the log module
-!ierislib.*
 
 # Package Files
 *.jar
@@ -19,7 +17,5 @@
 # Output Directory
 target/
 
-# Unfinished modules: This modules are WIP, so I'd rather keep them out of git
-# This is mostly because they haven't been started or are just copied from a
-# previous project that need to be shaped into generics
-ierislib.user-interface/
+# Exeception for the modules in case they are accidentally excluded
+!ierislib.*/
