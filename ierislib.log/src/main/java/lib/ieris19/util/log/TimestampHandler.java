@@ -44,7 +44,11 @@ public class TimestampHandler {
 	 * @return A formatted string
 	 */
 	public String getFormatted(ChronoFormat formatter) {
-		return getTime().format(formatter.format());
+		return getFormatted(formatter.get());
+	}
+
+	public String getFormatted(DateTimeFormatter formatter) {
+		return getTime().format(formatter);
 	}
 
 	/**
@@ -125,7 +129,7 @@ public class TimestampHandler {
 		 *
 		 * @return {@link DateTimeFormatter} of the pattern corresponding to the instance's name
 		 */
-		public DateTimeFormatter format() {
+		public DateTimeFormatter get() {
 			return this.formatter;
 		}
 	}

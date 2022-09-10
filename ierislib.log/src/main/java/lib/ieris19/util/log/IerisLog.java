@@ -18,18 +18,27 @@ public class IerisLog {
 
 	/**
 	 * Set the name of the application being logged that will be used in the log file
+	 *
 	 * @param name name of the application being used
 	 */
 	public synchronized void setName(String name) {
 		Log.getInstance().setName(name);
 	}
 
+	public void enableAnsi(boolean enabled) {
+		Log.getInstance().enabledANSI(enabled);
+	}
+
+	public void setLogLevel(int level) {
+		Log.getInstance().setLogLevel(level);
+	}
+
 	/**
 	 * Log a completely custom message by specifying the message, reason and the color to be used
 	 *
-	 * @param message Description of the event
+	 * @param message    Description of the event
 	 * @param logMessage Nature/Reason of the event
-	 * @param color Color to be printed in the console
+	 * @param color      Color to be printed in the console
 	 */
 	public void customLog(String message, String logMessage, TextColor color) {
 		Log.getInstance().log(message, logMessage, color);
@@ -87,5 +96,9 @@ public class IerisLog {
 	 */
 	public void fatal(String message) {
 		Log.getInstance().fatal(message);
+	}
+
+	public void debug(String message) {
+		Log.getInstance().debug(message);
 	}
 }
