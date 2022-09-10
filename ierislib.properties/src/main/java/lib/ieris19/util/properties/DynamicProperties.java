@@ -3,7 +3,7 @@ package lib.ieris19.util.properties;
 import java.io.File;
 import java.io.IOException;
 
-public class DynamicProperties extends IerisProperties {
+public class DynamicProperties extends IerisProperties implements AutoCloseable {
 	/**
 	 * Initializes the class by creating and reading the properties file.
 	 *
@@ -149,5 +149,13 @@ public class DynamicProperties extends IerisProperties {
 	@Override public boolean getPropertyBoolean(String key) {
 		loadProperties();
 		return super.getPropertyBoolean(key);
+	}
+
+	@Override public void close() {
+		try {
+			saveProperties();
+		} catch (IOException e) {
+			throw new RuntimeException("Failed to save properties", e);
+		}
 	}
 }

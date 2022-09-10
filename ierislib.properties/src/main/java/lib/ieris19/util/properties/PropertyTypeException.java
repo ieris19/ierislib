@@ -20,7 +20,8 @@ public class PropertyTypeException extends RuntimeException {
 	}
 
 	private static String getDetailMessage(Properties properties, String key, String castType) {
-		return "Property cannot be returned, incompatible type requested: \n" + "Property: " + key
-					 + "with value: " + properties.getProperty(key) + " is not a " + castType;
+		return "Property cannot be returned, incompatible type requested: \n" + "Property: " + key + "with value: " +
+					 properties.getProperty(key) + " is not " + (castType.substring(0, 1).matches("[aeiou]") ? "an" : "a") +
+					 castType;
 	}
 }

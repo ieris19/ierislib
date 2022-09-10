@@ -104,6 +104,19 @@ public class IerisProperties {
 	}
 
 	/**
+	 * A copy of the Properties object wrapped by this library. This is to prevent the user from modifying the properties
+	 * directly and to ensure that the properties are always updated through this class' methods and its verification
+	 * methods
+	 *
+	 * @return a copy of the Properties object
+	 */
+	public Properties getProperties() {
+		Properties temp = new Properties();
+		this.properties.forEach((key, value) -> properties.put((String) key, (String) value));
+		return properties;
+	}
+
+	/**
 	 * Retrieves the value from a property based on the provided key
 	 *
 	 * @param key the name of the desired property
@@ -130,7 +143,7 @@ public class IerisProperties {
 	 * @param key   name of the property
 	 * @param value actual value of the property
 	 */
-	public void setProperties(String key, String value) {
+	protected void setProperties(String key, String value) {
 		synchronized (properties) {
 			properties.put(key, value);
 		}
@@ -167,6 +180,19 @@ public class IerisProperties {
 		} else {
 			throw new IllegalArgumentException("Property already exists");
 		}
+	}
+
+	/**
+	 * Deletes a property, it will throw an exception if the property doesn't exist.
+	 *
+	 * @param key name of the property
+	 */
+	public synchronized void deleteProperty(String key) {
+		String property = properties.getProperty(key);
+		if (property == null) {
+			throw new IllegalArgumentException("Property doesn't exist");
+		}
+		properties.remove(key);
 	}
 
 	/**
@@ -243,9 +269,14 @@ public class IerisProperties {
 			throw new PropertyTypeException(properties, key, "Boolean");
 	}
 
+	/**
+	 * Writes out the properties into the property file where they were read from
+	 *
+	 * @throws IOException if an I/O error occurs
+	 */
 	public void saveProperties() throws IOException {
 		try {
-			properties.store(new FileWriter(getPropertyFile()), name);
+			properties.store(new FileWriter(getPropertyFile()), name.substring(0, 1).toUpperCase() + name.substring(1));
 		} catch (IOException e) {
 			throw new IOException("Could not store the properties", e);
 		}

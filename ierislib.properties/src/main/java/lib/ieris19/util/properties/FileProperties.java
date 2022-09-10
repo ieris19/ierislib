@@ -9,7 +9,7 @@ public class FileProperties extends IerisProperties implements Closeable {
 	/**
 	 * Multiton instance Hashmap
 	 */
-	private static final HashMap<String, IerisProperties> instances;
+	private static final HashMap<String, FileProperties> instances;
 
 	/**
 	 * Static configuration directory for {@code FileProperties}
@@ -48,7 +48,7 @@ public class FileProperties extends IerisProperties implements Closeable {
 	 * @return The instance of this class.
 	 */
 	public static synchronized FileProperties getInstance(String key) {
-		IerisProperties instance = instances.get(key);
+		FileProperties instance = instances.get(key);
 		if (instance == null) {
 			instance = new FileProperties(key);
 			instances.put(key, instance);
