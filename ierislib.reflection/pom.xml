@@ -12,12 +12,8 @@
     <artifactId>reflection</artifactId>
     <version>1.0</version>
 
-    <dependencies>
-        <dependency>
-            <groupId>lib.ieris19.util</groupId>
-            <artifactId>log</artifactId>
-            <version>1.2.0-release</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <name>Reflective Interface</name>
+    <description>An interface for simplifying interactions with the Java Reflection API</description>
+    <url>https://github.com/Ieris19/IerisLib/tree/prime/ierislib.reflection</url>
+    <inceptionYear>2022</inceptionYear>
 </project>
