@@ -1,5 +1,7 @@
 package lib.ieris19.util.log;
 
+import lib.ieris19.util.log.custom.CustomLog;
+import lib.ieris19.util.log.custom.LogBuilder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

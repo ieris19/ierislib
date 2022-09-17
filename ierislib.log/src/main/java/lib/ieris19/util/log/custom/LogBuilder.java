@@ -1,4 +1,6 @@
-package lib.ieris19.util.log;
+package lib.ieris19.util.log.custom;
+
+import lib.ieris19.util.log.TimestampHandler;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;

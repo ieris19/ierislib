@@ -10,7 +10,7 @@
 
     <artifactId>log</artifactId>
     <groupId>lib.ieris19.util</groupId>
-    <version>1.2.0-release</version>
+    <version>2.0.0-release</version>
 
     <name>IerisLog</name>
     <description>A tool for logging to both a file and the console</description>

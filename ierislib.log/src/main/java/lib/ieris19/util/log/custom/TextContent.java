@@ -1,4 +1,4 @@
-package lib.ieris19.util.log;
+package lib.ieris19.util.log.custom;
 
 /**
  * A functional interface for implementing formatting lambdas
