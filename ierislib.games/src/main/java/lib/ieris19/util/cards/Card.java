@@ -46,20 +46,13 @@ public class Card {
 		} else {
 			this.value = 0;
 		}
-		/*
-		 The value of the suit is parsed through a chain of if else statements.
-		 If none of the acceptable values is recognized ignoring case, it will be assumed a joker.
-		 */
-		if (suit.equalsIgnoreCase(SUITS[0]))
-			this.suit = SUITS[0];
-		else if (suit.equalsIgnoreCase(SUITS[1]))
-			this.suit = SUITS[1];
-		else if (suit.equalsIgnoreCase(SUITS[2]))
-			this.suit = SUITS[2];
-		else if (suit.equalsIgnoreCase(SUITS[3]) || suit.equalsIgnoreCase("Clovers"))
-			this.suit = SUITS[3];
-		else
-			this.suit = SUITS[4];
+		switch (suit.toLowerCase()) {
+			case "spades" -> this.suit = SUITS[0];
+			case "diamonds" -> this.suit = SUITS[1];
+			case "hearts" -> this.suit = SUITS[2];
+			case "clubs", "clovers" -> this.suit = SUITS[3];
+			default -> this.suit = SUITS[4];
+		}
 	}
 
 	/**
@@ -146,13 +139,10 @@ public class Card {
 	 * + "<code>suit</code>"
 	 */
 	@Override public String toString() {
-		if (getCardName().equals(SUITS[4]) || getCardValue().equals(SUITS[4]))
+		if (getCardName().equals(SUITS[4]))
 			return SUITS[4];
 		String toString = "";
-		if (isRed())
-			toString += "Red ";
-		else
-			toString += "Black ";
+		toString += isRed() ? "Red " : "Black ";
 		toString += getCardName();
 		return toString;
 	}

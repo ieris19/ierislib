@@ -5,14 +5,13 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import lib.ieris19.util.assets.AssetHandler;
 import lib.ieris19.util.log.Log;
+import lib.ieris19.util.log.ieris.IerisLog;
 import lib.ieris19.util.properties.FileProperties;
 import lib.ieris19.util.ui.mvvm.ViewController;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 /**
  * Manager for all the views in the application. This class is responsible for loading the view from the FXML and
@@ -37,20 +36,28 @@ public class ViewManager {
 	private final FileProperties appProperties;
 
 	/**
+	 * Logs the events that occur in the application
+	 */
+	private final Log log = IerisLog.getInstance("IerisFX");
+
+	/**
 	 * Creates a new ViewManager to handle the views in the application
 	 */
 	public ViewManager() {
+		log.debug("Initializing ViewManager");
+		log.trace("Loading application properties");
 		this.appProperties = FileProperties.getInstance("app");
 		this.name = appProperties.getProperty("name");
+		log.trace("Application name: " + name);
 		if (name == null) {
-			Log.getInstance().fatal("Name property not found in app.properties");
+			log.fatal("Name property not found in app.properties");
 			try (FileWriter fileWriter = new FileWriter(new File(new File("config"), "app.properties"))) {
 				String[] properties = {"name", "version", "icon", "resizable", "fullscreen", "width", "height", "default-view"};
 				for (String property : properties) {
 					fileWriter.write(property + "=null\n");
 				}
 			} catch (Exception e) {
-				Log.getInstance().fatal("Could not write app.properties");
+				log.fatal("Could not write app.properties");
 			}
 		}
 	}
@@ -63,17 +70,26 @@ public class ViewManager {
 	public void start(Stage stage) {
 		this.stage = stage;
 		this.currentScene = new Scene(new Region());
-		InputStream icon = this.getClass().getResourceAsStream(appProperties.getProperty("icon"));
+		log.debug("Obtaining icon from file");
 		setIcon();
-		Log.getInstance().success("Icon set, trying to load the view");
+		log.success("Icon set, trying to load the view");
 		openView(appProperties.getProperty("default-view"));
 	}
 
+	/**
+	 * Opens a view in the application and displays it
+	 * @param viewId the id of the view to open
+	 */
 	public void openView(String viewId) {
 		showScene(loadView(viewId));
-		Log.getInstance().success("Successfully opened view: " + viewId);
+		log.success("Successfully opened view: " + viewId);
 	}
 
+	/**
+	 * Loads a view from the {@link UIComponent UI Component} {@link ViewMap map} and returns the root node from the FXML file
+	 * @param viewId the id of the view to load
+	 * @return the view that was loaded
+	 */
 	private Region loadView(String viewId) {
 		UIComponent view = ViewMap.get(viewId);
 		ViewController controller = view.getController();
@@ -84,10 +100,10 @@ public class ViewManager {
 				Region root = loader.load();
 				controller = loader.getController();
 				controller.init(this, view, root);
-				Log.getInstance().success("Correctly loaded view: " + viewId);
+				log.success("Correctly loaded view: " + viewId);
 			} catch (Exception e) {
 				e.printStackTrace();
-				Log.getInstance().error("Cannot load view");
+				log.error("Cannot load view");
 				throw new IllegalStateException("View couldn't be loaded", e);
 			}
 		else {
@@ -96,6 +112,10 @@ public class ViewManager {
 		return controller.getRoot();
 	}
 
+	/**
+	 * Displays a view in the application
+	 * @param root the root element of the view to display. This is the parent of all view elements
+	 */
 	protected void showScene(Region root) {
 		currentScene.setRoot(root);
 		String title = name;
@@ -103,6 +123,7 @@ public class ViewManager {
 			title += " - " + root.getUserData();
 		}
 		stage.setTitle(title);
+		log.info("Window title set to: " + title);
 		stage.sizeToScene();
 		stage.setResizable(appProperties.getPropertyBoolean("resizable"));
 		stage.setScene(currentScene);
@@ -110,16 +131,25 @@ public class ViewManager {
 		stage.centerOnScreen();
 	}
 
+	/**
+	 * Sets the icon of the application
+	 */
 	public void setIcon() {
-		InputStream icon = this.getClass().getResourceAsStream(appProperties.getProperty("icon"));
-		if (icon != null) {
+		InputStream iconStream = null;
+		try {
+			iconStream = AssetHandler.getInstance("images").getAssetAsStream(appProperties.getProperty("icon"));;
+		} catch (IOException e) {
+			log.error("Could not load icon");
+			e.printStackTrace();
+		}
+		if (iconStream != null) {
 			try {
-				stage.getIcons().setAll(new Image(icon));
-				icon.close();
+				stage.getIcons().setAll(new Image(iconStream));
+				iconStream.close();
 			} catch (IOException e) {
-				Log.getInstance().error("IOException while setting icon");
+				log.error("IOException while setting icon");
 			} catch (NullPointerException e) {
-				Log.getInstance().error("Icon doesn't exit or is null");
+				log.error("Icon doesn't exit or is null");
 			}
 		}
 	}

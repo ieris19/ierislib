@@ -1,13 +1,13 @@
 package lib.ieris19.util.properties;
 
-import java.io.*;
-import java.util.Properties;
+import java.io.Closeable;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * A class container for properties and other constants in the system. They're defined in
  * <code>properties.properties</code> and access through this class, this ensures that even if the
- * individual values of each property changes, the system should still work as long as the key remains
- * unchanged
+ * individual values of each property changes, the system should still work as long as the key remains unchanged
  */
 public class GlobalProperties extends IerisProperties implements Closeable {
 	/**
@@ -32,7 +32,8 @@ public class GlobalProperties extends IerisProperties implements Closeable {
 	}
 
 	/**
-	 * Initializes the class by reading the properties file. Global properties will take all parameters before initialization.
+	 * Initializes the class by reading the properties file. Global properties will take all parameters before
+	 * initialization.
 	 *
 	 * @see #nameProperties(String)
 	 * @see #setDirectory(File)
@@ -46,8 +47,10 @@ public class GlobalProperties extends IerisProperties implements Closeable {
 	 * has been instantiated.
 	 *
 	 * @param name of the properties file minus the file extension ".properties"
+	 * @throws IllegalStateException if the object has already been instantiated
 	 */
-	public static synchronized void nameProperties(String name) {
+
+	public static synchronized void nameProperties(String name) throws IllegalStateException {
 		if (instance == null)
 			GlobalProperties.name = name;
 		else
@@ -56,9 +59,11 @@ public class GlobalProperties extends IerisProperties implements Closeable {
 
 	/**
 	 * Sets the directory where the properties will be read from and stored to
+	 *
 	 * @param dir File object representing the folder that will hold properties
+	 * @throws IllegalStateException if the object has already been instantiated
 	 */
-	public static synchronized void setDirectory(File dir) {
+	public static synchronized void setDirectory(File dir) throws IllegalStateException {
 		if (instance == null)
 			GlobalProperties.configDir = dir;
 		else
@@ -66,16 +71,16 @@ public class GlobalProperties extends IerisProperties implements Closeable {
 	}
 
 	/**
-	 * Returns the only instance of this class that can exist during runtime. The first time it's
-	 * called, it will create said instance, but any subsequent call will return the existing
-	 * instance. If the instance has been previously closed, it will be treated as the first call
-	 * again <br><br>
+	 * Returns the only instance of this class that can exist during runtime. The first time it's called, it will create
+	 * said instance, but any subsequent call will return the existing instance. If the instance has been previously
+	 * closed, it will be treated as the first call again <br><br>
 	 *
-	 * If settings have not been previously set, it will instantiate a default "properties.properties"
-	 * in the default "/config/" directory. <br>
-	 * Make sure to name them before calling this method if your properties file has a different path
+	 * If settings have not been previously set, it will instantiate a default "properties.properties" in the default
+	 * "/config/" directory. <br> Make sure to name them before calling this method if your properties file has a
+	 * different path
 	 *
 	 * @return The instance of this class.
+	 *
 	 * @see #nameProperties(String) Setting a name for your properties
 	 * @see #setDirectory(File) Setting a directory for your properties
 	 */
@@ -87,8 +92,8 @@ public class GlobalProperties extends IerisProperties implements Closeable {
 	}
 
 	/**
-	 * Closes this stream and releases any system resources associated with it. If the stream is
-	 * already closed then invoking this method has no effect.
+	 * Closes this stream and releases any system resources associated with it. If the stream is already closed then
+	 * invoking this method has no effect.
 	 *
 	 * @throws IOException if an I/O error occurs
 	 */

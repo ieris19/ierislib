@@ -2,7 +2,13 @@ package lib.ieris19.util.ui.core;
 
 import java.util.HashMap;
 
+/**
+ * A map of all the views in the application
+ */
 public class ViewMap {
+	/**
+	 * An empty private constructor of the ViewMap to prevent instantiation
+	 */
 	private ViewMap() {
 	}
 
@@ -21,7 +27,7 @@ public class ViewMap {
 	 *
 	 * @throws IllegalArgumentException if the UI component is null
 	 */
-	public static UIComponent get(String key) {
+	public synchronized static UIComponent get(String key) {
 		UIComponent view = views.get(key);
 		if (view != null) {
 			return view;
@@ -36,7 +42,7 @@ public class ViewMap {
 	 * @param key  unique name identifier for the View
 	 * @param view the UI Component to add to the map
 	 */
-	public static void add(String key, UIComponent view) {
+	public synchronized static void add(String key, UIComponent view) {
 		if (views.get(key) != null) {
 			throw new IllegalArgumentException("View ID is not unique, it already exists");
 		}

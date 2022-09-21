@@ -6,28 +6,28 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 /**
- * A class that implements the most basic aspects of Money, an account for storing a money balance
- * between negative one billion and positive one billion.
+ * A class that implements the most basic aspects of Money, an account for storing a money balance between negative one
+ * billion and positive one billion.
  *
  * It also contains a currency String for aesthetic purposes
  */
 public class Money {
 
 	/**
-	 * The amount of money in this instance, it is declared volatile to insure the visibility of this
-	 * variable across multiple threads
+	 * The amount of money in this instance, it is declared volatile to insure the visibility of this variable across
+	 * multiple threads
 	 */
 	protected volatile double amount;
 
 	/**
-	 * Constant containing the maximum amount of money allowed in the system, changing this will
-	 * change it everywhere in the program. It is arbitrarily one billion
+	 * Constant containing the maximum amount of money allowed in the system, changing this will change it everywhere in
+	 * the program. It is arbitrarily one billion
 	 */
 	public final static double MAX_MONEY = 1000000000;
 
 	/**
-	 * Constant containing the maximum amount of debt allowed in the system, changing this will change
-	 * it everywhere in the program. It is arbitrarily one billion
+	 * Constant containing the maximum amount of debt allowed in the system, changing this will change it everywhere in
+	 * the program. It is arbitrarily one billion
 	 */
 	public final static double MIN_MONEY = -1000000000;
 
@@ -45,6 +45,8 @@ public class Money {
 
 	/**
 	 * Creates an instance with a certain amount of money and sets the currency to the default
+	 *
+	 * @param balance The amount of money to start with
 	 */
 	public Money(double balance) {
 		this.amount = fix(balance);
@@ -55,8 +57,10 @@ public class Money {
 	 * Checks the validity of the amount and changes the current balance to the new one
 	 *
 	 * @param value the balance that will replace the current one
+	 *
+	 * @throws IllegalArgumentException if the value is not between the maximum and minimum allowed
 	 */
-	public void setAmount(double value) {
+	public void setAmount(double value) throws IllegalArgumentException {
 		value = fix(value);
 		double oldValue = this.amount;
 		if (value <= MAX_MONEY && value >= MIN_MONEY) {
@@ -76,14 +80,17 @@ public class Money {
 
 	/**
 	 * Adds the desired amount of money, it has to be a positive number
+	 *
+	 * @param addend the amount of money that will be added
+	 *
+	 * @throws IllegalArgumentException if the value is negative or would be rounded to zero
 	 */
-	public void addMoney(double addend) {
+	public void addMoney(double addend) throws IllegalArgumentException {
 		addend = fix(addend);
 		double oldValue = this.amount;
 		if (addend >= 0.01) {
 			this.amount = Math.min(this.amount + addend, MAX_MONEY);
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Amount to add can't be negative or too small");
 		}
 		support.firePropertyChange("Amount of Money", oldValue, getAmount());
@@ -92,14 +99,17 @@ public class Money {
 	/**
 	 * Subtracts the desired amount of money, it has to be a positive number
 	 *
-	 * @param canOwe Sets whether going into negative values should be allowed or if a lower limit of
-	 *               0 should be enforced
+	 * @param subtrahend the amount of money that will be subtracted
+	 * @param canOwe     Sets whether going into negative values should be allowed or if a lower limit of 0 should be
+	 *                   enforced
+	 *
+	 * @throws IllegalArgumentException if the value is negative or would be rounded to zero
 	 */
-	public void subtractMoney(double subtrahend, boolean canOwe) {
+	public void subtractMoney(double subtrahend, boolean canOwe) throws IllegalArgumentException {
 		subtrahend = fix(subtrahend);
 		double oldValue = this.amount;
 		if (subtrahend < 0.01)
-			throw new IllegalArgumentException("Amount to subtract can't be negative");
+			throw new IllegalArgumentException("Amount to subtract can't be negative or too small");
 		if (!canOwe) {
 			if (this.amount - subtrahend >= 0)
 				this.amount = this.amount - subtrahend;
@@ -126,6 +136,10 @@ public class Money {
 
 	/**
 	 * "Fixes" the value of the balance to round it to 2 decimal places
+	 *
+	 * @param amount the value to be fixed
+	 *
+	 * @return the fixed value
 	 */
 	private static double fix(double amount) {
 		BigDecimal formatter = BigDecimal.valueOf(amount);
@@ -155,22 +169,24 @@ public class Money {
 	 */
 	@Override public String toString() {
 		String temp = String.valueOf(getAmount());
-		boolean unformatted = true;
-		while (unformatted) {
+		boolean formatted;
+		do {
 			char last = temp.charAt(temp.length() - 1);
-			if (last == '0')
+			if (last == '0') {
 				temp = temp.substring(0, temp.length() - 1);
-			else if (last == '.') {
+				formatted = false;
+			} else if (last == '.') {
 				temp = temp.substring(0, temp.length() - 1);
-				unformatted = false;
+				formatted = true;
 			} else
-				unformatted = false;
-		}
+				formatted = true;
+		} while (formatted);
 		return temp;
 	}
 
 	/**
 	 * Adds a listener to the properties of this class
+	 *
 	 * @param listener object that will listen to the properties of this class
 	 */
 	public void addListener(PropertyChangeListener listener) {
@@ -179,6 +195,7 @@ public class Money {
 
 	/**
 	 * Removes an object that was listening to this class
+	 *
 	 * @param listener object that will no longer listen to the values of this class
 	 */
 	public void removeListener(PropertyChangeListener listener) {

@@ -3,6 +3,12 @@ package lib.ieris19.util.properties;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Properties that can be dynamically changed. The properties are stored in a file and read from a file for each access.
+ * This class is expensive in terms of performance, so it is recommended to use it only for properties that are changed
+ * frequently or for properties that are not used frequently but need to be manually changed without interrupting the
+ * program.
+ */
 public class DynamicProperties extends IerisProperties implements AutoCloseable {
 	/**
 	 * Initializes the class by creating and reading the properties file.
@@ -58,7 +64,7 @@ public class DynamicProperties extends IerisProperties implements AutoCloseable 
 	 *
 	 * @throws IllegalArgumentException if the property does not exist
 	 */
-	@Override public String getProperty(String key) {
+	@Override public String getProperty(String key) throws IllegalArgumentException {
 		loadProperties();
 		return super.getProperty(key);
 	}
@@ -68,8 +74,12 @@ public class DynamicProperties extends IerisProperties implements AutoCloseable 
 	 *
 	 * @param key   name of the property
 	 * @param value actual value of the property
+	 *
+	 * @throws IllegalArgumentException if the new value is the same as the current
+	 * @throws IllegalStateException    if the property doesn't exist
 	 */
-	@Override public synchronized void modifyProperty(String key, String value) {
+	@Override public synchronized void modifyProperty(String key, String value)
+	throws IllegalArgumentException, IllegalStateException {
 		loadProperties();
 		super.modifyProperty(key, value);
 	}
@@ -79,15 +89,18 @@ public class DynamicProperties extends IerisProperties implements AutoCloseable 
 	 *
 	 * @param key   name of the property
 	 * @param value actual value of the property
+	 *
+	 * @throws IllegalArgumentException if the property already exists
+	 * @throws RuntimeException    if the property file encounters an error while saving
 	 */
-	@Override public synchronized void createProperty(String key, String value) {
+	@Override public synchronized void createProperty(String key, String value) throws RuntimeException {
 		super.createProperty(key, value);
 		try {
 			saveProperties();
 		} catch (IOException e) {
-			throw new RuntimeException("Failed to save properties \n"
-																 + "Property: \"" + key + "\" with Value: \"" + value + "\""
-																 + " will not persist beyond the current session", e);
+			throw new RuntimeException(
+					"Failed to save properties \n" + "Property: \"" + key + "\" with Value: \"" + value + "\"" +
+					" will not persist beyond the current session", e);
 		}
 	}
 
@@ -101,7 +114,7 @@ public class DynamicProperties extends IerisProperties implements AutoCloseable 
 	 * @throws IllegalArgumentException if the property does not exist
 	 * @throws PropertyTypeException    if the property is not a Byte
 	 */
-	@Override public byte getPropertyByte(String key) {
+	@Override public byte getPropertyByte(String key) throws IllegalArgumentException, PropertyTypeException {
 		loadProperties();
 		return super.getPropertyByte(key);
 	}
@@ -116,7 +129,7 @@ public class DynamicProperties extends IerisProperties implements AutoCloseable 
 	 * @throws IllegalArgumentException if the property does not exist
 	 * @throws PropertyTypeException    if the property is not a Short
 	 */
-	@Override public short getPropertyShort(String key) {
+	@Override public short getPropertyShort(String key) throws IllegalArgumentException, PropertyTypeException {
 		loadProperties();
 		return super.getPropertyShort(key);
 	}
@@ -131,7 +144,7 @@ public class DynamicProperties extends IerisProperties implements AutoCloseable 
 	 * @throws IllegalArgumentException if the property does not exist
 	 * @throws PropertyTypeException    if the property is not an Integer
 	 */
-	@Override public int getPropertyInt(String key) {
+	@Override public int getPropertyInt(String key) throws IllegalArgumentException, PropertyTypeException {
 		loadProperties();
 		return super.getPropertyInt(key);
 	}
@@ -146,11 +159,14 @@ public class DynamicProperties extends IerisProperties implements AutoCloseable 
 	 * @throws IllegalArgumentException if the property does not exist
 	 * @throws PropertyTypeException    if the property is not a boolean
 	 */
-	@Override public boolean getPropertyBoolean(String key) {
+	@Override public boolean getPropertyBoolean(String key) throws IllegalArgumentException, PropertyTypeException {
 		loadProperties();
 		return super.getPropertyBoolean(key);
 	}
 
+	/**
+	 * Saves the properties to the file and promptly disposes of the object
+	 */
 	@Override public void close() {
 		try {
 			saveProperties();

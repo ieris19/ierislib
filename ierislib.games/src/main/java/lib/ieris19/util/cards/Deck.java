@@ -1,7 +1,9 @@
 package lib.ieris19.util.cards;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Queue;
 
 /**
  * A deck is a collection of {@linkplain Card Cards}. It represents a traditional 52 card poker
@@ -18,7 +20,7 @@ public class Deck {
 	 * A collection of cards. It can represent a traditional 52 card deck, a shoe of multiple 52 card
 	 * decks or if processed, a custom deck with custom amounts of cards
 	 */
-	private ArrayList<Card> deck;
+	private Queue<Card> deck;
 
 	/**
 	 * This constructor will generate one set of each <code>suit</code> of {@linkplain Card} for a
@@ -28,14 +30,7 @@ public class Deck {
 	 * @param amountOfJokers Number of Joker cards to add to the standard deck
 	 */
 	public Deck(int amountOfJokers) {
-		deck = new ArrayList<>();
-		createSuit(Card.SUITS[0]);
-		createSuit(Card.SUITS[1]);
-		createSuit(Card.SUITS[2]);
-		createSuit(Card.SUITS[3]);
-		for (int i = 0; i < amountOfJokers; i++) {
-			deck.add(new Card(0, Card.SUITS[4]));
-		}
+		this(amountOfJokers, 1);
 	}
 
 	/**
@@ -47,7 +42,7 @@ public class Deck {
 	 * @param numberOfDecks  Amount of 52 cards decks to add to the shoe
 	 */
 	public Deck(int amountOfJokers, int numberOfDecks) {
-		deck = new ArrayList<>();
+		deck = new ArrayDeque<>((52 * numberOfDecks) + amountOfJokers);
 		for (int i = 0; i < numberOfDecks; i++) {
 			createSuit(Card.SUITS[0]);
 			createSuit(Card.SUITS[1]);
@@ -74,7 +69,9 @@ public class Deck {
 	 * This method will shuffle the deck, whatever cards remain, it will put them in a random order
 	 */
 	public void shuffle() {
-		Collections.shuffle(deck);
+		ArrayList<Card> temp = new ArrayList<>(deck);
+		Collections.shuffle(temp);
+		deck = new ArrayDeque<>(temp);
 	}
 
 	/**
@@ -89,43 +86,29 @@ public class Deck {
 	private void removeCard(String cardName) {
 		if (cardName == null)
 			throw new IllegalArgumentException("Illegal Argument: cardName is null");
-		for (int i = 0; i < deck.size(); i++) {
-			if (deck.get(i).getCardName().equals(cardName)) {
-				deck.remove(i);
-				return;
-			}
-		}
+		deck.removeIf(card -> card.getCardName().equals(cardName));
 	}
 
 	/**
 	 * A method used to draw a card from the deck. It will take a card from the top of the deck
 	 *
-	 * @return The card that was situated at the start of the Array
+	 * @return The card that was situated at the start of the queue
 	 */
 	public Card drawTop() {
-		return deck.remove(0);
+		return deck.poll();
 	}
 
 	/**
-	 * Identical to {@link Deck#drawTop()} except it will take the last card
-	 *
-	 * @return The card that was situated at the end of the Array
-	 */
-	public Card drawBottom() {
-		return deck.remove(deck.size() - 1);
-	}
-
-	/**
-	 * <code>toString</code> method will return the whole array with one card per line. It will
+	 * <code>toString</code> method will return the whole queue with one card per line. It will
 	 * include not only the <code>value</code> and <code>suit</code> but also the color.
 	 *
 	 * @return A string with the following structure
 	 */
 	@Override public String toString() {
-		String toString = "";
+		StringBuilder temp = new StringBuilder();
 		for (Card card : deck) {
-			toString += card.toString() + '\n';
+			temp.append(card.toString()).append('\n');
 		}
-		return toString;
+		return temp.toString();
 	}
 }

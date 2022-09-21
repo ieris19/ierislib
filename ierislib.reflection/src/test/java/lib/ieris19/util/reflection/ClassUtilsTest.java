@@ -1,6 +1,6 @@
-package lib.ieris19.util;
+package lib.ieris19.util.reflection;
 
-import lib.ieris19.util.testPackage.RegularClass;
+import lib.ieris19.util.reflection.testPackage.RegularClass;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;

@@ -50,8 +50,10 @@ public class Console {
 	private Console() {
 		this.input = new Scanner(System.in);
 		this.commandMap = new HashMap<>();
-		this.welcomeMessage = "Welcome to the console \n This command line application will let you control"
-													+ " this program through some simple commands \n";
+		this.welcomeMessage = """
+													Welcome to the console\s
+													 This command line application will let you control this program through some simple commands\s
+													""";
 		this.setPrompt("$");
 		addCommand(new Command("help", "This command will print to the console a list of all available commands",
 													 this::availableCommands));
@@ -66,13 +68,16 @@ public class Console {
 	 *
 	 * @param command the command object to be added, in most cases it will be a new Command
 	 *
+	 * @throws IllegalArgumentException if the command name is already taken
+	 * @throws IllegalStateException    if the console has already been launched
 	 * @see Command
 	 */
-	public synchronized void addCommand(Command command) {
-		if (!launched)
-			commandMap.put(command.getName(), command);
-		else
+	public synchronized void addCommand(Command command) throws IllegalStateException, IllegalArgumentException {
+		if (launched)
 			throw new IllegalStateException("Console has already launched");
+		if (commandMap.containsKey(command.getName()))
+			throw new IllegalArgumentException("Command name already taken");
+		commandMap.put(command.getName(), command);
 	}
 
 	/**
@@ -227,10 +232,9 @@ public class Console {
 	 *
 	 * @param commandLine The command line that includes the command and the arguments, separated by spaces
 	 *
-	 * @throws InvalidCommandException  An invalid command that is not in the command map
+	 * @throws InvalidCommandException An invalid command that is not in the command map
 	 */
-	public void parseCommand(String commandLine)
-	throws InvalidCommandException {
+	public void parseCommand(String commandLine) throws InvalidCommandException {
 		if (commandLine.equals(""))
 			throw new NullPointerException("Empty");
 		String cleanCommand = sanitize(commandLine);
@@ -265,7 +269,7 @@ public class Console {
 			if (!arguments[1].equals("")) {
 				print(": Exit Code -> " + arguments[1], MAGENTA);
 			}
-				launched = false;
+			launched = false;
 		} catch (ArrayIndexOutOfBoundsException exception) {
 			launched = false;
 		}

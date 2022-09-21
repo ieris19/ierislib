@@ -2,7 +2,7 @@ package lib.ieris19.util.log.ieris;
 
 import lib.ieris19.util.cli.TextColor;
 import lib.ieris19.util.log.Log;
-import lib.ieris19.util.log.LogLevel;
+import lib.ieris19.util.log.Severity;
 import lib.ieris19.util.log.TimestampHandler;
 
 import java.io.File;
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.locks.ReentrantLock;
 
-import static lib.ieris19.util.log.LogLevel.*;
+import static lib.ieris19.util.log.Severity.*;
 
 /**
  * A class that provides an instantiable object that internally shares an instance of the logger
@@ -20,6 +20,11 @@ public class IerisLog implements Log {
 	 * Map that contains the loggers for each application
 	 */
 	private static HashMap<String, IerisLog> instances;
+	/**
+	 * The last instance of the logger that was used. Used to avoid unnecessary calls to {@link #getInstance(String)} when
+	 * a library wants to log to the same application as the one that called it
+	 */
+	private static Log latestUsedInstance;
 
 	/**
 	 * Lock used to ensure that a single thread has access to the log file at a time
@@ -46,11 +51,17 @@ public class IerisLog implements Log {
 	private int logLevel;
 
 	/**
-	 * Constructor for the log. It will set the log level to {@link LogLevel#INFO}, the name to "Log" and the log
+	 * Constructor for the log. It will set the log level to {@link Severity#INFO}, the name to "Log" and the log
 	 * directory to the default new <code>logs/</code> folder in the running directory
+	 *
+	 * @throws IllegalArgumentException if a file with name "logs" which is not a directory already exists in the running
+	 *                                  directory. This is because the log folder will be named "logs" by default, and it
+	 *                                  needs to find a file that is a directory. Any extension after "logs" will allow
+	 *                                  the log to be created
 	 */
-	public IerisLog(String appName) {
-		synchronizedLock = new ReentrantLock();
+	public IerisLog(String appName) throws IllegalArgumentException {
+		synchronizedLock = new ReentrantLock(true);
+		this.name = appName;
 		setLogLevel(INFO.level());
 		useANSI(true);
 		changeLogDirectory(new File("logs"));
@@ -65,20 +76,32 @@ public class IerisLog implements Log {
 		if (instances == null) {
 			instances = new HashMap<>();
 		}
-		IerisLog instance = instances.get(appName);
+		Log instance = instances.get(appName);
 		if (instance == null) {
 			instance = new IerisLog(appName);
-			instances.put(appName, instance);
 		}
-		return instance;
+		latestUsedInstance = instance;
+		return latestUsedInstance;
+	}
+
+	/**
+	 * Used to utilize an existing instance of the logger instead of creating a new one, this is useful for libraries that
+	 * want to use the logger but do not want to create a new instance of it
+	 *
+	 * @return the instance of the last used logger
+	 */
+	public static synchronized Log getInstance() {
+		return latestUsedInstance;
 	}
 
 	/**
 	 * Changes the directory of the log files
 	 *
 	 * @param newDirectory File where the logs should be saved to from now on
+	 *
+	 * @throws IllegalArgumentException if the directory is not a directory or if it is not writable
 	 */
-	@Override public void changeLogDirectory(File newDirectory) {
+	@Override public void changeLogDirectory(File newDirectory) throws IllegalArgumentException {
 		synchronizedLock.lock();
 		try {
 			if (!newDirectory.exists())
@@ -108,8 +131,8 @@ public class IerisLog implements Log {
 	 * @return true if the ANSI escape codes are enabled, false otherwise
 	 */
 	@Override public boolean isANSIEnabled() {
+		synchronizedLock.lock();
 		try {
-			synchronizedLock.lock();
 			return enabledANSI;
 		} finally {
 			synchronizedLock.unlock();
@@ -118,7 +141,7 @@ public class IerisLog implements Log {
 
 	/**
 	 * Set the level of alerts the logger should print. This will affect the level of alerts that will be printed in the
-	 * console and in the log file
+	 * console and in the log file. Any number lower or higher than 6 will be set to 4 (INFO)
 	 *
 	 * @param level The level of alerts that should be printed
 	 */
@@ -134,17 +157,24 @@ public class IerisLog implements Log {
 	/**
 	 * Log a completely custom message by specifying the message, reason and the color to be used
 	 *
-	 * @param message    Description of the event
-	 * @param logMessage Nature/Reason of the event
-	 * @param color      Color to be printed in the console
+	 * @param message  Description of the event
+	 * @param severity Nature/Reason of the event
+	 * @param color    Color to be printed in the console
 	 */
-	@Override public void log(String message, String logMessage, TextColor color) {
+	@Override public void log(String message, String severity, TextColor color) {
 		synchronizedLock.lock();
-		Log.super.log(message, logMessage, color);
+		Log.super.log(message, severity, color);
 		synchronizedLock.unlock();
 	}
 
-	private void log(String message, LogLevel level, TextColor color) {
+	/**
+	 * Log a custom message by specifying the message, severity and the color to be used
+	 *
+	 * @param message Description of the event
+	 * @param level   {@link Severity Severity level} of the event
+	 * @param color   Color to be printed in the console
+	 */
+	private void log(String message, Severity level, TextColor color) {
 		synchronizedLock.lock();
 		if (level.level() <= this.logLevel) {
 			Log.super.log(message, level.name(), color);
@@ -238,7 +268,7 @@ public class IerisLog implements Log {
 	 * @return A fully formed header for the line to be logged
 	 */
 	@Override public String logHeader(String logType) {
-		return Log.super.logHeader(logType);
+		return timestamp() + "[" + Thread.currentThread().getName() + "/" + logType + "] ";
 	}
 
 	/**

@@ -9,14 +9,14 @@ public class CustomLog extends IerisLog {
 	/**
 	 * An array of fields that will be used as fields to include information in the log message
 	 */
-	TextContent[] headerBuilder;
+	TextField[] headerBuilder;
 
 	/**
 	 * Creates a new CustomLog with the specified header builder array
 	 *
 	 * @param fields The header builder array
 	 */
-	CustomLog(String name,TextContent[] fields) {
+	CustomLog(String name, TextField[] fields) {
 		super(name);
 		this.headerBuilder = fields;
 	}
@@ -31,10 +31,9 @@ public class CustomLog extends IerisLog {
 	 */
 	@Override public String logHeader(String logType) {
 		StringBuilder header = new StringBuilder();
-		for (TextContent section : headerBuilder) {
-			header.append(section.getText(new String[] {logType}));
+		for (TextField element : headerBuilder) {
+			header.append(element.getText(logType));
 		}
 		return header.toString();
 	}
 }
-

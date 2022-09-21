@@ -1,4 +1,4 @@
-package lib.ieris19.util;
+package lib.ieris19.util.reflection;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,9 +7,21 @@ import java.io.InputStreamReader;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Utility class for reflection operations related to classes.
+ */
 public class ClassUtils {
+	/**
+	 * The string used as a package separator character in fully-qualified class names.
+	 */
 	private static final String PKG_SEPARATOR = ".";
+	/**
+	 * The string used as a directory separator character in paths.
+	 */
 	private static final String DIR_SEPARATOR = "/";
+	/**
+	 * The string used as a file extension for compiled sources, also known as classes to the runtime.
+	 */
 	private static final String CLASS_EXTENSION = ".class";
 
 	/**
@@ -46,11 +58,27 @@ public class ClassUtils {
 		}
 	}
 
-	public static Set<Class<?>> getPackageClassesByType(Package pkg, TypeChecker desiredType) throws ClassNotFoundException {
+	/**
+	 * Gets all the classes in the given package. The given package is loaded as a resource stream and file names are read
+	 * and parsed in order to find corresponding classes, they will only be added to the returned set if and only if they
+	 * match the required type. This method will also return underlying nested classes as separate elements of the set.
+	 *
+	 * @param pkg         The package to search for classes in.
+	 * @param desiredType The type that the classes must match.
+	 *
+	 * @return A set of all matching classes in the given package.
+	 *
+	 * @throws ClassNotFoundException if the Package cannot be found by the System ClassLoader.
+	 * @see TypeChecker#isType(Class, TypeChecker) Type Checker comparator
+	 */
+	public static Set<Class<?>> getPackageClassesByType(Package pkg, TypeChecker desiredType)
+	throws ClassNotFoundException {
 		Set<Class<?>> tempClasses = getClassesInPackage(pkg);
 		tempClasses.removeIf(clazz -> TypeChecker.notType(clazz, desiredType));
 		return tempClasses;
 	}
+
+	//TODO: Move to MethodUtils class
 
 	/**
 	 * Attempts to invoke the method corresponding to the given name on the given class. The method must be public and
@@ -89,4 +117,5 @@ public class ClassUtils {
 		}
 		return null;
 	}
+	//End of MethodUtils
 }

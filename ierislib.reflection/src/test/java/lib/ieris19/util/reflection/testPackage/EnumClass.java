@@ -1,4 +1,4 @@
-package lib.ieris19.util.testPackage;
+package lib.ieris19.util.reflection.testPackage;
 
 public enum EnumClass {
 	ENUM_CONSTANT_1,

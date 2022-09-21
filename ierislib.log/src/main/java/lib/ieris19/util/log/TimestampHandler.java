@@ -47,6 +47,13 @@ public class TimestampHandler {
 		return getFormatted(formatter.get());
 	}
 
+	/**
+	 * Returns a formatted date and/or time string according to the pattern in the parameter object
+	 *
+	 * @param formatter {@link DateTimeFormatter} for the String's format
+	 *
+	 * @return A formatted string
+	 */
 	public String getFormatted(DateTimeFormatter formatter) {
 		return getTime().format(formatter);
 	}

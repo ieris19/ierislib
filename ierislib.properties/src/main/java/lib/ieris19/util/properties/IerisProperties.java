@@ -8,7 +8,7 @@ import java.util.Properties;
  * <code>properties.properties</code> and access through this class, this ensures that even if the
  * individual values of each property, the system should still work as long as the key remains unchanged
  */
-public class IerisProperties {
+public abstract class IerisProperties implements AutoCloseable {
 	/**
 	 * Name of the properties file. It's full path is from the working directory: <br>
 	 * "{@code /configDirectory/name.properties}"
@@ -85,6 +85,11 @@ public class IerisProperties {
 		}
 	}
 
+	/**
+	 * Name of the properties file. The full name of the file is: <br> "{@code name.properties}"
+	 *
+	 * @return the name of the properties file
+	 */
 	protected String getName() {
 		return name;
 	}
@@ -125,7 +130,7 @@ public class IerisProperties {
 	 *
 	 * @throws IllegalArgumentException if the property does not exist
 	 */
-	public String getProperty(String key) {
+	public String getProperty(String key) throws IllegalArgumentException {
 		String propertyValue;
 		synchronized (properties) {
 			propertyValue = properties.getProperty(key);
@@ -155,8 +160,12 @@ public class IerisProperties {
 	 *
 	 * @param key   name of the property
 	 * @param value actual value of the property
+	 *
+	 * @throws IllegalArgumentException if the new value is the same as the current
+	 * @throws IllegalStateException    if the property doesn't exist
 	 */
-	public synchronized void modifyProperty(String key, String value) {
+	public synchronized void modifyProperty(String key, String value)
+	throws IllegalArgumentException, IllegalStateException {
 		String oldValue = getProperty(key);
 		if (oldValue == null) {
 			throw new IllegalStateException("Property doesn't exist");
@@ -172,8 +181,10 @@ public class IerisProperties {
 	 *
 	 * @param key   name of the property
 	 * @param value actual value of the property
+	 *
+	 * @throws IllegalArgumentException if the property already exists
 	 */
-	public synchronized void createProperty(String key, String value) {
+	public synchronized void createProperty(String key, String value) throws IllegalArgumentException {
 		String property = properties.getProperty(key);
 		if (property == null) {
 			setProperties(key, value);
@@ -186,8 +197,10 @@ public class IerisProperties {
 	 * Deletes a property, it will throw an exception if the property doesn't exist.
 	 *
 	 * @param key name of the property
+	 *
+	 * @throws IllegalArgumentException if the property doesn't exist
 	 */
-	public synchronized void deleteProperty(String key) {
+	public synchronized void deleteProperty(String key) throws IllegalArgumentException {
 		String property = properties.getProperty(key);
 		if (property == null) {
 			throw new IllegalArgumentException("Property doesn't exist");
@@ -205,7 +218,7 @@ public class IerisProperties {
 	 * @throws IllegalArgumentException if the property does not exist
 	 * @throws PropertyTypeException    if the property is not a Byte
 	 */
-	public byte getPropertyByte(String key) {
+	public byte getPropertyByte(String key) throws IllegalArgumentException, PropertyTypeException {
 		try {
 			return Byte.parseByte(getProperty(key));
 		} catch (NumberFormatException e) {
@@ -223,7 +236,7 @@ public class IerisProperties {
 	 * @throws IllegalArgumentException if the property does not exist
 	 * @throws PropertyTypeException    if the property is not a Short
 	 */
-	public short getPropertyShort(String key) {
+	public short getPropertyShort(String key) throws IllegalArgumentException, PropertyTypeException {
 		try {
 			return Short.parseShort(getProperty(key));
 		} catch (NumberFormatException e) {
@@ -241,7 +254,7 @@ public class IerisProperties {
 	 * @throws IllegalArgumentException if the property does not exist
 	 * @throws PropertyTypeException    if the property is not an Integer
 	 */
-	public int getPropertyInt(String key) {
+	public int getPropertyInt(String key) throws IllegalArgumentException, PropertyTypeException {
 		try {
 			return Integer.parseInt(getProperty(key));
 		} catch (NumberFormatException e) {
@@ -259,7 +272,7 @@ public class IerisProperties {
 	 * @throws IllegalArgumentException if the property does not exist
 	 * @throws PropertyTypeException    if the property is not a boolean
 	 */
-	public boolean getPropertyBoolean(String key) {
+	public boolean getPropertyBoolean(String key) throws IllegalArgumentException, PropertyTypeException {
 		String value = getProperty(key);
 		if (value.equalsIgnoreCase("true") || value.equalsIgnoreCase("1"))
 			return true;

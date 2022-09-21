@@ -7,9 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static lib.ieris19.util.cli.TextColor.*;
-import static lib.ieris19.util.log.LogLevel.*;
-
 /**
  * A class that can create a registry of messages both in the console and in a separate file concerning the functioning
  * of an application. Information contained in these messages includes date (through the named files created for all
@@ -28,7 +25,7 @@ public interface Log {
 	/**
 	 * Set whether the console print should use ANSI escape codes for coloring or print without any sort of formatting
 	 *
-	 * @param enabled whether the ANSI escape codes should be used or not
+	 * @param isEnabled whether the ANSI escape codes should be used or not
 	 */
 	void useANSI(boolean isEnabled);
 	/**
@@ -40,10 +37,10 @@ public interface Log {
 
 	/**
 	 * Sets the log level of the log. The log level is a number that determines the severity of the messages that will be
-	 * logged. The level of the log messages is defined by the {@link LogLevel} class. The log level needs to be set to an
+	 * logged. The level of the log messages is defined by the {@link Severity} class. The log level needs to be set to an
 	 * integer value that is equal to or greater than the level of the messages that should be logged. While you can set
 	 * the log level to an integer value between 0 and 6, it is recommended to use the values defined in the
-	 * {@link LogLevel} class.
+	 * {@link Severity} class.
 	 *
 	 * @param logLevel the new log level
 	 */
@@ -53,11 +50,11 @@ public interface Log {
 	 * Logs a custom message into a file and prints to the console in the selected color. It will mark the category
 	 *
 	 * @param message    message to be logged
-	 * @param logMessage type of element being logged, it can be SUCCESS, ERROR...
+	 * @param severity type of element being logged, it can be SUCCESS, ERROR...
 	 * @param color      TextColor object corresponding to the desired
 	 */
-	default void log(String message, String logMessage, TextColor color) {
-		String line = logHeader(logMessage) + message;
+	default void log(String message, String severity, TextColor color) {
+		String line = logHeader(severity) + message;
 		if (isANSIEnabled())
 			TextColor.println(line, color);
 		else
@@ -135,9 +132,7 @@ public interface Log {
 	 *
 	 * @return A fully formed header for the line to be logged
 	 */
-	default String logHeader(String logType) {
-		return timestamp() + "[" + Thread.currentThread().getName() + "/" + logType + "] ";
-	}
+	String logHeader(String logType);
 
 	/**
 	 * Formats the current time into a timestamp ready to be printed out

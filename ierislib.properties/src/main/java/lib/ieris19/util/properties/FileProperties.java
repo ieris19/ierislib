@@ -5,6 +5,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * Properties that are read from a specific type. Every time a {@link FileProperties} object is created, the properties
+ * are read from the file. Whenever the properties stop being used, the {@link #close()} method should be called to
+ * release the resources and save the properties to the file. This class is ideally used in {@code try-with-resources}
+ * blocks.
+ */
 public class FileProperties extends IerisProperties implements Closeable {
 	/**
 	 * Multiton instance Hashmap
@@ -21,6 +27,11 @@ public class FileProperties extends IerisProperties implements Closeable {
 		configDir = new File("config");
 	}
 
+	/**
+	 * Creates a {@code FileProperties} instance for the specified name
+	 *
+	 * @param key the name of the properties file
+	 */
 	private FileProperties(String key) {
 		super(key, configDir);
 	}
@@ -29,8 +40,9 @@ public class FileProperties extends IerisProperties implements Closeable {
 	 * Sets the directory where the properties will be read from and stored to
 	 *
 	 * @param dir File object representing the folder that will hold properties
+	 * @throws IllegalStateException if a file has already been loaded by this class
 	 */
-	public static synchronized void setDirectory(File dir) {
+	public static synchronized void setDirectory(File dir) throws IllegalStateException {
 		if (instances.isEmpty())
 			configDir = dir;
 		else
