@@ -14,14 +14,17 @@ import static lib.ieris19.util.log.TimestampHandler.ChronoFormat.ISO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-@DisplayName ("Time Log Test") class TimestampHandlerTest {
+@DisplayName ("Time Log Test")
+class TimestampHandlerTest {
 	private static TimestampHandler timestamp;
 
 	@BeforeAll @DisplayName ("Setup") static void setup() {
 		timestamp = TimestampHandler.getInstance();
 	}
 
-	@Nested @DisplayName ("Singleton Test") class SingletonTest {
+	@Nested
+	@DisplayName ("Singleton Test")
+	class SingletonTest {
 		@Test @DisplayName ("A single instance exists") void instanceTest() {
 			assertSame(timestamp, TimestampHandler.getInstance());
 			TimestampHandler time1 = TimestampHandler.getInstance();
@@ -31,7 +34,9 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 		}
 	}
 
-	@Nested @DisplayName ("Proper Formatting") class FormatterTest {
+	@Nested
+	@DisplayName ("Proper Formatting")
+	class FormatterTest {
 		@Test @DisplayName ("European Proper Format") void europeanFormat() {
 			LocalDateTime time = LocalDateTime.of(2022, 2, 5, 21, 21, 21);
 			assertEquals(time.format(EUROPEAN.get()), "05/02/2022 21:21:21");
@@ -43,7 +48,9 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 		}
 	}
 
-	@Nested @DisplayName ("Time Selection") class TimeAccuracyTest {
+	@Nested
+	@DisplayName ("Time Selection")
+	class TimeAccuracyTest {
 		@Test @DisplayName ("Accurate Time Test") void accuraccy() {
 			DateTimeFormatter comparisonFormat = DateTimeFormatter.ofPattern("dd,MM,yyyy,hh,mm,ss");
 			assertEquals(LocalDateTime.now(ZoneId.of("Z")).format(comparisonFormat),

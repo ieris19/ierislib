@@ -10,7 +10,7 @@
  * {@link lib.ieris19.util.ui.mvvm.ViewController ViewController} classes. The framework is designed to follow the MVVM
  * design pattern. <br> <br>
  *
- * A main method to instantiate the framework could be implemented as follows:
+ * A main method to initiate an app built with the framework could be implemented as follows:
  * <pre>
  *   <code>
  *   	public static void main(String[] args) {

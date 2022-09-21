@@ -1,3 +1,20 @@
+/*
+ * Copyright 2021 Ieris19
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ *
+ */
+
 package lib.ieris19.util.cli;
 
 import java.io.PrintStream;
@@ -49,9 +66,8 @@ public enum TextColor {
 	private final String ANSICode;
 
 	/**
-	 * Constructs a text color object by identifying through a human-readable color
-	 * {@link Enum#name() name} to the corresponding ANSI code that will format text in the desired
-	 * color
+	 * Constructs a text color object by identifying through a human-readable color {@link Enum#name() name} to the
+	 * corresponding ANSI code that will format text in the desired color
 	 *
 	 * @param code the ANSI code corresponding to the <code>name</code>
 	 */
@@ -71,9 +87,8 @@ public enum TextColor {
 	}
 
 	/**
-	 * Appends the ANSI code required to color text to the provided string, many shells will interpret
-	 * this by coloring the text, many will ignore it and many will simply add the code as if it was
-	 * text
+	 * Appends the ANSI code required to color text to the provided string, many shells will interpret this by coloring
+	 * the text, many will ignore it and many will simply add the code as if it was text
 	 *
 	 * @param string Text to be colored
 	 * @param color  Desired Text color
@@ -84,9 +99,9 @@ public enum TextColor {
 	}
 
 	/**
-	 * Appends the ANSI code required to color text to the provided string, many shells will interpret
-	 * this by coloring the text, many will ignore it and many will simply add the code as if it was
-	 * text. This method will use the default print stream, {@link System#out}
+	 * Appends the ANSI code required to color text to the provided string, many shells will interpret this by coloring
+	 * the text, many will ignore it and many will simply add the code as if it was text. This method will use the default
+	 * print stream, {@link System#out}
 	 *
 	 * @param string Text to be colored
 	 * @param color  Desired Text color
@@ -96,9 +111,8 @@ public enum TextColor {
 	}
 
 	/**
-	 * Appends the ANSI code required to color text to the provided string, many shells will interpret
-	 * this by coloring the text, many will ignore it and many will simply add the code as if it was
-	 * text
+	 * Appends the ANSI code required to color text to the provided string, many shells will interpret this by coloring
+	 * the text, many will ignore it and many will simply add the code as if it was text
 	 *
 	 * @param string Text to be colored
 	 * @param color  Desired Text color
@@ -109,9 +123,9 @@ public enum TextColor {
 	}
 
 	/**
-	 * Appends the ANSI code required to color text to the provided string, many shells will interpret
-	 * this by coloring the text, many will ignore it and many will simply add the code as if it was
-	 * text. This method will use the default print stream, {@link System#out}
+	 * Appends the ANSI code required to color text to the provided string, many shells will interpret this by coloring
+	 * the text, many will ignore it and many will simply add the code as if it was text. This method will use the default
+	 * print stream, {@link System#out}
 	 *
 	 * @param string Text to be colored
 	 * @param color  Desired Text color

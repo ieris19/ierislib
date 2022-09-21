@@ -7,6 +7,7 @@ import java.util.Set;
 
 class ClassUtilsTest {
 	Package testPackage = RegularClass.class.getPackage();
+
 	@Test void ClassesInPackageTest() {
 		System.out.println("Start Test");
 		try {

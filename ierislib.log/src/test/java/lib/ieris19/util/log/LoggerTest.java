@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class LoggerTest {
 	private Log log;
 	private static File logFile;
+
 	@BeforeEach void setup() {
 		this.log = IerisLog.getInstance("Test");
 		try {

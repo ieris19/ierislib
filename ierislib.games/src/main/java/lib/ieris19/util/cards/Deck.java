@@ -1,3 +1,20 @@
+/*
+ * Copyright 2021 Ieris19
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ *
+ */
+
 package lib.ieris19.util.cards;
 
 import java.util.ArrayDeque;
@@ -6,26 +23,25 @@ import java.util.Collections;
 import java.util.Queue;
 
 /**
- * A deck is a collection of {@linkplain Card Cards}. It represents a traditional 52 card poker
- * deck.
+ * A deck is a collection of {@linkplain Card Cards}. It represents a traditional 52 card poker deck.
  * <br> It contains as many <i>Jokers</i> as the user specifies in the constructor. After being
- * created, you can draw cards, put them back and shuffle them at any point. This class should be
- * managed by the "game" and not instructions should not be executed manually
+ * created, you can draw cards, put them back and shuffle them at any point. This class should be managed by the "game"
+ * and not instructions should not be executed manually
  * <br> <br>
  *
  * @see Card
  */
 public class Deck {
 	/**
-	 * A collection of cards. It can represent a traditional 52 card deck, a shoe of multiple 52 card
-	 * decks or if processed, a custom deck with custom amounts of cards
+	 * A collection of cards. It can represent a traditional 52 card deck, a shoe of multiple 52 card decks or if
+	 * processed, a custom deck with custom amounts of cards
 	 */
 	private Queue<Card> deck;
 
 	/**
-	 * This constructor will generate one set of each <code>suit</code> of {@linkplain Card} for a
-	 * standard deck of 52 cards. <br> You also need to specify the amount of <i>Jokers</i>, which can
-	 * be any integer number, however, any non-positive value will be automatically ignored.
+	 * This constructor will generate one set of each <code>suit</code> of {@linkplain Card} for a standard deck of 52
+	 * cards. <br> You also need to specify the amount of <i>Jokers</i>, which can be any integer number, however, any
+	 * non-positive value will be automatically ignored.
 	 *
 	 * @param amountOfJokers Number of Joker cards to add to the standard deck
 	 */
@@ -34,9 +50,8 @@ public class Deck {
 	}
 
 	/**
-	 * Creates a shoe instead of a regular deck for bigger card games. This means that instead of a
-	 * standard 52 card deck, it will create a bigger deck containing multiple of these and add the
-	 * indicated amount of jokers at the end
+	 * Creates a shoe instead of a regular deck for bigger card games. This means that instead of a standard 52 card deck,
+	 * it will create a bigger deck containing multiple of these and add the indicated amount of jokers at the end
 	 *
 	 * @param amountOfJokers Total amount of Jokers in the whole shoe
 	 * @param numberOfDecks  Amount of 52 cards decks to add to the shoe
@@ -75,11 +90,10 @@ public class Deck {
 	}
 
 	/**
-	 * This method will remove a certain card from the deck, it is meant for game setup to remove
-	 * cards that are not needed for that specific game.
+	 * This method will remove a certain card from the deck, it is meant for game setup to remove cards that are not
+	 * needed for that specific game.
 	 *
-	 * @param cardName Represents the name of the relevant {@linkplain Card} element inside the
-	 *                 {@linkplain Deck}
+	 * @param cardName Represents the name of the relevant {@linkplain Card} element inside the {@linkplain Deck}
 	 *
 	 * @see Card#getCardName()
 	 */

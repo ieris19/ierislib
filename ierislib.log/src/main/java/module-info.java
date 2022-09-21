@@ -1,6 +1,6 @@
 /**
- * A module that allows to log messages in a file and in the console. <br>
- * It also allows to create a custom logger that can be defined through a simple builder.
+ * A module that allows to log messages in a file and in the console. <br> It also allows to create a custom logger that
+ * can be defined through a simple builder.
  */
 module ierislib.log {
 	requires java.base;

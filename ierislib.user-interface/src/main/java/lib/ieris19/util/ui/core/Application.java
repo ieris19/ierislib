@@ -1,3 +1,20 @@
+/*
+ * Copyright 2021 Ieris19
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ *
+ */
+
 package lib.ieris19.util.ui.core;
 
 import javafx.stage.Stage;
@@ -24,8 +41,8 @@ public class Application extends javafx.application.Application {
 	private Script stopScript;
 
 	/**
-	 * Creates a new Application instance with empty scripts. The scripts can be set later. This limits the application
-	 * to only the default behaviour unless the scripts are set afterwards.
+	 * Creates a new Application instance with empty scripts. The scripts can be set later. This limits the application to
+	 * only the default behaviour unless the scripts are set afterwards.
 	 */
 	public Application() {
 		Script empty = (args) -> {};
@@ -45,6 +62,7 @@ public class Application extends javafx.application.Application {
 
 	/**
 	 * Sets the start script for the application
+	 *
 	 * @param startScript
 	 */
 	public void setStart(Script startScript) {
@@ -53,6 +71,7 @@ public class Application extends javafx.application.Application {
 
 	/**
 	 * Sets the stop script for the application
+	 *
 	 * @param stopScript
 	 */
 	public void setStop(Script stopScript) {
@@ -81,8 +100,8 @@ public class Application extends javafx.application.Application {
 
 	/**
 	 * The main entry point for all IerisFX applications. The start method is called after the init method has returned,
-	 * and after the system is ready for the application to begin running. An application may provide an implementation
-	 * of this method to start any necessary secondary processes through the {@link #setStart(Script) setStart} method.
+	 * and after the system is ready for the application to begin running. An application may provide an implementation of
+	 * this method to start any necessary secondary processes through the {@link #setStart(Script) setStart} method.
 	 *
 	 * <p>
 	 * NOTE: This method is called on the IerisFX Main Thread

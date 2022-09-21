@@ -1,3 +1,20 @@
+/*
+ * Copyright 2021 Ieris19
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ *
+ */
+
 package lib.ieris19.util.ui.core;
 
 import javafx.fxml.FXMLLoader;
@@ -11,7 +28,10 @@ import lib.ieris19.util.log.ieris.IerisLog;
 import lib.ieris19.util.properties.FileProperties;
 import lib.ieris19.util.ui.mvvm.ViewController;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Manager for all the views in the application. This class is responsible for loading the view from the FXML and
@@ -78,6 +98,7 @@ public class ViewManager {
 
 	/**
 	 * Opens a view in the application and displays it
+	 *
 	 * @param viewId the id of the view to open
 	 */
 	public void openView(String viewId) {
@@ -86,8 +107,11 @@ public class ViewManager {
 	}
 
 	/**
-	 * Loads a view from the {@link UIComponent UI Component} {@link ViewMap map} and returns the root node from the FXML file
+	 * Loads a view from the {@link UIComponent UI Component} {@link ViewMap map} and returns the root node from the FXML
+	 * file
+	 *
 	 * @param viewId the id of the view to load
+	 *
 	 * @return the view that was loaded
 	 */
 	private Region loadView(String viewId) {
@@ -114,6 +138,7 @@ public class ViewManager {
 
 	/**
 	 * Displays a view in the application
+	 *
 	 * @param root the root element of the view to display. This is the parent of all view elements
 	 */
 	protected void showScene(Region root) {
@@ -137,7 +162,8 @@ public class ViewManager {
 	public void setIcon() {
 		InputStream iconStream = null;
 		try {
-			iconStream = AssetHandler.getInstance("images").getAssetAsStream(appProperties.getProperty("icon"));;
+			iconStream = AssetHandler.getInstance("images").getAssetAsStream(appProperties.getProperty("icon"));
+			;
 		} catch (IOException e) {
 			log.error("Could not load icon");
 			e.printStackTrace();

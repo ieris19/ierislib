@@ -1,4 +1,5 @@
 # IerisLib
+
 A home for all the code that I might want to reuse in future projects
 Most of this code is made for fun and practice and most of it is not really ever
 to be used as there are usually much better alternatives to my own packages, but
@@ -7,7 +8,7 @@ how you want it to do.
 
 It is also worth mentioning that most of this code has been written along my
 journey through my software engineering degree, meaning that some of this code I
-wrote when I barely knew anything at all, while other pieces of code could have 
+wrote when I barely knew anything at all, while other pieces of code could have
 been written at different stages of my journey.
 
 Overall, this repository should host many small pet projects in order for me to
@@ -15,6 +16,7 @@ be able to reuse or just as pure practice. Occasionally some might be built to
 showcase specific skills or features.
 
 For now, the list of projects is the following:
+
 * Game Utility Library (games)
 * Command Console Builder (console)
 * Money Library (economy)
@@ -23,5 +25,6 @@ For now, the list of projects is the following:
 * Property reader/writer (properties)
 
 The library has plans for:
+
 * JavaFX MVVM Framework (ui)
 * Security Handler (security)

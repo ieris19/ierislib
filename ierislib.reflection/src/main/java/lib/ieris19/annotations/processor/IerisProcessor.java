@@ -1,3 +1,20 @@
+/*
+ * Copyright 2021 Ieris19
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ *
+ */
+
 package lib.ieris19.annotations.processor;
 
 import javax.annotation.processing.*;
@@ -17,8 +34,7 @@ public abstract class IerisProcessor implements Processor {
 	/**
 	 * Returns the options recognized by this processor. <br><br>
 	 *
-	 * A tool might use this information to determine if any
-	 * options provided by a user are unrecognized by any processor,
+	 * A tool might use this information to determine if any options provided by a user are unrecognized by any processor,
 	 * in which case it may wish to report a warning.
 	 *
 	 * @return the options recognized by this processor or an empty set if none

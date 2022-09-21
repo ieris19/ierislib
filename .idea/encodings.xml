@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/ierislib.archimedes/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.archimedes/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.commons/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.commons/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.console/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.console/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.crypto/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.crypto/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.economy/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.economy/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.games/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.games/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.log/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.log/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.parsing/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.parsing/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.properties/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.properties/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.reflection/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.reflection/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.scoreboard/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.scoreboard/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.security/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.security/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.user-interface/login-view/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.user-interface/login-view/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.user-interface/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.user-interface/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.utilities/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ierislib.utilities/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

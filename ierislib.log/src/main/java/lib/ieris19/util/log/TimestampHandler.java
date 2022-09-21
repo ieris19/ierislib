@@ -1,3 +1,20 @@
+/*
+ * Copyright 2021 Ieris19
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ *
+ */
+
 package lib.ieris19.util.log;
 
 import java.time.Clock;
@@ -16,18 +33,18 @@ public class TimestampHandler {
 	private static TimestampHandler instance;
 
 	/**
-	 * Private constructor to avoid accidentally creating multiple instances of
-	 * {@link TimestampHandler}. Please refer to {@link #getInstance()} for more information
+	 * Private constructor to avoid accidentally creating multiple instances of {@link TimestampHandler}. Please refer to
+	 * {@link #getInstance()} for more information
 	 */
 	private TimestampHandler() {}
 
 	/**
-	 * Method to obtain the {@link TimestampHandler} instance, it will only create a new instance on
-	 * its first call and return the already created instance every call after that. This means there
-	 * will always be one single instance of the <code>TimestampHandler</code> class
+	 * Method to obtain the {@link TimestampHandler} instance, it will only create a new instance on its first call and
+	 * return the already created instance every call after that. This means there will always be one single instance of
+	 * the <code>TimestampHandler</code> class
 	 *
-	 * @return The instance of <code>TimestampHandler</code> for the current runtime, regardless of if
-	 * it's new, or it had been previously created
+	 * @return The instance of <code>TimestampHandler</code> for the current runtime, regardless of if it's new, or it had
+	 * been previously created
 	 */
 	public synchronized static TimestampHandler getInstance() {
 		if (instance == null) {
@@ -68,8 +85,8 @@ public class TimestampHandler {
 	}
 
 	/**
-	 * Formats a string with only the current date in ISO format, omitting all the time information.
-	 * This is great for sorting
+	 * Formats a string with only the current date in ISO format, omitting all the time information. This is great for
+	 * sorting
 	 *
 	 * @return The current UTC date in ISO format
 	 */
@@ -78,8 +95,8 @@ public class TimestampHandler {
 	}
 
 	/**
-	 * Formats a string with only the current time in ISO format, omitting all the date information.
-	 * This is great for logging
+	 * Formats a string with only the current time in ISO format, omitting all the date information. This is great for
+	 * logging
 	 *
 	 * @return The current UTC time in ISO format
 	 */

@@ -1,3 +1,20 @@
+/*
+ * Copyright 2021 Ieris19
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ *
+ */
+
 package lib.ieris19.util.ui.core;
 
 import lib.ieris19.util.assets.AssetHandler;
@@ -28,17 +45,17 @@ public class UIComponent {
 	 */
 	private final ViewModel viewModel;
 	/**
-	 * The view controller of the UIComponent. This class is responsible for linking the user and
-	 * system. It deals with user interaction, it is responsible for updating the view, and being observed by the
-	 * {@link ViewModel}.
+	 * The view controller of the UIComponent. This class is responsible for linking the user and system. It deals with
+	 * user interaction, it is responsible for updating the view, and being observed by the {@link ViewModel}.
 	 */
 	private final ViewController controller;
 
 	/**
 	 * Creates a new UIComponent instance with the given parameters
-	 * @param fxmlName the name of the FXML file
-	 * @param model the model of the UIComponent
-	 * @param viewModel the view model of the UIComponent
+	 *
+	 * @param fxmlName   the name of the FXML file
+	 * @param model      the model of the UIComponent
+	 * @param viewModel  the view model of the UIComponent
 	 * @param controller the view controller of the UIComponent
 	 */
 	UIComponent(String fxmlName, Model model, ViewModel viewModel, ViewController controller) {
@@ -56,6 +73,7 @@ public class UIComponent {
 
 	/**
 	 * Returns the FXML file of the UIComponent
+	 *
 	 * @return the FXML file of the UIComponent
 	 */
 	public URL getFXML() {
@@ -64,6 +82,7 @@ public class UIComponent {
 
 	/**
 	 * Returns the model of the UIComponent
+	 *
 	 * @return the model of the UIComponent
 	 */
 	public Model getModel() {
@@ -72,6 +91,7 @@ public class UIComponent {
 
 	/**
 	 * Returns the view model of the UIComponent
+	 *
 	 * @return the view model of the UIComponent
 	 */
 	public ViewModel getViewModel() {
@@ -80,6 +100,7 @@ public class UIComponent {
 
 	/**
 	 * Returns the view controller of the UIComponent
+	 *
 	 * @return the view controller of the UIComponent
 	 */
 	public ViewController getController() {

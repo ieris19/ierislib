@@ -1,6 +1,5 @@
 package lib.ieris19.util.economy;
 
-import lib.ieris19.util.economy.Money;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -8,10 +7,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static lib.ieris19.util.economy.Money.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName ("Economy Library Test") class EconomyTest {
+@DisplayName ("Economy Library Test")
+class EconomyTest {
 	private Money account;
 	private Money wallet;
 
@@ -22,9 +22,15 @@ import static lib.ieris19.util.economy.Money.*;
 		wallet = new Money(INITIAL_VALUE);
 	}
 
-	@Nested @DisplayName ("Money Unit Tests") class MoneyTest {
-		@Nested @DisplayName ("Setter") class SetterTest {
-			@Nested @DisplayName ("Values outside limits") class OutOfBoundsTest {
+	@Nested
+	@DisplayName ("Money Unit Tests")
+	class MoneyTest {
+		@Nested
+		@DisplayName ("Setter")
+		class SetterTest {
+			@Nested
+			@DisplayName ("Values outside limits")
+			class OutOfBoundsTest {
 				@Test @DisplayName ("Overflow MAX") void maxOverflow() {
 					assertThrows(IllegalArgumentException.class, () -> account.setAmount(Long.MAX_VALUE));
 				}
@@ -34,7 +40,9 @@ import static lib.ieris19.util.economy.Money.*;
 				}
 			}
 
-			@Nested @DisplayName ("Limit Values") class EdgeValueTests {
+			@Nested
+			@DisplayName ("Limit Values")
+			class EdgeValueTests {
 				@Test @DisplayName ("Max value") void minLimit() {
 					assertDoesNotThrow(() -> account.setAmount(MAX_MONEY));
 				}
@@ -44,7 +52,9 @@ import static lib.ieris19.util.economy.Money.*;
 				}
 			}
 
-			@Nested @DisplayName ("Regular Values") class NormalValueTest {
+			@Nested
+			@DisplayName ("Regular Values")
+			class NormalValueTest {
 				@Test @DisplayName ("Positive") void positiveInRange() {
 					assertDoesNotThrow(() -> account.setAmount(new Random().nextDouble(0, MAX_MONEY)));
 				}
@@ -54,7 +64,9 @@ import static lib.ieris19.util.economy.Money.*;
 				}
 			}
 
-			@Nested @DisplayName ("Rounds the value correctly") class RoundingValueTest {
+			@Nested
+			@DisplayName ("Rounds the value correctly")
+			class RoundingValueTest {
 				double trueValue;
 
 				@Test @DisplayName ("Rounds down under 0.005") void roundDown() {
@@ -80,8 +92,12 @@ import static lib.ieris19.util.economy.Money.*;
 			}
 		}
 
-		@Nested @DisplayName ("Tests related to addition") class AdditionTest {
-			@Nested @DisplayName ("Throws an exception for negative or negligible amounts") class SmallAdditionsTest {
+		@Nested
+		@DisplayName ("Tests related to addition")
+		class AdditionTest {
+			@Nested
+			@DisplayName ("Throws an exception for negative or negligible amounts")
+			class SmallAdditionsTest {
 				@Test @DisplayName ("Negligible amount rounded down") void addVerySmall() {
 					assertThrows(IllegalArgumentException.class, () -> account.addMoney(0.001));
 				}
@@ -97,11 +113,12 @@ import static lib.ieris19.util.economy.Money.*;
 
 			@Test @DisplayName ("Correctly adds expected amounts") void simpleAdditions() {
 				account.addMoney(5);
-				assertEquals((INITIAL_VALUE + 5), account.getAmount(),
-										 "Added 5 to the account 5, result is 10");
+				assertEquals((INITIAL_VALUE + 5), account.getAmount(), "Added 5 to the account 5, result is 10");
 			}
 
-			@Nested @DisplayName ("Doesn't allow for overflow of the number above max amount") class BigAdditionsTest {
+			@Nested
+			@DisplayName ("Doesn't allow for overflow of the number above max amount")
+			class BigAdditionsTest {
 				@Test @DisplayName ("Adding exactly to max amount") void exactMax() {
 					account.setAmount(999999995);
 					account.addMoney(5);
@@ -116,8 +133,12 @@ import static lib.ieris19.util.economy.Money.*;
 			}
 		}
 
-		@Nested @DisplayName ("Tests related to subtraction") class SubtractionTest {
-			@Nested @DisplayName ("Throws an exception for negative or negligible amounts") class SmallSubtractionTest {
+		@Nested
+		@DisplayName ("Tests related to subtraction")
+		class SubtractionTest {
+			@Nested
+			@DisplayName ("Throws an exception for negative or negligible amounts")
+			class SmallSubtractionTest {
 				@Test @DisplayName ("Subtract too little") void minusZero() {
 					assertThrows(IllegalArgumentException.class, () -> account.subtractMoney(0.001, false));
 				}
@@ -143,7 +164,9 @@ import static lib.ieris19.util.economy.Money.*;
 				}
 			}
 
-			@Nested @DisplayName ("Correctly subtracts amounts") class SubtractionLogicTest {
+			@Nested
+			@DisplayName ("Correctly subtracts amounts")
+			class SubtractionLogicTest {
 				@Test @DisplayName ("Not owing returns correct value") void minusNotOwe() {
 					account.subtractMoney(5, false);
 					assertEquals((INITIAL_VALUE - 5), account.getAmount());
@@ -160,15 +183,15 @@ import static lib.ieris19.util.economy.Money.*;
 				assertEquals(MIN_MONEY, account.getAmount());
 			}
 
-			@Nested @DisplayName ("Correctly flags insufficient funds") class SubtractionInsufficientFundsTest {
+			@Nested
+			@DisplayName ("Correctly flags insufficient funds")
+			class SubtractionInsufficientFundsTest {
 				@Test @DisplayName ("Subtract small amount above available") void aboveBudgetSlight() {
-					assertThrows(IllegalArgumentException.class,
-											 () -> account.subtractMoney(INITIAL_VALUE + 0.1, false));
+					assertThrows(IllegalArgumentException.class, () -> account.subtractMoney(INITIAL_VALUE + 0.1, false));
 				}
 
 				@Test @DisplayName ("Subtract big amount above available") void aboveBudget() {
-					assertThrows(IllegalArgumentException.class,
-											 () -> account.subtractMoney(100 * INITIAL_VALUE, false));
+					assertThrows(IllegalArgumentException.class, () -> account.subtractMoney(100 * INITIAL_VALUE, false));
 				}
 
 				@Test @DisplayName ("Subtract exactly to 0") void exactlyBudget() {
@@ -177,15 +200,18 @@ import static lib.ieris19.util.economy.Money.*;
 			}
 		}
 
-		@Nested @DisplayName ("Tests related to transfers") class TransferTest {
-			@Nested @DisplayName ("Inherits exceptions from addition and subtraction") class ExceptionInheritanceTest {
+		@Nested
+		@DisplayName ("Tests related to transfers")
+		class TransferTest {
+			@Nested
+			@DisplayName ("Inherits exceptions from addition and subtraction")
+			class ExceptionInheritanceTest {
 				@Test @DisplayName ("Transfer too little money") void lowAmountException() {
 					assertThrows(IllegalArgumentException.class, () -> transfer(wallet, account, 0.001));
 				}
 
 				@Test @DisplayName ("Insufficient funds") void insufficientException() {
-					assertThrows(IllegalArgumentException.class,
-											 () -> transfer(wallet, account, INITIAL_VALUE + 1));
+					assertThrows(IllegalArgumentException.class, () -> transfer(wallet, account, INITIAL_VALUE + 1));
 				}
 
 				@Test @DisplayName ("Transfer of negative funds") void negativeValueException() {

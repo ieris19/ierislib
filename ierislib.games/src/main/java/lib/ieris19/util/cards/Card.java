@@ -1,12 +1,29 @@
+/*
+ * Copyright 2021 Ieris19
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ *
+ */
+
 package lib.ieris19.util.cards;
 
 /**
- * Card is a class that will handle each card within a {@link Deck} <br> Cards are defined by 3
- * variables, the <code>value</code>, the <code>suit</code> and <code>isRed</code> <br>
+ * Card is a class that will handle each card within a {@link Deck} <br> Cards are defined by 3 variables, the
+ * <code>value</code>, the <code>suit</code> and <code>isRed</code> <br>
  * <br>
  * <code>suit</code> will store which of the 4 groups of cards it belongs to, if it belongs to none
- * of the groups it will be marked as a <i>Joker</i> <br> To prevent from messing up, an Array
- * constant with suit names (including Jokers)<br> <br>
+ * of the groups it will be marked as a <i>Joker</i> <br> To prevent from messing up, an Array constant with suit names
+ * (including Jokers)<br> <br>
  * <code>value</code> should track which type of card we are dealing with, whether the card is an 8
  * or an ace is determined by this instance variable <br>
  * <br>
@@ -23,8 +40,8 @@ public class Card {
 	 */
 	private final String suit;
 	/**
-	 * The card value which is a number between 0-13, 0 represents a Joker and the rest represent the
-	 * cards in the following order: Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King
+	 * The card value which is a number between 0-13, 0 represents a Joker and the rest represent the cards in the
+	 * following order: Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King
 	 */
 	private final int value;
 	/**
@@ -33,8 +50,8 @@ public class Card {
 	private boolean faceDown;
 
 	/**
-	 * This is the constructor for a card, it will set all values to predefined values, anything
-	 * outside them will be interpreted as a Joker
+	 * This is the constructor for a card, it will set all values to predefined values, anything outside them will be
+	 * interpreted as a Joker
 	 *
 	 * @param value <b>Value</b> should track which type of card we are dealing with
 	 * @param suit  <b>Suit</b> will store which of the 4 groups of cards it belongs to, if it
@@ -56,21 +73,20 @@ public class Card {
 	}
 
 	/**
-	 * Determine the <code>color</code> of the card, it will check the <code>suit</code> and
-	 * automatically detect the <code>color</code>. This means, if it belongs to the <i>"Hearts"</i>
-	 * or <i>"Diamonds"</i> suit, the card will be <i>"Red"</i> otherwise it will be considered
-	 * black.
+	 * Determine the <code>color</code> of the card, it will check the <code>suit</code> and automatically detect the
+	 * <code>color</code>. This means, if it belongs to the <i>"Hearts"</i> or <i>"Diamonds"</i> suit, the card will be
+	 * <i>"Red"</i> otherwise it will be considered black.
 	 *
-	 * @return Whether the card is <i>"Red"</i> <br> A true value means it is <i>"Red"</i>, a false
-	 * value means it is <i>"Black"</i>
+	 * @return Whether the card is <i>"Red"</i> <br> A true value means it is <i>"Red"</i>, a false value means it is
+	 * <i>"Black"</i>
 	 */
 	public boolean isRed() {
 		return suit.equals(SUITS[1]) || suit.equals(SUITS[2]);
 	}
 
 	/**
-	 * This method is the keystone to the whole class, it will determine the full name of  a card for
-	 * identification. <br>
+	 * This method is the keystone to the whole class, it will determine the full name of  a card for identification.
+	 * <br>
 	 *
 	 * @return A name consist of the following elements: <code>cardName</code> + <i>of</i> +
 	 * <code>suit</code>
@@ -84,8 +100,8 @@ public class Card {
 	/**
 	 * A method that will give a name to all special values (J, Q, K, Ace and Joker)
 	 *
-	 * @return A cards name, for special values, it will be its name (J, Q, K, Ace or Joker), for the
-	 * rest it will convert the <code>value</code> to a string
+	 * @return A cards name, for special values, it will be its name (J, Q, K, Ace or Joker), for the rest it will convert
+	 * the <code>value</code> to a string
 	 */
 	public String getCardValue() {
 		return switch (value) {
@@ -107,8 +123,7 @@ public class Card {
 	}
 
 	/**
-	 * Flips the card around, meaning that if the card is face up, it will make it face down and vice
-	 * versa
+	 * Flips the card around, meaning that if the card is face up, it will make it face down and vice versa
 	 */
 	public void flip() {
 		this.faceDown = !faceDown;
@@ -135,8 +150,8 @@ public class Card {
 	 * This method returns all the information from a card, from the <i>color</i> to the
 	 * <code>suit</code>, including the <code>value</code>
 	 *
-	 * @return A string with the following structure: "<code>color</code>" + "<code>value</code>" + of
-	 * + "<code>suit</code>"
+	 * @return A string with the following structure: "<code>color</code>" + "<code>value</code>" + of +
+	 * "<code>suit</code>"
 	 */
 	@Override public String toString() {
 		if (getCardName().equals(SUITS[4]))
