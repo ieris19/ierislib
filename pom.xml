@@ -21,25 +21,22 @@
 
     <artifactId>IerisLib</artifactId>
     <groupId>lib.ieris19</groupId>
-    <version>1.0</version>
+    <version>2.0.0</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>ierislib.commons</module>
-        <module>ierislib.log</module>
-        <module>ierislib.properties</module>
-        <module>ierislib.console</module>
-        <module>ierislib.economy</module>
-        <module>ierislib.scoreboard</module>
-        <module>ierislib.games</module>
-        <module>ierislib.user-interface</module>
-        <module>ierislib.archimedes</module>
-        <module>ierislib.reflection</module>
+        <module>commons</module>
+        <module>utils</module>
+        <module>games</module>
+        <module>files</module>
+        <module>fx</module>
+        <module>reflection</module>
+        <module>math</module>
     </modules>
 
     <properties>
-        <maven.compiler.source>18</maven.compiler.source>
-        <maven.compiler.target>18</maven.compiler.target>
+        <maven.compiler.source>19</maven.compiler.source>
+        <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 

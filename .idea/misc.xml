@@ -7,14 +7,19 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/ierislib.ui/pom.xml" />
         <option value="$PROJECT_DIR$/ierislib.user-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/ierislib.files/pom.xml" />
+        <option value="$PROJECT_DIR$/ierislib.files/ierislib.config/pom.xml" />
+        <option value="$PROJECT_DIR$/reflection/metautils/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/games/rpg/loot/pom.xml" />
+        <option value="$PROJECT_DIR$/games/rpg/pom.xml" />
         <option value="$PROJECT_DIR$/ierislib.parsing/pom.xml" />
         <option value="$PROJECT_DIR$/ierislib.security/pom.xml" />
       </set>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_18" default="true" project-jdk-name="18" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_19" default="true" project-jdk-name="Oracle JDK 19" project-jdk-type="JavaSDK" />
 </project>
