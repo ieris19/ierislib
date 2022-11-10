@@ -103,6 +103,43 @@ public abstract class IerisProperties implements AutoCloseable {
 	}
 
 	/**
+	 * Creates an empty Properties file for the application. This is used when the application is run without the basic
+	 * set of configuration options
+	 */
+	private void createPropertiesFile(String[] keys, String[] defaultValues) {
+		if (keys.length == 0) {
+			return;
+		}
+		try (FileWriter fileWriter = new FileWriter(getPropertyFile())) {
+			if (keys.length == defaultValues.length) {
+				for (int i = 0; i < keys.length; i++) {
+					fileWriter.write(keys[i] + "=" + defaultValues[i] + '\n');
+				}
+			}
+			if (keys.length > defaultValues.length) {
+				for (int i = 0; i < defaultValues.length; i++) {
+					fileWriter.write(keys[i] + "=" + defaultValues[i] + '\n');
+				}
+				for (int i = defaultValues.length; i < keys.length; i++) {
+					fileWriter.write(keys[i] + "=" + '\n');
+				}
+			} else {
+				for (String key : keys) {
+					fileWriter.write(key + "=null\n");
+				}
+			}
+		} catch (IOException fileException) {
+			throw new IllegalStateException("The properties file is inaccessible or an error has occurred", fileException);
+		} catch (IndexOutOfBoundsException arrayException) {
+			throw new IllegalArgumentException("One of the provided arrays has insufficient arguments", arrayException);
+		} catch (NullPointerException nullException) {
+			throw new IllegalArgumentException("One of the provided arrays is null", nullException);
+		} catch (Exception unexpectedException) {
+			throw new IllegalStateException("An unexpected error has occurred", unexpectedException);
+		}
+	}
+
+	/**
 	 * Name of the properties file. The full name of the file is: <br> "{@code name.properties}"
 	 *
 	 * @return the name of the properties file
