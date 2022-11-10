@@ -52,7 +52,7 @@ public class Scoreboard {
 	 */
 	public void scoreSet(int index, int score) throws IndexOutOfBoundsException, IllegalArgumentException {
 		if (validNumber(score))
-			playerScores[index] = score;
+			playerScores[player(index)] = score;
 		else
 			throw new IllegalArgumentException("Can't set negative score");
 	}
@@ -68,7 +68,7 @@ public class Scoreboard {
 	 */
 	public void scoreIncrease(int index, int points) throws IndexOutOfBoundsException, IllegalArgumentException {
 		if (validNumber(points))
-			playerScores[index] += points;
+			playerScores[player(index)] += points;
 		else
 			throw new IllegalArgumentException("Points needs to be a positive integer");
 	}
@@ -84,8 +84,8 @@ public class Scoreboard {
 	 */
 	public void scoreDecrease(int index, int points) throws IndexOutOfBoundsException, IllegalArgumentException {
 		if (validNumber(points))
-			if (playerScores[index] - points > 0)
-				playerScores[index] -= points;
+			if (playerScores[player(index)] - points > 0)
+				playerScores[player(index)] -= points;
 			else
 				throw new IllegalArgumentException("Points needs to be a positive integer");
 	}
@@ -106,6 +106,10 @@ public class Scoreboard {
 	 */
 	private boolean validNumber(int n) {
 		return n > 0;
+	}
+
+	private int player(int index) {
+		return index - 1;
 	}
 
 	/**
