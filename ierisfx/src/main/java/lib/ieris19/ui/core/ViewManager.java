@@ -71,14 +71,6 @@ public class ViewManager {
 		log.trace("Application name: " + name);
 		if (name == null) {
 			log.fatal("Name property not found in app.properties");
-			try (FileWriter fileWriter = new FileWriter(new File(new File("config"), "app.properties"))) {
-				String[] properties = {"name", "version", "icon", "resizable", "fullscreen", "width", "height", "default-view"};
-				for (String property : properties) {
-					fileWriter.write(property + "=null\n");
-				}
-			} catch (Exception e) {
-				log.fatal("Could not write app.properties");
-			}
 		}
 	}
 

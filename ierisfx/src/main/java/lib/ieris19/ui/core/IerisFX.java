@@ -17,15 +17,16 @@
 
 package lib.ieris19.ui.core;
 
+import javafx.application.Application;
 import javafx.stage.Stage;
 import lib.ieris19.commons.Script;
 
 /**
  * The application class is the entry point of a JavaFX application. This class is a customizable concrete class
- * implementation of the {@link javafx.application.Application Application} class. This class is responsible for
+ * implementation of the {@link Application Application} class. This class is responsible for
  * initializing the IerisFX application.
  */
-public class Application extends javafx.application.Application {
+public class IerisFX extends Application {
 
 	/**
 	 * The initializer method of the application. This script is responsible for initializing the application.
@@ -44,7 +45,7 @@ public class Application extends javafx.application.Application {
 	 * Creates a new Application instance with empty scripts. The scripts can be set later. This limits the application to
 	 * only the default behaviour unless the scripts are set afterwards.
 	 */
-	public Application() {
+	public IerisFX() {
 		Script empty = (args) -> {};
 		setInit(empty);
 		setStart(empty);
@@ -63,7 +64,7 @@ public class Application extends javafx.application.Application {
 	/**
 	 * Sets the start script for the application
 	 *
-	 * @param startScript
+	 * @param startScript the script to be executed right before the view manager is started
 	 */
 	public void setStart(Script startScript) {
 		this.startScript = startScript;
@@ -113,6 +114,7 @@ public class Application extends javafx.application.Application {
 	 * @throws Exception if something goes wrong
 	 */
 	@Override public void start(Stage primaryStage) throws Exception {
+		Thread.currentThread().setName("IerisFX Main Thread");
 		startScript.execute();
 		ViewManager vm = new ViewManager();
 		vm.start(primaryStage);
@@ -130,6 +132,7 @@ public class Application extends javafx.application.Application {
 	 * @throws Exception if something goes wrong
 	 */
 	@Override public void stop() throws Exception {
+		Thread.currentThread().setName("IerisFX Cleanup Thread");
 		stopScript.execute();
 	}
 }

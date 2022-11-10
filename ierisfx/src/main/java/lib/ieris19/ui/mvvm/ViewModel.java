@@ -24,6 +24,8 @@ import javafx.beans.property.Property;
  * the view and forwards events to the model.
  */
 public abstract class ViewModel {
+	protected Model model;
+
 	/**
 	 * The model of the business logic of the view. This model should handle all operations that are not directly related
 	 * to the view.
