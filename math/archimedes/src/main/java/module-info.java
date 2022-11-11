@@ -4,5 +4,5 @@
 module ierislib.math.archimedes {
 	requires java.base;
 
-	exports lib.ieris19.math.archimedes.base;
+	exports com.ieris19.lib.math.archimedes.base;
 }

@@ -6,5 +6,5 @@ module ierislib.util.scoreboard {
 	requires ierislib.util.console;
 	requires ierislib.commons;
 
-	exports lib.ieris19.util.scoreboard;
+	exports com.ieris19.lib.util.scoreboard;
 }

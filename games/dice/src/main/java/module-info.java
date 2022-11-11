@@ -4,5 +4,5 @@
 module ierislib.games.dice {
 	requires java.base;
 
-	exports lib.ieris19.games.dice;
+	exports com.ieris19.lib.games.dice;
 }

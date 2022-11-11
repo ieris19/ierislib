@@ -1,7 +1,7 @@
-import lib.ieris19.ui.core.UIComponent;
-import lib.ieris19.ui.mvvm.Model;
-import lib.ieris19.ui.mvvm.ViewController;
-import lib.ieris19.ui.mvvm.ViewModel;
+import com.ieris19.lib.ui.core.UIComponent;
+import com.ieris19.lib.ui.mvvm.Model;
+import com.ieris19.lib.ui.mvvm.ViewController;
+import com.ieris19.lib.ui.mvvm.ViewModel;
 
 /**
  * The IerisLib User Interface module. <br> <br>
@@ -44,6 +44,6 @@ module ierislib.ui {
 	requires ierislib.files.config;
 	requires ierislib.files.assets;
 
-	exports lib.ieris19.ui.core;
-	exports lib.ieris19.ui.mvvm;
+	exports com.ieris19.lib.ui.core;
+	exports com.ieris19.lib.ui.mvvm;
 }

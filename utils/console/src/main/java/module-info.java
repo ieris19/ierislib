@@ -6,5 +6,5 @@ module ierislib.util.console {
 	requires java.base;
 	requires ierislib.commons;
 
-	exports lib.ieris19.util.console;
+	exports com.ieris19.lib.util.console;
 }

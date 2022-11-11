@@ -5,5 +5,5 @@ module ierislib.games.economy {
 	requires java.base;
 	requires java.desktop;
 
-	exports lib.ieris19.games.economy;
+	exports com.ieris19.lib.games.economy;
 }

@@ -5,6 +5,6 @@
 module ierislib.commons {
 	requires java.base;
 
-	exports lib.ieris19.commons.cli;
-	exports lib.ieris19.commons;
+	exports com.ieris19.lib.commons.cli;
+	exports com.ieris19.lib.commons;
 }

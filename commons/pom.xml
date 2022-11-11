@@ -21,16 +21,17 @@
 
     <parent>
         <artifactId>IerisLib</artifactId>
-        <groupId>lib.ieris19</groupId>
+        <groupId>com.ieris19.lib</groupId>
         <version>2.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>lib.ieris19.commons</groupId>
+    <groupId>${project.parent.groupId}.commons</groupId>
     <artifactId>commons</artifactId>
     <version>1.0.0</version>
 
     <name>Common Dependencies</name>
     <description>A package of shared classes in IerisLib</description>
-    <url>https://github.com/Ieris19/IerisLib/tree/prime/commons</url>
+    <url>${ieris.source.repoURL}/commons</url>
     <inceptionYear>2022</inceptionYear>
 </project>

@@ -19,9 +19,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>lib.ieris19.utils</groupId>
+        <groupId>com.ieris19.lib.util</groupId>
         <artifactId>utils</artifactId>
         <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>console</artifactId>
@@ -29,7 +30,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>lib.ieris19.commons</groupId>
+            <groupId>com.ieris19.lib.commons</groupId>
             <artifactId>commons</artifactId>
             <version>1.0.0</version>
         </dependency>

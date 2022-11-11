@@ -4,5 +4,5 @@
 module ierislib.games.cards {
 	requires java.base;
 
-	exports lib.ieris19.games.cards;
+	exports com.ieris19.lib.games.cards;
 }

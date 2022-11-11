@@ -1,7 +1,7 @@
 ###Jetbrains IDE
 # Configuration file for the JetBrains IDEs
 .idea/
-.iml
+*.iml
 
 ## Explicitly allowed configuration files
 !.idea/copyright/

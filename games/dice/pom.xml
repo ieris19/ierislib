@@ -20,8 +20,9 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>games</artifactId>
-        <groupId>lib.ieris19.games</groupId>
+        <groupId>com.ieris19.lib.games</groupId>
         <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>dice</artifactId>

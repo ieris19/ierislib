@@ -19,12 +19,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>IerisLib</artifactId>
-        <groupId>lib.ieris19</groupId>
+        <groupId>com.ieris19.lib</groupId>
         <version>2.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>lib.ieris19.utils</groupId>
+    <groupId>com.ieris19.lib.util</groupId>
     <artifactId>utils</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>

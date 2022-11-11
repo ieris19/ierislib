@@ -19,24 +19,30 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>lib.ieris19</groupId>
+        <groupId>com.ieris19.lib</groupId>
         <artifactId>IerisLib</artifactId>
         <version>2.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <modules>
         <module>cards</module>
         <module>economy</module>
         <module>dice</module>
+        <module>rpg</module>
     </modules>
 
-    <groupId>lib.ieris19.games</groupId>
+    <groupId>${project.parent.groupId}.games</groupId>
     <artifactId>games</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
+    <properties>
+        <ieris.source.repoURL>${project.parent.url}/games</ieris.source.repoURL>
+    </properties>
+
     <name>Game Tools</name>
     <description>A library of reusable Java code that implements simple common game tools</description>
-    <url>https://github.com/Ieris19/IerisLib/tree/prime/games</url>
+    <url>${ieris.source.repoURL}</url>
     <inceptionYear>2021</inceptionYear>
 </project>

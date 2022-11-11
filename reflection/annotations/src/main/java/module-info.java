@@ -7,5 +7,5 @@ module ierislib.reflection.annotations {
 	requires java.base;
 	requires java.compiler;
 
-	exports lib.ieris19.reflection.annotations.processor;
+	exports com.ieris19.lib.reflection.annotations.processor;
 }

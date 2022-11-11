@@ -6,5 +6,5 @@ module ierislib.reflection.utils {
 	requires java.base;
 	requires java.compiler;
 
-	exports lib.ieris19.reflection.util;
+	exports com.ieris19.lib.reflection.util;
 }

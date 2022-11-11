@@ -17,18 +17,19 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>files</artifactId>
-        <groupId>lib.ieris19.files</groupId>
-        <version>1.0.0</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ieris19.lib.files</groupId>
+        <artifactId>files</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
     <artifactId>config</artifactId>
     <version>1.0.0</version>
 
     <name>Configuration Manager</name>
-    <description>A toolkit to ease the management of configuration files</description>
-    <url>https://github.com/Ieris19/IerisLib/tree/prime/files/config</url>
+    <description>A framework to ease the management of configuration files</description>
+    <url>${ieris.source.repoURL}/config}</url>
     <inceptionYear>2022</inceptionYear>
 </project>

@@ -20,11 +20,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>IerisLib</artifactId>
-        <groupId>lib.ieris19</groupId>
+        <groupId>com.ieris19.lib</groupId>
         <version>2.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>lib.ieris19.math</groupId>
+    <groupId>com.ieris19.lib.math</groupId>
     <artifactId>math</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>

@@ -19,9 +19,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
+        <groupId>com.ieris19.lib.files</groupId>
         <artifactId>files</artifactId>
-        <groupId>lib.ieris19.files</groupId>
         <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>assets</artifactId>
@@ -29,6 +30,6 @@
 
     <name>Asset Manager</name>
     <description>A toolkit that manages assets (packaged resources or simple assets) for a project</description>
-    <url>https://github.com/Ieris19/IerisLib/tree/prime/files/assets</url>
+    <url>${ieris.source.repoURL}/assets</url>
     <inceptionYear>2022</inceptionYear>
 </project>

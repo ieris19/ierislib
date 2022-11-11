@@ -17,25 +17,30 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>IerisLib</artifactId>
-        <groupId>lib.ieris19</groupId>
+        <groupId>com.ieris19.lib</groupId>
         <version>2.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
-    <groupId>lib.ieris19.files</groupId>
+    <groupId>${project.parent.groupId}.files</groupId>
     <artifactId>files</artifactId>
-    <packaging>pom</packaging>
     <version>1.0.0</version>
+    <packaging>pom</packaging>
 
     <modules>
         <module>config</module>
         <module>assets</module>
     </modules>
 
+    <properties>
+        <ieris.source.repoURL>${project.parent.url}/files</ieris.source.repoURL>
+    </properties>
+
     <name>File Manager</name>
     <description>An opinionated toolkit that manages configuration and resources for a project</description>
-    <url>https://github.com/Ieris19/IerisLib/tree/prime/files</url>
+    <url>${ieris.source.repoURL}</url>
     <inceptionYear>2022</inceptionYear>
 </project>

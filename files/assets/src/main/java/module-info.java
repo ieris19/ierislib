@@ -5,5 +5,5 @@
 module ierislib.files.assets {
 	requires java.base;
 
-	exports lib.ieris19.files.assets;
+	exports com.ieris19.lib.files.assets;
 }

@@ -21,11 +21,12 @@
 
     <parent>
         <artifactId>IerisLib</artifactId>
-        <groupId>lib.ieris19</groupId>
+        <groupId>com.ieris19.lib</groupId>
         <version>2.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>lib.ieris19.util</groupId>
+    <groupId>com.ieris19.lib.reflection</groupId>
     <artifactId>reflection</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>

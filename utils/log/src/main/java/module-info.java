@@ -7,7 +7,7 @@ module ierislib.util.log {
 
 	requires ierislib.commons;
 
-	exports lib.ieris19.util.log;
-	exports lib.ieris19.util.log.ieris;
-	exports lib.ieris19.util.log.custom;
+	exports com.ieris19.lib.util.log;
+	exports com.ieris19.lib.util.log.ieris;
+	exports com.ieris19.lib.util.log.custom;
 }

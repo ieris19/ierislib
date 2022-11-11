@@ -17,18 +17,18 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>reflection</artifactId>
-        <groupId>lib.ieris19.util</groupId>
-        <version>1.0.0</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ieris19.lib.reflection</groupId>
+        <artifactId>reflection</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
-    <artifactId>ierislib.reflection.annotations</artifactId>
+    <artifactId>annotations</artifactId>
 
     <name>IerisNote</name>
     <description>Annotations processing for Ierislib. A flexible and customizable module</description>
     <url>https://github.com/Ieris19/IerisLib/tree/prime/reflection/annotations</url>
     <inceptionYear>2022</inceptionYear>
-
 </project>

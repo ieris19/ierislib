@@ -5,5 +5,5 @@
 module ierislib.files.config {
 	requires java.base;
 
-	exports lib.ieris19.files.config;
+	exports com.ieris19.lib.files.config;
 }
