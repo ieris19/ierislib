@@ -15,7 +15,7 @@
  *
  */
 
-package com.ieris19.lib.commons;
+package com.ieris19.lib.common;
 
 /**
  * Script is a {@link FunctionalInterface} designed to implement an executable class. The intended use is to utilize a

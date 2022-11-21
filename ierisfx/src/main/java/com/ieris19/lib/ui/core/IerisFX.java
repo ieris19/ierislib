@@ -19,7 +19,7 @@ package com.ieris19.lib.ui.core;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import com.ieris19.lib.commons.Script;
+import com.ieris19.lib.common.Script;
 
 /**
  * The application class is the entry point of a JavaFX application. This class is a customizable concrete class

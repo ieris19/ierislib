@@ -17,7 +17,7 @@
 
 package com.ieris19.lib.util.console;
 
-import com.ieris19.lib.commons.Script;
+import com.ieris19.lib.common.Script;
 
 /**
  * A class used to define commands for use in the console, this class defines all that is needed for the console to

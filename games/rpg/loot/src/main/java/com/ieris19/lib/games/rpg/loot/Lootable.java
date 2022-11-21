@@ -15,7 +15,16 @@
  *
  */
 
+package com.ieris19.lib.games.rpg.loot;
+
+import com.ieris19.lib.games.rpg.tables.LootTable;
+
 /**
- * A package containing common elements of a Command Line Interface.
+ * Lootable interface marks an object that can be looted. This means that the object can drop loot. For this purpose, the object must implement the loot method.
+ * the loot method returns a LootObject, which can be anything. This can be a String, an Item, a Potion, gold, etc.
  */
-package com.ieris19.lib.commons.cli;
+public interface Lootable {
+	default LootObject[] loot(LootTable table) {
+		return table.randomLoot();
+	}
+}

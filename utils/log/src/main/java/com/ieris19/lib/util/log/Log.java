@@ -17,7 +17,7 @@
 
 package com.ieris19.lib.util.log;
 
-import com.ieris19.lib.commons.cli.TextColor;
+import com.ieris19.lib.common.cli.TextColor;
 
 import java.io.File;
 import java.io.FileWriter;

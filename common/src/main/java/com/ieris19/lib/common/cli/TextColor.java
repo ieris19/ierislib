@@ -15,7 +15,7 @@
  *
  */
 
-package com.ieris19.lib.commons.cli;
+package com.ieris19.lib.common.cli;
 
 import java.io.PrintStream;
 

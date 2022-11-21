@@ -18,31 +18,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <dependencies>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>23.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
     <parent>
-        <groupId>com.ieris19.lib</groupId>
-        <artifactId>IerisLib</artifactId>
-        <version>2.0.0</version>
-        <relativePath>../pom.xml</relativePath>
+        <artifactId>rpg</artifactId>
+        <groupId>com.ieris19.lib.games.rpg</groupId>
+        <version>1.0.0</version>
     </parent>
 
-    <modules>
-        <module>cards</module>
-        <module>economy</module>
-        <module>dice</module>
-        <module>rpg</module>
-    </modules>
-
-    <groupId>com.ieris19.lib.games</groupId>
-    <artifactId>games</artifactId>
+    <artifactId>loot</artifactId>
     <version>1.0.0</version>
-    <packaging>pom</packaging>
 
-    <properties>
-        <ieris.source.repoURL>${project.parent.url}/games</ieris.source.repoURL>
-    </properties>
-
-    <name>Game Tools</name>
-    <description>A library of reusable Java code that implements simple common game tools</description>
-    <url>${ieris.source.repoURL}</url>
-    <inceptionYear>2021</inceptionYear>
+    <name>Loot Module</name>
+    <description>Module to that implements the necessary classes and methods to create a loot system</description>
+    <url>https://github.com/Ieris19/IerisLib/tree/prime/games/rpg/loot</url>
+    <inceptionYear>2022</inceptionYear>
 </project>

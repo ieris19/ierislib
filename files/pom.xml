@@ -25,7 +25,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>${project.parent.groupId}.files</groupId>
+    <groupId>com.ieris19.lib.files</groupId>
     <artifactId>files</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>

@@ -5,7 +5,7 @@
 module ierislib.util.log {
 	requires java.base;
 
-	requires ierislib.commons;
+	requires ierislib.common;
 
 	exports com.ieris19.lib.util.log;
 	exports com.ieris19.lib.util.log.ieris;

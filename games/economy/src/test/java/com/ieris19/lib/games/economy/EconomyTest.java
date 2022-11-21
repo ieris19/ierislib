@@ -28,7 +28,7 @@ class EconomyTest {
 	private Money account;
 	private Money wallet;
 
-	private static final double INITIAL_VALUE = 10D;
+	private static final double INITIAL_VALUE = 20D;
 
 	@BeforeEach void setUp() {
 		account = new Money(INITIAL_VALUE);

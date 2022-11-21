@@ -17,7 +17,7 @@
 
 package com.ieris19.lib.util.log.ieris;
 
-import com.ieris19.lib.commons.cli.TextColor;
+import com.ieris19.lib.common.cli.TextColor;
 import com.ieris19.lib.util.log.Log;
 import com.ieris19.lib.util.log.Severity;
 import com.ieris19.lib.util.log.TimestampHandler;

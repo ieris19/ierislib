@@ -17,14 +17,14 @@
 
 package com.ieris19.lib.util.console;
 
-import com.ieris19.lib.commons.Script;
-import com.ieris19.lib.commons.cli.TextColor;
+import com.ieris19.lib.common.Script;
+import com.ieris19.lib.common.cli.TextColor;
 
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static com.ieris19.lib.commons.cli.TextColor.*;
+import static com.ieris19.lib.common.cli.TextColor.*;
 
 /**
  * The console class will require a little setup from the user. First you will need to add your own commands to the

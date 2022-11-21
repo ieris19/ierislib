@@ -17,7 +17,7 @@
 
 package com.ieris19.lib.util.scoreboard;
 
-import com.ieris19.lib.commons.cli.TextColor;
+import com.ieris19.lib.common.cli.TextColor;
 import com.ieris19.lib.util.console.Command;
 import com.ieris19.lib.util.console.Console;
 
