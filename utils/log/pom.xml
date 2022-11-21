@@ -30,7 +30,7 @@
 
     <name>IerisLog</name>
     <description>A tool for logging to both a file and the console</description>
-    <url>https://github.com/Ieris19/IerisLib/tree/prime/utils/log</url>
+    <url>utils/log</url>
     <inceptionYear>2022</inceptionYear>
 
     <dependencies>

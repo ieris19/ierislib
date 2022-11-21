@@ -38,6 +38,6 @@
 
     <name>Utilities Library</name>
     <description>A parent artifact for all classes that provide utilities</description>
-    <url>https://github.com/Ieris19/IerisLib/tree/prime/utils</url>
+    <url>${project.parent.url}/utils</url>
     <inceptionYear>2022</inceptionYear>
 </project>

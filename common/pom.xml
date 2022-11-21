@@ -32,6 +32,6 @@
 
     <name>Common Dependencies</name>
     <description>A package of shared classes in IerisLib</description>
-    <url>${ieris.source.repoURL}/common</url>
+    <url>${project.parent.url}/common</url>
     <inceptionYear>2022</inceptionYear>
 </project>

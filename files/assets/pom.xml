@@ -30,6 +30,6 @@
 
     <name>Asset Manager</name>
     <description>A toolkit that manages assets (packaged resources or simple assets) for a project</description>
-    <url>${ieris.source.repoURL}/assets</url>
+    <url>${project.parent.url}/assets</url>
     <inceptionYear>2022</inceptionYear>
 </project>

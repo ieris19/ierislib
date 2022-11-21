@@ -36,6 +36,6 @@
 
     <name>Math Helper</name>
     <description>A collection of modules assisting with mathematical operations</description>
-    <url>https://github.com/Ieris19/IerisLib/tree/prime/math</url>
+    <url>${project.parent.url}/math</url>
     <inceptionYear>2022</inceptionYear>
 </project>

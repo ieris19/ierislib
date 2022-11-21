@@ -41,6 +41,6 @@
 
     <name>File Manager</name>
     <description>An opinionated toolkit that manages configuration and resources for a project</description>
-    <url>${ieris.source.repoURL}</url>
+    <url>${project.parent.url}</url>
     <inceptionYear>2022</inceptionYear>
 </project>

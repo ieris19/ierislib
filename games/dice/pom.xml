@@ -30,6 +30,6 @@
 
     <name>Game Dice</name>
     <description>A simple implementation of a dice</description>
-    <url>https://github.com/Ieris19/IerisLib/tree/prime/games/dice</url>
+    <url>${project.parent.url}/dice</url>
     <inceptionYear>2022</inceptionYear>
 </project>

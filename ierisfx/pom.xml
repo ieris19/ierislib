@@ -31,7 +31,7 @@
 
     <name>IerisFX</name>
     <description>A framework to quickly scaffold JavaFX applications</description>
-    <url>https://github.com/Ieris19/IerisLib/tree/prime/fx</url>
+    <url>${project.parent.url}/ierisfx</url>
     <inceptionYear>2021</inceptionYear>
 
     <dependencies>

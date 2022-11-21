@@ -31,6 +31,6 @@
 
     <name>Archimedes Interface</name>
     <description>A collection of useful mathematical operations methods</description>
-    <url>https://github.com/Ieris19/IerisLib/tree/prime/math/archimedes</url>
+    <url>${project.parent.url}/archimedes</url>
     <inceptionYear>2022</inceptionYear>
 </project>

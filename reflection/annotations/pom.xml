@@ -29,6 +29,6 @@
 
     <name>IerisNote</name>
     <description>Annotations processing for Ierislib. A flexible and customizable module</description>
-    <url>https://github.com/Ieris19/IerisLib/tree/prime/reflection/annotations</url>
+    <url>${project.parent.url}/annotations</url>
     <inceptionYear>2022</inceptionYear>
 </project>

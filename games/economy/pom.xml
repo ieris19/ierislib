@@ -30,7 +30,7 @@
 
     <name>Economy</name>
     <description>A library of reusable Java code to provide easy handling of money</description>
-    <url>https://github.com/Ieris19/IerisLib/tree/prime/games/economy</url>
+    <url>${project.parent.url}/economy</url>
     <inceptionYear>2022</inceptionYear>
 
     <build>

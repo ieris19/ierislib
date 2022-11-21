@@ -37,6 +37,6 @@
 
     <name>Reflective Library</name>
     <description>A specialized module focused on interactions with the Reflection API in Java</description>
-    <url>https://github.com/Ieris19/IerisLib/tree/prime/reflection</url>
+    <url>${project.parent.url}/reflection</url>
     <inceptionYear>2022</inceptionYear>
 </project>

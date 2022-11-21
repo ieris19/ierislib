@@ -30,6 +30,6 @@
 
     <name>Configuration Manager</name>
     <description>A framework to ease the management of configuration files</description>
-    <url>${ieris.source.repoURL}/config}</url>
+    <url>${project.parent.url}/config}</url>
     <inceptionYear>2022</inceptionYear>
 </project>

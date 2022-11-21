@@ -42,6 +42,6 @@
 
     <name>Game Tools</name>
     <description>A library of reusable Java code that implements simple common game tools</description>
-    <url>${ieris.source.repoURL}</url>
+    <url>${project.parent.url}</url>
     <inceptionYear>2021</inceptionYear>
 </project>
