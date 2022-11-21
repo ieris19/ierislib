@@ -29,7 +29,6 @@
         <module>cards</module>
         <module>economy</module>
         <module>dice</module>
-        <module>rpg</module>
     </modules>
 
     <groupId>com.ieris19.lib.games</groupId>
