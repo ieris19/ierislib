@@ -18,8 +18,8 @@
 package com.ieris19.lib.util.log.ieris;
 
 import com.ieris19.lib.common.cli.TextColor;
+import com.ieris19.lib.util.log.Level;
 import com.ieris19.lib.util.log.Log;
-import com.ieris19.lib.util.log.Severity;
 import com.ieris19.lib.util.log.TimestampHandler;
 
 import java.io.File;
@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.locks.ReentrantLock;
 
-import static com.ieris19.lib.util.log.Severity.*;
+import static com.ieris19.lib.util.log.Level.*;
 
 /**
  * A class that provides an instantiable object that internally shares an instance of the logger
@@ -68,7 +68,7 @@ public class IerisLog implements Log {
 	private int logLevel;
 
 	/**
-	 * Constructor for the log. It will set the log level to {@link Severity#INFO}, the name to "Log" and the log
+	 * Constructor for the log. It will set the log level to {@link Level#INFO}, the name to "Log" and the log
 	 * directory to the default new <code>logs/</code> folder in the running directory
 	 *
 	 * @throws IllegalArgumentException if a file with name "logs" which is not a directory already exists in the running
@@ -171,6 +171,23 @@ public class IerisLog implements Log {
 		synchronizedLock.unlock();
 	}
 
+	@Override public int getLogLevel() {
+		synchronizedLock.lock();
+		try {
+			return logLevel;
+		} finally {
+			synchronizedLock.unlock();
+		}
+	}
+
+	@Override public boolean isLevel(Level severity) {
+		return severity.level() <= this.logLevel;
+	}
+
+	public String getName() {
+		return name;
+	}
+
 	/**
 	 * Log a completely custom message by specifying the message, reason and the color to be used
 	 *
@@ -188,12 +205,12 @@ public class IerisLog implements Log {
 	 * Log a custom message by specifying the message, severity and the color to be used
 	 *
 	 * @param message Description of the event
-	 * @param level   {@link Severity Severity level} of the event
+	 * @param level   {@link Level Level level} of the event
 	 * @param color   Color to be printed in the console
 	 */
-	private void log(String message, Severity level, TextColor color) {
+	private void log(String message, Level level, TextColor color) {
 		synchronizedLock.lock();
-		if (level.level() <= this.logLevel) {
+		if (isLevel(level)) {
 			Log.super.log(message, level.name(), color);
 		}
 		synchronizedLock.unlock();

@@ -52,7 +52,7 @@
         </dependency>
         <dependency>
             <groupId>com.ieris19.lib.util</groupId>
-            <artifactId>log</artifactId>
+            <artifactId>ierislog</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>

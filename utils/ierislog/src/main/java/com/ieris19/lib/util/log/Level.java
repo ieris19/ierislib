@@ -20,7 +20,7 @@ package com.ieris19.lib.util.log;
 /**
  * An enum that contains all the possible severity levels for a log message
  */
-public enum Severity {
+public enum Level {
 	/**
 	 * Fatal error that interrupts the functioning of the program
 	 */
@@ -56,11 +56,11 @@ public enum Severity {
 	private int logLevel;
 
 	/**
-	 * Creates a new Severity level with the specified index
+	 * Creates a new Level level with the specified index
 	 *
 	 * @param logLevel The index of the severity as an integer
 	 */
-	Severity(int logLevel) {
+	Level(int logLevel) {
 		this.logLevel = logLevel;
 	}
 

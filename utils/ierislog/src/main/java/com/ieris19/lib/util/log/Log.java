@@ -54,15 +54,21 @@ public interface Log {
 
 	/**
 	 * Sets the log level of the log. The log level is a number that determines the severity of the messages that will be
-	 * logged. The level of the log messages is defined by the {@link Severity} class. The log level needs to be set to an
+	 * logged. The level of the log messages is defined by the {@link Level} class. The log level needs to be set to an
 	 * integer value that is equal to or greater than the level of the messages that should be logged. While you can set
 	 * the log level to an integer value between 0 and 6, it is recommended to use the values defined in the
-	 * {@link Severity} class.
+	 * {@link Level} class.
 	 *
 	 * @param logLevel the new log level
 	 */
 	void setLogLevel(int logLevel);
 
+	/**
+	 * Gets the current log level
+	 * @return a number between 0 and 6 that represents the current log level
+	 */
+	int getLogLevel();
+	boolean isLevel(Level severity);
 	/**
 	 * Logs a custom message into a file and prints to the console in the selected color. It will mark the category
 	 *
