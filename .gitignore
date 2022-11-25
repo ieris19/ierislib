@@ -5,10 +5,6 @@
 
 ## Explicitly allowed configuration files
 !.idea/copyright/
-!.idea//
-
-# Output Directory
-target/
 
 ###Java
 # Compiled class file
@@ -23,6 +19,6 @@ target/
 *.tar.gz
 *.rar
 
-### Project Specific
-# Exeception for the modules in case they are accidentally excluded
-!ierislib.*/
+### Maven
+# Output Directory
+target/
