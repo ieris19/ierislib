@@ -68,8 +68,10 @@ public class IerisLog implements Log {
 	private int logLevel;
 
 	/**
-	 * Constructor for the log. It will set the log level to {@link Level#INFO}, the name to "Log" and the log
-	 * directory to the default new <code>logs/</code> folder in the running directory
+	 * Constructor for the log. It will set the log level to {@link Level#INFO}, the name to "Log" and the log directory
+	 * to the default new <code>logs/</code> folder in the running directory
+	 *
+	 * @param appName Name of the program being logged
 	 *
 	 * @throws IllegalArgumentException if a file with name "logs" which is not a directory already exists in the running
 	 *                                  directory. This is because the log folder will be named "logs" by default, and it
@@ -86,6 +88,8 @@ public class IerisLog implements Log {
 
 	/**
 	 * Returns the singleton instance of the logger
+	 *
+	 * @param appName the name of the application that will be logged. This will also be used in the name of the log file
 	 *
 	 * @return the only instance of the logger that can exist
 	 */
@@ -180,10 +184,19 @@ public class IerisLog implements Log {
 		}
 	}
 
+	/**
+	 * Verifies if the log level is set to print the specified level of alerts
+	 * @param severity the level of alert to verify
+	 * @return true if the log level is set to print the specified level of alerts, false otherwise
+	 */
 	@Override public boolean isLevel(Level severity) {
 		return severity.level() <= this.logLevel;
 	}
 
+	/**
+	 * A method to access the name of the program being logged
+	 * @return the name of the program being logged
+	 */
 	public String getName() {
 		return name;
 	}

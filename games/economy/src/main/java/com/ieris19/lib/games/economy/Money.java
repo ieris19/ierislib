@@ -89,7 +89,10 @@ public class Money {
 	}
 
 	/**
-	 * @return The amount of money in this instance
+	 * The current balance of this instance
+	 *
+	 * @return The fixed double precision floating point number representing the balance of this instance after the last
+	 * operation
 	 */
 	public double getAmount() {
 		return amount;

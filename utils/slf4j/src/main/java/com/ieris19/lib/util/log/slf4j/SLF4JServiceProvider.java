@@ -17,7 +17,17 @@
 
 package com.ieris19.lib.util.log.slf4j;
 
+/**
+ * This class provides the logging service for the slf4j facade. All methods directed at slf4j will be directed to this
+ * provider if present in the classpath and no other slf4j providers are present. If other providers are present it
+ * won't work.
+ */
 public class SLF4JServiceProvider implements org.slf4j.spi.SLF4JServiceProvider {
+	/**
+	 * Empty constructor for the SLF4JServiceProvider class as it is not used.
+	 */
+	public SLF4JServiceProvider() {
+	}
 	/**
 	 * Return the instance of {@link org.slf4j.ILoggerFactory} that {@link org.slf4j.LoggerFactory} class should bind to.
 	 *

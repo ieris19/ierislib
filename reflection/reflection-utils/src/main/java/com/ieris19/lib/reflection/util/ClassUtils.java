@@ -29,6 +29,11 @@ import java.util.stream.Collectors;
  */
 public class ClassUtils {
 	/**
+	 * Private constructor to prevent instantiation
+	 */
+	private ClassUtils() {
+	}
+	/**
 	 * The string used as a package separator character in fully-qualified class names.
 	 */
 	private static final String PKG_SEPARATOR = ".";

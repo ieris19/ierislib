@@ -16,6 +16,6 @@
  */
 
 /**
- * A processor that allows using the annotations in the {@link com.ieris19.lib.reflection.annotations Annotations} package.
+ * A processor that allows using IerisLib's annotations.
  */
 package com.ieris19.lib.reflection.annotations.processor;

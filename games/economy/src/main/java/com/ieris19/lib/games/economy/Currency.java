@@ -50,6 +50,8 @@ public class Currency extends Money {
 
 	/**
 	 * Returns the currency symbol
+	 *
+	 * @return the currency symbol
 	 */
 	public String getCurrencySymbol() {
 		return currencySymbol;

@@ -17,11 +17,31 @@
 
 package com.ieris19.lib.math.archimedes.base;
 
+/**
+ * A class that helps with binary numbers and operations
+ */
 public class Binary {
+	/**
+	 * Private constructor to prevent instantiation
+	 */
+	private Binary() {
+	}
+
+	/**
+	 * Converts a binary number to a decimal number
+	 *
+	 * @param n the binary number to convert
+	 * @return the decimal number
+	 */
 	public static String printBinary(int n) {
 		return Integer.toBinaryString(n);
 	}
 
+	/**
+	 * Converts a decimal number to a binary number
+	 * @param n the decimal number to convert
+	 * @return the binary number
+	 */
 	public static String convertDecimal(int n) {
 		StringBuilder binaryNum = new StringBuilder();
 		if (n < 0)
@@ -35,6 +55,12 @@ public class Binary {
 		return binaryNum.toString();
 	}
 
+	/**
+	 * Converts a binary number to a decimal number
+	 *
+	 * @param n the binary number to convert
+	 * @return the decimal number
+	 */
 	public static int to10(int n) {
 		return n;
 	}

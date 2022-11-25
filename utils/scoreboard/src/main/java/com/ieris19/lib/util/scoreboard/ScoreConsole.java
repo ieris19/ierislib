@@ -35,6 +35,8 @@ public class ScoreConsole {
 
 	/**
 	 * A constructor for the ScoreConsole class.
+	 *
+	 * @param amountOfPlayers the amount of players that will be playing the game
 	 */
 	public ScoreConsole(int amountOfPlayers) {
 		this.console = Console.getInstance();

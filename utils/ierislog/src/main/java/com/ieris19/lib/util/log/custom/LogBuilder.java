@@ -71,16 +71,14 @@ public class LogBuilder {
 	 * Creates a new builder based on one of the predefined templates. The previous builder is discarded, regardless of
 	 * how many elements it contained. <br><br>
 	 *
-	 * The following templates are available: <br>
-	 * <ul>
-	 * 	<li>minimal: [timestamp] Message</li>
-	 *  <li>default: [timestamp] [thread/severity] Message</li>
-	 *  <li>complete: [ISO-Timestamp 'Instant:'milliseconds of day] [thread] [severity] Message</li>
-	 * </ul>
+	 * @param template the name of the template to be used. The following templates are available: <br>
+	 *                 <ul>
+	 *                  <li>minimal: [timestamp] Message</li>
+	 *                  <li>default: [timestamp] [thread/severity] Message</li>
+	 *                  <li>complete: [ISO-Timestamp 'Instant:'milliseconds of day] [thread] [severity] Message</li>
+	 *                 </ul>
 	 *
-	 * @param template
-	 *
-	 * @return
+	 * @return the builder with the template applied
 	 */
 	public static LogBuilder template(String template) {
 		return switch (template) {

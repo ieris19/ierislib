@@ -73,6 +73,8 @@ public class Command {
 
 	/**
 	 * Executes whatever instructions are stored in this command
+	 *
+	 * @param args the arguments to be passed to the command
 	 */
 	public void execute(String[] args) {
 		this.script.execute(args);

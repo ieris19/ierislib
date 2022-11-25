@@ -155,6 +155,8 @@ public class Console {
 	/**
 	 * Sets the prompt for this console. It will automatically add a space in the end if it doesn't already end in a blank
 	 * space. This includes {@code space, newline, or horizontal tabulation}
+	 *
+	 * @param prompt The prompt to be set
 	 */
 	public void setPrompt(String prompt) {
 		if (prompt.endsWith(" ") || prompt.endsWith("\n") || prompt.endsWith("\t"))

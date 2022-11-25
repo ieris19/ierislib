@@ -75,6 +75,8 @@ public class FileProperties extends IerisProperties implements Closeable {
 	 * If settings have not been previously set, it will instantiate in the default "/config/" directory. <br> Make sure
 	 * to configure the path before calling this method if your properties file has a different path
 	 *
+	 * @param key the name of the properties file
+	 *
 	 * @return The instance of this class.
 	 */
 	public static synchronized FileProperties getInstance(String key) {

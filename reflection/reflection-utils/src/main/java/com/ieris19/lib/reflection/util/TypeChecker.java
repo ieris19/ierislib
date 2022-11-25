@@ -77,7 +77,7 @@ public enum TypeChecker {
 	 * Checks whether the given class is of the desired type.
 	 *
 	 * @param clazz       The class to check.
-	 * @param desiredType The desired type.
+	 * @param desiredType The type that the class should be in order to return true.
 	 *
 	 * @return Whether the given class is of the desired type.
 	 */
@@ -86,9 +86,11 @@ public enum TypeChecker {
 	}
 
 	/**
-	 * Checks whether the given class is not an instance of the desired type.
+	 * Checks whether the given class is not an instance of the desired type. This is the opposite of
+	 * {@link #isType(Class, TypeChecker)}.
 	 *
-	 * @param clazz The class to check.
+	 * @param clazz       The class to check.
+	 * @param desiredType The type that the class should not be in order to return true.
 	 *
 	 * @return Whether the given class is not an instance of the desired type.
 	 */

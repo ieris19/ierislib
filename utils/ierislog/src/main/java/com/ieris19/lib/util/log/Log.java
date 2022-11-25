@@ -68,7 +68,14 @@ public interface Log {
 	 * @return a number between 0 and 6 that represents the current log level
 	 */
 	int getLogLevel();
+
+	/**
+	 * Verifies if the log level is set to print the specified level of alerts
+	 * @param severity the level of alert to verify
+	 * @return true if the log level is set to print the specified level of alerts, false otherwise
+	 */
 	boolean isLevel(Level severity);
+
 	/**
 	 * Logs a custom message into a file and prints to the console in the selected color. It will mark the category
 	 *
@@ -142,6 +149,9 @@ public interface Log {
 	/**
 	 * Creates or returns the file where the logged lines will go to. There will be one for each application for each
 	 * day.
+	 *
+	 * @throws IOException if the file cannot be created
+	 *
 	 *
 	 * @return a Log file with an appropriate filename
 	 */
