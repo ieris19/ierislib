@@ -25,7 +25,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>annotations</artifactId>
+    <artifactId>annotation-processor</artifactId>
 
     <name>IerisNote</name>
     <description>Annotations processing for Ierislib. A flexible and customizable module</description>

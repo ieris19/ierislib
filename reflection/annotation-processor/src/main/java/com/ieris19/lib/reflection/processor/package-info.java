@@ -18,4 +18,4 @@
 /**
  * A processor that allows using IerisLib's annotations.
  */
-package com.ieris19.lib.reflection.annotations.processor;
+package com.ieris19.lib.reflection.processor;

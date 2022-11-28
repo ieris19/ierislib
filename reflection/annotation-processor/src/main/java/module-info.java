@@ -3,9 +3,9 @@
  * annotation processor that generates the code for the annotations. <br> This module is intended to be as customizable
  * and flexible as possible, so it can be used in any project.
  */
-module ierislib.reflection.annotations {
+module ierislib.reflection.processor {
 	requires java.base;
 	requires java.compiler;
 
-	exports com.ieris19.lib.reflection.annotations.processor;
+	exports com.ieris19.lib.reflection.processor;
 }

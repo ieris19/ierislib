@@ -15,7 +15,7 @@
  *
  */
 
-package com.ieris19.lib.reflection.annotations.processor;
+package com.ieris19.lib.reflection.processor;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;

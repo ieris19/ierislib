@@ -17,27 +17,19 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>reflection</artifactId>
+        <groupId>com.ieris19.lib.reflection</groupId>
+        <version>1.0.0</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <artifactId>IerisLib</artifactId>
-        <groupId>com.ieris19.lib</groupId>
-        <version>2.0.0</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
+    <artifactId>annotation-lib</artifactId>
 
-    <groupId>com.ieris19.lib.reflection</groupId>
-    <artifactId>reflection</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0.0</version>
-    <modules>
-        <module>reflection-utils</module>
-        <module>annotation-lib</module>
-        <module>annotation-processor</module>
-    </modules>
+    <properties>
+        <maven.compiler.source>19</maven.compiler.source>
+        <maven.compiler.target>19</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-    <name>Reflective Library</name>
-    <description>A specialized module focused on interactions with the Reflection API in Java</description>
-    <url>${project.parent.url}/reflection</url>
-    <inceptionYear>2022</inceptionYear>
 </project>
