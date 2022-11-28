@@ -106,11 +106,14 @@ public abstract class IerisProperties implements AutoCloseable {
 	 * Creates an empty Properties file for the application. This is used when the application is run without the basic
 	 * set of configuration options
 	 */
-	private void createPropertiesFile(String[] keys, String[] defaultValues) {
+	public void createPropertiesFile(String[] keys, String[] defaultValues) {
 		if (keys.length == 0) {
 			return;
 		}
 		try (FileWriter fileWriter = new FileWriter(getPropertyFile())) {
+			if (keys.length < 1) {
+				throw new IndexOutOfBoundsException("There must be at least 1 key");
+			}
 			if (keys.length == defaultValues.length) {
 				for (int i = 0; i < keys.length; i++) {
 					fileWriter.write(keys[i] + "=" + defaultValues[i] + '\n');
@@ -136,6 +139,48 @@ public abstract class IerisProperties implements AutoCloseable {
 			throw new IllegalArgumentException("One of the provided arrays is null", nullException);
 		} catch (Exception unexpectedException) {
 			throw new IllegalStateException("An unexpected error has occurred", unexpectedException);
+		}
+	}
+
+	/**
+	 * If the properties file is not set up correctly, this method will create a default properties file and continue the
+	 * execution of the application. This method should only be called if the properties file is not set up correctly. If
+	 * the application can't continue after failing to read a property, then the application should throw an exception.
+	 */
+	public void createPropertiesFile(String[][] defaultProperties) {
+		String[] keys = new String[defaultProperties.length];
+		String[] values = new String[defaultProperties.length];
+		for (int i = 0; i < defaultProperties.length; i++) {
+			String key = defaultProperties[i][0];
+			String value = defaultProperties[i][1];
+			if (key == null) {
+				throw new IllegalArgumentException("One of the keys is null");
+			}
+			if (value == null) {
+				value = "null";
+			}
+			keys[i] = key;
+			values[i] = value;
+		}
+		createPropertiesFile(keys, values);
+	}
+
+	/**
+	 * If the properties file is not set up correctly, this method will create a default properties file and continue the
+	 * execution of the application. This method should only be called if the properties file is not set up correctly. If
+	 * the application can't continue after failing to read a property, then the application should throw an exception.
+	 */
+	public void createDefaultProperties(String[][] defaultProperties) {
+		for (String[] property : defaultProperties) {
+			try {
+				this.createProperty(property[0], property[1]);
+			} catch (IllegalArgumentException ignored) {
+			}
+		}
+		try {
+			this.saveProperties();
+		} catch (IOException fileException) {
+			throw new IllegalStateException("The properties file is inaccessible or an error has occurred", fileException);
 		}
 	}
 
@@ -345,7 +390,7 @@ public abstract class IerisProperties implements AutoCloseable {
 		try {
 			properties.store(new FileWriter(getPropertyFile()), name.substring(0, 1).toUpperCase() + name.substring(1));
 		} catch (IOException e) {
-			throw new IOException("Could not store the properties", e);
+			throw new IOException("Could not save the properties", e);
 		}
 	}
 }

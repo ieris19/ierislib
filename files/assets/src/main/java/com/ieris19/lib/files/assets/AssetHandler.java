@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 
@@ -111,7 +112,7 @@ public class AssetHandler implements AutoCloseable {
 	 *
 	 * @return the input stream of the asset, null if the caller class cannot be found, or the asset cannot be found
 	 */
-	public static InputStream getResourceAsString(String name) {
+	public static InputStream getResourceAsStream(String name) {
 		try {
 			Class<?> resourceCaller = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName());
 			return resourceCaller.getResourceAsStream(name);
@@ -151,6 +152,25 @@ public class AssetHandler implements AutoCloseable {
 	 */
 	public FileInputStream getAssetAsStream(String name) throws FileNotFoundException {
 		return new FileInputStream(new File(assetFolder, name));
+	}
+
+	/**
+	 * Gets the URL of the specified asset from this asset handler's folder
+	 *
+	 * @param name the name of the asset
+	 *
+	 * @return the URL of the asset
+	 *
+	 * @throws IllegalStateException if the URL is malformed, this should never happen unless the file structure is
+	 *                               invalid
+	 */
+	public URL getAssetURL(String name) throws IllegalStateException {
+		try {
+			return new File(assetFolder, name).toURI().toURL();
+		} catch (MalformedURLException e) {
+			throw new IllegalStateException(
+					"Asset URL is malformed, there might have been an error or the file structure is invalid", e);
+		}
 	}
 
 	/**

@@ -58,12 +58,12 @@ public class UIComponent {
 	 * @param viewModel  the view model of the UIComponent
 	 * @param controller the view controller of the UIComponent
 	 */
-	UIComponent(String fxmlName, Model model, ViewModel viewModel, ViewController controller) {
+	public UIComponent(String fxmlName, Model model, ViewModel viewModel, ViewController controller) {
 		this.model = model;
 		this.viewModel = viewModel;
 		this.viewModel.setModel(model);
 		this.controller = controller;
-		URL fxml = AssetHandler.getResource(fxmlName);
+		URL fxml = AssetHandler.getInstance("fxml").getAssetURL(fxmlName);
 		if (fxml != null) {
 			this.fxmlFile = fxml;
 		} else {

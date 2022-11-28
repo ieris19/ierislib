@@ -17,16 +17,17 @@
 
 package com.ieris19.lib.ui.core;
 
+import com.ieris19.lib.files.assets.AssetHandler;
+import com.ieris19.lib.files.config.FileProperties;
+import com.ieris19.lib.files.config.PropertyTypeException;
+import com.ieris19.lib.ui.mvvm.ViewController;
+import com.ieris19.lib.util.log.Log;
+import com.ieris19.lib.util.log.ieris.IerisLog;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-import com.ieris19.lib.files.assets.AssetHandler;
-import com.ieris19.lib.util.log.Log;
-import com.ieris19.lib.util.log.ieris.IerisLog;
-import com.ieris19.lib.files.config.FileProperties;
-import com.ieris19.lib.ui.mvvm.ViewController;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -51,12 +52,12 @@ public class ViewManager {
 	/**
 	 * Properties file for the application
 	 */
-	private final FileProperties appProperties;
+	private final FileProperties uiProperties;
 
 	/**
 	 * Logs the events that occur in the application
 	 */
-	private final Log log = IerisLog.getInstance("IerisFX");
+	private final Log log = IerisLog.getInstance("ierisfx");
 
 	/**
 	 * Creates a new ViewManager to handle the views in the application
@@ -64,11 +65,15 @@ public class ViewManager {
 	public ViewManager() {
 		log.debug("Initializing ViewManager");
 		log.trace("Loading application properties");
-		this.appProperties = FileProperties.getInstance("app");
-		this.name = appProperties.getProperty("name");
-		log.trace("Application name: " + name);
-		if (name == null) {
+		this.uiProperties = FileProperties.getInstance("ierisfx");
+		try {
+			this.name = uiProperties.getProperty("name");
+			log.trace("Application name: " + name);
+		} catch (IllegalArgumentException e) {
 			log.fatal("Name property not found in app.properties");
+			defaultProperties();
+			throw new IllegalStateException(
+					"The properties are not set up correctly. Please check the log for more information.");
 		}
 	}
 
@@ -83,7 +88,14 @@ public class ViewManager {
 		log.debug("Obtaining icon from file");
 		setIcon();
 		log.success("Icon set, trying to load the view");
-		openView(appProperties.getProperty("default-view"));
+		try {
+			openView(uiProperties.getProperty("default-view"));
+		} catch (IllegalArgumentException e) {
+			log.fatal("View property not found in app.properties");
+			defaultProperties();
+			throw new IllegalStateException(
+					"The properties are not set up correctly. Please check the log for more information.");
+		}
 	}
 
 	/**
@@ -140,7 +152,13 @@ public class ViewManager {
 		stage.setTitle(title);
 		log.info("Window title set to: " + title);
 		stage.sizeToScene();
-		stage.setResizable(appProperties.getPropertyBoolean("resizable"));
+		try {
+			stage.setResizable(uiProperties.getPropertyBoolean("resizable"));
+		} catch (IllegalArgumentException | PropertyTypeException e) {
+			log.warning("Resizable property not found in app.properties");
+			defaultProperties();
+			stage.setResizable(true);
+		}
 		stage.setScene(currentScene);
 		stage.show();
 		stage.centerOnScreen();
@@ -152,10 +170,10 @@ public class ViewManager {
 	public void setIcon() {
 		InputStream iconStream = null;
 		try {
-			iconStream = AssetHandler.getInstance("images").getAssetAsStream(appProperties.getProperty("icon"));
-			;
-		} catch (IOException e) {
+			iconStream = AssetHandler.getInstance("images").getAssetAsStream(uiProperties.getProperty("icon"));
+		} catch (IOException | IllegalArgumentException e) {
 			log.error("Could not load icon");
+			defaultProperties();
 			e.printStackTrace();
 		}
 		if (iconStream != null) {
@@ -168,5 +186,16 @@ public class ViewManager {
 				log.error("Icon doesn't exit or is null");
 			}
 		}
+	}
+
+	/**
+	 * Creates a default set of properties needed for IerisFX to run, and saves them to the properties file. It will skip
+	 * any properties that are already set
+	 */
+	private void defaultProperties() {
+		log.debug("Setting default properties");
+		uiProperties.createDefaultProperties(
+				new String[][] {{"name", ""}, {"default-view", ""}, {"resizable", ""}, {"icon", ""}});
+		log.debug("Default properties set");
 	}
 }

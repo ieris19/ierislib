@@ -31,21 +31,17 @@ public class IerisFX extends Application {
 	/**
 	 * The initializer method of the application. This script is responsible for initializing the application.
 	 */
-	private Script initScript;
+	private static Script initScript;
 	/**
 	 * The main method of the application. This script is responsible for starting the application.
 	 */
-	private Script startScript;
+	private static Script startScript;
 	/**
 	 * The stop method of the application. This script is responsible for cleanup after the application has terminated.
 	 */
-	private Script stopScript;
+	private static Script stopScript;
 
-	/**
-	 * Creates a new Application instance with empty scripts. The scripts can be set later. This limits the application to
-	 * only the default behaviour unless the scripts are set afterwards.
-	 */
-	public IerisFX() {
+	static {
 		Script empty = (args) -> {};
 		setInit(empty);
 		setStart(empty);
@@ -53,12 +49,19 @@ public class IerisFX extends Application {
 	}
 
 	/**
+	 * Creates a new Application instance with empty scripts. The scripts can be set later. This limits the application to
+	 * only the default behaviour unless the scripts are set afterwards.
+	 */
+	public IerisFX() {
+	}
+
+	/**
 	 * Sets the initialization script for the application
 	 *
 	 * @param initScript the initialization script
 	 */
-	public void setInit(Script initScript) {
-		this.initScript = initScript;
+	public static void setInit(Script initScript) {
+		IerisFX.initScript = initScript;
 	}
 
 	/**
@@ -66,17 +69,17 @@ public class IerisFX extends Application {
 	 *
 	 * @param startScript the script to be executed right before the view manager is started
 	 */
-	public void setStart(Script startScript) {
-		this.startScript = startScript;
+	public static void setStart(Script startScript) {
+		IerisFX.startScript = startScript;
 	}
 
 	/**
 	 * Sets the stop script for the application
 	 *
-	 * @param stopScript
+	 * @param stopScript the script to be executed right before the application is terminated
 	 */
-	public void setStop(Script stopScript) {
-		this.stopScript = stopScript;
+	public static void setStop(Script stopScript) {
+		IerisFX.stopScript = stopScript;
 	}
 
 	/**
