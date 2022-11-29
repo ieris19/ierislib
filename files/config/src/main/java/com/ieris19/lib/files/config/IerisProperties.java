@@ -308,7 +308,7 @@ public abstract class IerisProperties implements AutoCloseable {
 	}
 
 	/**
-	 * Retrieves the byte value from a property based on the provided key
+	 * Retrieves the single Byte value from a property based on the provided key
 	 *
 	 * @param key the name of the desired property
 	 *
@@ -326,7 +326,7 @@ public abstract class IerisProperties implements AutoCloseable {
 	}
 
 	/**
-	 * Retrieves the short value from a property based on the provided key
+	 * Retrieves the Short Integer value from a property based on the provided key
 	 *
 	 * @param key the name of the desired property
 	 *
@@ -344,7 +344,7 @@ public abstract class IerisProperties implements AutoCloseable {
 	}
 
 	/**
-	 * Retrieves the integer value from a property based on the provided key
+	 * Retrieves the Integer value from a property based on the provided key
 	 *
 	 * @param key the name of the desired property
 	 *
@@ -359,6 +359,78 @@ public abstract class IerisProperties implements AutoCloseable {
 		} catch (NumberFormatException e) {
 			throw new PropertyTypeException(properties, key, "Integer");
 		}
+	}
+
+	/**
+	 * Retrieves the Long Integer value from a property based on the provided key
+	 *
+	 * @param key the name of the desired property
+	 *
+	 * @return the long value of the property corresponding to the key
+	 *
+	 * @throws IllegalArgumentException if the property does not exist
+	 * @throws PropertyTypeException    if the property is not a Long
+	 */
+	public long getPropertyLong(String key) throws IllegalArgumentException, PropertyTypeException {
+		try {
+			return Long.parseLong(getProperty(key));
+		} catch (NumberFormatException e) {
+			throw new PropertyTypeException(properties, key, "Long");
+		}
+	}
+
+	/**
+	 * Retrieves the Floating point value from a property based on the provided key
+	 *
+	 * @param key the name of the desired property
+	 *
+	 * @return the float value of the property corresponding to the key
+	 *
+	 * @throws IllegalArgumentException if the property does not exist
+	 * @throws PropertyTypeException    if the property is not a Float
+	 */
+	public float getPropertyFloat(String key) throws IllegalArgumentException, PropertyTypeException {
+		try {
+			return Float.parseFloat(getProperty(key));
+		} catch (NumberFormatException e) {
+			throw new PropertyTypeException(properties, key, "Float");
+		}
+	}
+
+	/**
+	 * Retrieves the Double precision floating point value from a property based on the provided key
+	 *
+	 * @param key the name of the desired property
+	 *
+	 * @return the double value of the property corresponding to the key
+	 *
+	 * @throws IllegalArgumentException if the property does not exist
+	 * @throws PropertyTypeException    if the property is not a Double
+	 */
+	public double getPropertyDouble(String key) throws IllegalArgumentException, PropertyTypeException {
+		try {
+			return Double.parseDouble(getProperty(key));
+		} catch (NumberFormatException e) {
+			throw new PropertyTypeException(properties, key, "Double");
+		}
+	}
+
+	/**
+	 * Retrieves the Character value from a property based on the provided key
+	 *
+	 * @param key the name of the desired property
+	 *
+	 * @return the char value of the property corresponding to the key
+	 *
+	 * @throws IllegalArgumentException if the property does not exist
+	 * @throws PropertyTypeException    if the property is not a Character
+	 */
+	public char getPropertyCharacter(String key) throws IllegalArgumentException, PropertyTypeException {
+		String value = getProperty(key);
+		if (value.length() != 1 || value.matches("\\d")) {
+			throw new PropertyTypeException(properties, key, "Character");
+		}
+		return value.charAt(0);
 	}
 
 	/**
