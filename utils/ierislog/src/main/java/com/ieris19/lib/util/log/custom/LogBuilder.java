@@ -44,8 +44,8 @@ public class LogBuilder {
 	 * A constructor to initialize an empty builder
 	 */
 	public LogBuilder() {
-		headerBuilder = new ArrayList<TextField>();
-		defaultElements = new HashMap<String, TextField>();
+		headerBuilder = new ArrayList<>();
+		defaultElements = new HashMap<>();
 		setDefaultElements();
 		openSection = false;
 	}

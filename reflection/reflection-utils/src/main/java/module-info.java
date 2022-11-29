@@ -3,8 +3,6 @@
  * operations can be done manually but this module allows certain common operations to be shortened.
  */
 module ierislib.reflection.utils {
-	requires java.base;
-	requires java.compiler;
 
 	exports com.ieris19.lib.reflection.util;
 }

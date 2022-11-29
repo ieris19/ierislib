@@ -28,21 +28,15 @@ class BinaryTest {
 		try {
 			output = Binary.convertDecimal(input);
 		} catch (Exception e) {
-			return outputFail(testName, "Failed with exception: " + e.getClass().getSimpleName());
+			System.out.println("[FAIL " + testName + "] " + "Failed with exception: " + e.getClass().getSimpleName());
+			return false;
 		}
-		if (!output.equals(correctAnswer))
-			return outputFail(testName, "Expected output " + correctAnswer + " but got " + output);
-		else
-			return outputPass(testName);
-	}
-
-	private static boolean outputPass(String testName) {
-		System.out.println("[Pass " + testName + "]");
-		return true;
-	}
-
-	private static boolean outputFail(String testName, String message) {
-		System.out.println("[FAIL " + testName + "] " + message);
-		return false;
+		if (!output.equals(correctAnswer)) {
+			System.out.println("[FAIL " + testName + "] " + "Expected output " + correctAnswer + " but got " + output);
+			return false;
+		} else {
+			System.out.println("[Pass " + testName + "]");
+			return true;
+		}
 	}
 }

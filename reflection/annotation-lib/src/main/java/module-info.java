@@ -4,7 +4,6 @@
  * annotation-processor module, the rest are merely informative of intentions of the programmer.
  */
 module ierislib.reflection.annotations {
-	requires java.base;
 
 	exports com.ieris19.lib.reflection.annotations;
 }

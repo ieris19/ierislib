@@ -3,7 +3,6 @@
  * simple configuration files and to read them in a simple way.
  */
 module ierislib.files.config {
-	requires java.base;
 
 	exports com.ieris19.lib.files.config;
 }

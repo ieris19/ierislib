@@ -177,7 +177,7 @@ public class Console {
 	/**
 	 * Runs an infinite loop where commands are entered and as a result, certain methods are executed, thus allows full
 	 * control of the program with a small amount of commands.
-	 *
+	 * <p>
 	 * In the commands, you can use the following exceptions to handle the reply the console will give.
 	 * <ul>
 	 *   <li>No exception and after every exception it will loop back to the prompt. Catch your own exceptions to override

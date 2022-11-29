@@ -3,7 +3,5 @@
  * interface to load and save assets.
  */
 module ierislib.files.assets {
-	requires java.base;
-
 	exports com.ieris19.lib.files.assets;
 }

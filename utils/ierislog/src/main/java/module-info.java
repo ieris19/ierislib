@@ -3,7 +3,6 @@
  * can be defined through a simple builder.
  */
 module ierislib.util.log {
-	requires java.base;
 
 	requires ierislib.common;
 

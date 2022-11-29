@@ -4,7 +4,6 @@
  * and flexible as possible, so it can be used in any project.
  */
 module ierislib.reflection.processor {
-	requires java.base;
 	requires java.compiler;
 
 	exports com.ieris19.lib.reflection.processor;

@@ -60,7 +60,7 @@ public class IerisLog implements Log {
 	/**
 	 * Stores the name of the program being logged, if not set, it will default to "Log".
 	 */
-	private String name;
+	private final String name;
 	/**
 	 * Stores the level of alerts that should be printed. This will affect the level of alerts that will be printed in the
 	 * console and in the log file
@@ -97,9 +97,10 @@ public class IerisLog implements Log {
 		if (instances == null) {
 			instances = new HashMap<>();
 		}
-		Log instance = instances.get(appName);
+		IerisLog instance = instances.get(appName);
 		if (instance == null) {
 			instance = new IerisLog(appName);
+			instances.put(appName, instance);
 		}
 		latestUsedInstance = instance;
 		return latestUsedInstance;
@@ -125,10 +126,11 @@ public class IerisLog implements Log {
 	@Override public void changeLogDirectory(File newDirectory) throws IllegalArgumentException {
 		synchronizedLock.lock();
 		try {
-			if (!newDirectory.exists())
-				newDirectory.mkdir();
-			if (!newDirectory.isDirectory())
-				throw new IllegalArgumentException("The file provided is not a directory");
+			if (!newDirectory.mkdir()) {
+				if (!newDirectory.isDirectory()) {
+					throw new IllegalArgumentException("The file provided is not a directory");
+				}
+			}
 			this.logDirectory = newDirectory;
 		} finally {
 			synchronizedLock.unlock();
@@ -186,7 +188,9 @@ public class IerisLog implements Log {
 
 	/**
 	 * Verifies if the log level is set to print the specified level of alerts
+	 *
 	 * @param severity the level of alert to verify
+	 *
 	 * @return true if the log level is set to print the specified level of alerts, false otherwise
 	 */
 	@Override public boolean isLevel(Level severity) {
@@ -195,6 +199,7 @@ public class IerisLog implements Log {
 
 	/**
 	 * A method to access the name of the program being logged
+	 *
 	 * @return the name of the program being logged
 	 */
 	public String getName() {
@@ -302,7 +307,11 @@ public class IerisLog implements Log {
 	@Override public File getLogFile() throws IOException {
 		String fileName = name + " - " + TimestampHandler.getInstance().getFormattedDate() + ".log";
 		File logFile = new File(logDirectory, fileName);
-		logFile.createNewFile();
+		if (!logFile.createNewFile()) {
+			if (!logFile.exists()) {
+				throw new IOException("There's been a problem creating a file");
+			}
+		}
 		return logFile;
 	}
 
@@ -328,14 +337,5 @@ public class IerisLog implements Log {
 	 */
 	@Override public void writeToFile(String logLine) throws IOException {
 		Log.super.writeToFile(logLine);
-	}
-
-	/**
-	 * Formats the current time into a timestamp ready to be printed out
-	 *
-	 * @return fully printed
-	 */
-	@Override public String timestamp() {
-		return Log.super.timestamp();
 	}
 }

@@ -152,7 +152,6 @@ public interface Log {
 	 *
 	 * @throws IOException if the file cannot be created
 	 *
-	 *
 	 * @return a Log file with an appropriate filename
 	 */
 	File getLogFile() throws IOException;

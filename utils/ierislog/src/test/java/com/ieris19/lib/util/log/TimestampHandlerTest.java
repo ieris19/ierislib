@@ -51,7 +51,7 @@ class TimestampHandlerTest {
 	@Nested
 	@DisplayName ("Time Selection")
 	class TimeAccuracyTest {
-		@Test @DisplayName ("Accurate Time Test") void accuraccy() {
+		@Test @DisplayName ("Accurate Time Test") void accuracy() {
 			DateTimeFormatter comparisonFormat = DateTimeFormatter.ofPattern("dd,MM,yyyy,hh,mm,ss");
 			assertEquals(LocalDateTime.now(ZoneId.of("Z")).format(comparisonFormat),
 									 timestamp.getTime().format(comparisonFormat));

@@ -3,7 +3,6 @@
  * use slf4j.
  */
 module ierislib.util.slf4j {
-	requires java.base;
 	requires org.slf4j;
 	requires ierislib.util.log;
 

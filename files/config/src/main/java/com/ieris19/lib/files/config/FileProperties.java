@@ -85,7 +85,7 @@ public class FileProperties extends IerisProperties implements Closeable {
 			instance = new FileProperties(key);
 			instances.put(key, instance);
 		}
-		return (FileProperties) instance;
+		return instance;
 	}
 
 	/**
@@ -97,7 +97,8 @@ public class FileProperties extends IerisProperties implements Closeable {
 	@Override public void close() throws IOException {
 		try {
 			this.saveProperties();
-			instances.remove(this.getName());
+			FileProperties self = instances.remove(this.getName());
+			self = null;
 		} catch (IOException e) {
 			throw new IOException("Could not store the properties, the properties have been deleted", e);
 		}

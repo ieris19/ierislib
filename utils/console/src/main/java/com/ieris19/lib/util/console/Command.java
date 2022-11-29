@@ -28,16 +28,16 @@ public class Command {
 	/**
 	 * Command script designating the code to be called upon when the command is executed
 	 */
-	private Script script;
+	private final Script script;
 	/**
 	 * A name to be used in order to call this command
 	 */
-	private String name;
+	private final String name;
 	/**
 	 * A detailed description of the command, its parameters and functioning, to be displayed through the {@code help}
 	 * command
 	 */
-	private String description;
+	private final String description;
 
 	/**
 	 * Constructs a command object

@@ -3,7 +3,6 @@
  * running them on a loop
  */
 module ierislib.util.console {
-	requires java.base;
 	requires ierislib.common;
 
 	exports com.ieris19.lib.util.console;

@@ -53,10 +53,10 @@ public enum Level {
 	/**
 	 * The level of the severity
 	 */
-	private int logLevel;
+	private final int logLevel;
 
 	/**
-	 * Creates a new Level level with the specified index
+	 * Creates a new Level with the specified index
 	 *
 	 * @param logLevel The index of the severity as an integer
 	 */

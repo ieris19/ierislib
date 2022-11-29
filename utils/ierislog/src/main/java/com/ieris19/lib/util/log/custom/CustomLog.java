@@ -27,7 +27,7 @@ public class CustomLog extends IerisLog {
 	/**
 	 * An array of fields that will be used as fields to include information in the log message
 	 */
-	TextField[] headerBuilder;
+	private final TextField[] headerBuilder;
 
 	/**
 	 * Creates a new CustomLog with the specified header builder array

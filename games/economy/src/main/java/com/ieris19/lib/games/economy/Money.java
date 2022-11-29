@@ -25,7 +25,7 @@ import java.math.RoundingMode;
 /**
  * A class that implements the most basic aspects of Money, an account for storing a money balance between negative one
  * billion and positive one billion.
- *
+ * <p>
  * It also contains a currency String for aesthetic purposes
  */
 public class Money {
@@ -51,7 +51,7 @@ public class Money {
 	/**
 	 * Support for objects listening to this object property changes
 	 */
-	private PropertyChangeSupport support;
+	private final PropertyChangeSupport support;
 
 	/**
 	 * Creates an instance with default values

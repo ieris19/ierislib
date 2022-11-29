@@ -31,13 +31,12 @@ import com.ieris19.lib.ui.mvvm.ViewModel;
  *  </pre>
  */
 module ierislib.ui {
-	requires java.base;
 
 	requires javafx.base;
-	requires javafx.controls;
+	requires javafx.graphics;
 	requires javafx.fxml;
-	requires javafx.media;
-	requires javafx.web;
+	requires javafx.graphics;
+	requires javafx.graphics;
 
 	requires ierislib.common;
 	requires ierislib.util.log;

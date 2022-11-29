@@ -34,9 +34,7 @@ class LoggerTest {
 	}
 
 	@Test @DisplayName ("Thread Name Test") void threadTester() {
-		Runnable threadSpawnLogger = () -> {
-			log.success("This element was logged from a different thread");
-		};
+		Runnable threadSpawnLogger = () -> log.success("This element was logged from a different thread");
 		String[] names = {"Server", "Worker", "Reader", "Writer", "UI"};
 		for (String name : names) {
 			Thread x = new Thread(threadSpawnLogger, name);

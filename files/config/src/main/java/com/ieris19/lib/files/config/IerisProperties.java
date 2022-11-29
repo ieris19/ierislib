@@ -18,6 +18,7 @@
 package com.ieris19.lib.files.config;
 
 import java.io.*;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -50,8 +51,13 @@ public abstract class IerisProperties implements AutoCloseable {
 	 */
 	protected IerisProperties(String name, File configDir) {
 		this.name = name;
+		if (!configDir.mkdir()) {
+			if (!configDir.isDirectory()) {
+				throw new IllegalArgumentException(
+						"You're trying to create a directory, but a file with the same name already exists");
+			}
+		}
 		this.configDir = configDir;
-		this.configDir.mkdir();
 		this.properties = new Properties();
 		loadProperties();
 	}
@@ -203,7 +209,11 @@ public abstract class IerisProperties implements AutoCloseable {
 	protected File getPropertyFile() throws IOException {
 		String fileName = name + ".properties";
 		File configFile = new File(configDir, fileName);
-		configFile.createNewFile();
+		if (!configFile.createNewFile()) {
+			if (!configFile.exists()) {
+				throw new IOException("The properties file could not be created");
+			}
+		}
 		return configFile;
 	}
 
@@ -215,8 +225,7 @@ public abstract class IerisProperties implements AutoCloseable {
 	 * @return a copy of the Properties object
 	 */
 	public Properties getProperties() {
-		Properties temp = new Properties();
-		this.properties.forEach((key, value) -> properties.put((String) key, (String) value));
+		Properties temp = (Properties) Map.copyOf(this.properties);
 		return properties;
 	}
 
