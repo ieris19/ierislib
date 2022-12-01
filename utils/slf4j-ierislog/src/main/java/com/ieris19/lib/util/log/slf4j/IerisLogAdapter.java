@@ -40,7 +40,7 @@ public final class IerisLogAdapter implements Logger {
 
 	private void log(Level severity, String string, Throwable t, Marker marker) {
 		String message = compose(string, t, marker);
-		switch (severity.level()) {
+		switch (severity.value()) {
 			case 0 -> ierisLog.fatal(message);
 			case 1 -> ierisLog.error(message);
 			case 2 -> ierisLog.warning(message);

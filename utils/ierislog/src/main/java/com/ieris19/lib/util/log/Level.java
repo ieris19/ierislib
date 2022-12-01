@@ -69,7 +69,7 @@ public enum Level {
 	 *
 	 * @return The severity level as an integer
 	 */
-	public int level() {
+	public int value() {
 		return logLevel;
 	}
 }

@@ -52,6 +52,7 @@ public interface Log {
 	 */
 	boolean isANSIEnabled();
 
+	void setLogLevel(Level level);
 	/**
 	 * Sets the log level of the log. The log level is a number that determines the severity of the messages that will be
 	 * logged. The level of the log messages is defined by the {@link Level} class. The log level needs to be set to an

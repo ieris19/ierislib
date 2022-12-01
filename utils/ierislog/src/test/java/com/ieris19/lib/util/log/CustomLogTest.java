@@ -10,7 +10,7 @@ class CustomLogTest {
 
 	@Test @DisplayName ("Template Loggers") void templateTest() {
 		CustomLog log = LogBuilder.template("default").build(LOG_NAME);
-		log.setLogLevel(Level.TRACE.level());
+		log.setLogLevel(Level.TRACE.value());
 		log.info("This message is a generic log");
 		log = LogBuilder.template("minimal").build(LOG_NAME);
 		log.info("This message is a minimal log");

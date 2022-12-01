@@ -81,7 +81,7 @@ public class IerisLog implements Log {
 	public IerisLog(String appName) throws IllegalArgumentException {
 		synchronizedLock = new ReentrantLock(true);
 		this.name = appName;
-		setLogLevel(INFO.level());
+		setLogLevel(INFO.value());
 		useANSI(true);
 		changeLogDirectory(new File("logs"));
 	}
@@ -163,6 +163,21 @@ public class IerisLog implements Log {
 	}
 
 	/**
+	 * Sets the level of alerts that should be printed. This will affect the level of alerts that will be printed in the
+	 * console and in the log file
+	 *
+	 * @param level the level of alerts that should be printed
+	 */
+	@Override public void setLogLevel(Level level) {
+		synchronizedLock.lock();
+		try {
+			this.logLevel = level.value();
+		} finally {
+			synchronizedLock.unlock();
+		}
+	}
+
+	/**
 	 * Set the level of alerts the logger should print. This will affect the level of alerts that will be printed in the
 	 * console and in the log file. Any number lower or higher than 6 will be set to 4 (INFO)
 	 *
@@ -170,10 +185,10 @@ public class IerisLog implements Log {
 	 */
 	@Override public void setLogLevel(int level) {
 		synchronizedLock.lock();
-		if (logLevel >= FATAL.level() && logLevel <= TRACE.level())
+		if (logLevel >= FATAL.value() && logLevel <= TRACE.value())
 			this.logLevel = level;
 		else
-			setLogLevel(INFO.level());
+			setLogLevel(INFO.value());
 		synchronizedLock.unlock();
 	}
 
@@ -194,7 +209,12 @@ public class IerisLog implements Log {
 	 * @return true if the log level is set to print the specified level of alerts, false otherwise
 	 */
 	@Override public boolean isLevel(Level severity) {
-		return severity.level() <= this.logLevel;
+		synchronizedLock.lock();
+		try {
+			return severity.value() <= this.logLevel;
+		} finally {
+			synchronizedLock.unlock();
+		}
 	}
 
 	/**
@@ -203,20 +223,12 @@ public class IerisLog implements Log {
 	 * @return the name of the program being logged
 	 */
 	public String getName() {
-		return name;
-	}
-
-	/**
-	 * Log a completely custom message by specifying the message, reason and the color to be used
-	 *
-	 * @param message  Description of the event
-	 * @param severity Nature/Reason of the event
-	 * @param color    Color to be printed in the console
-	 */
-	@Override public void log(String message, String severity, TextColor color) {
 		synchronizedLock.lock();
-		Log.super.log(message, severity, color);
-		synchronizedLock.unlock();
+		try {
+			return name;
+		} finally {
+			synchronizedLock.unlock();
+		}
 	}
 
 	/**
@@ -325,17 +337,5 @@ public class IerisLog implements Log {
 	 */
 	@Override public String logHeader(String logType) {
 		return timestamp() + "[" + Thread.currentThread().getName() + "/" + logType + "] ";
-	}
-
-	/**
-	 * Logs to a file using a printer, every call to this method will "create" a new file, however, if a previous file
-	 * fits the criteria it will then be logged at the bottom of the file
-	 *
-	 * @param logLine the line to be logged in the file
-	 *
-	 * @throws IOException when the file doesn't exist cannot be created
-	 */
-	@Override public void writeToFile(String logLine) throws IOException {
-		Log.super.writeToFile(logLine);
 	}
 }
