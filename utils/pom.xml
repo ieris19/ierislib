@@ -34,7 +34,7 @@
         <module>console</module>
         <module>ierislog</module>
         <module>scoreboard</module>
-        <module>slf4j</module>
+        <module>slf4j-ierislog</module>
     </modules>
 
     <name>Utilities Library</name>

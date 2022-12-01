@@ -17,6 +17,10 @@
 
 package com.ieris19.lib.util.log.slf4j;
 
+import org.slf4j.ILoggerFactory;
+import org.slf4j.IMarkerFactory;
+import org.slf4j.spi.MDCAdapter;
+
 /**
  * This class provides the logging service for the slf4j facade. All methods directed at slf4j will be directed to this
  * provider if present in the classpath and no other slf4j providers are present. If other providers are present it
@@ -33,7 +37,7 @@ public class SLF4JServiceProvider implements org.slf4j.spi.SLF4JServiceProvider 
 	 *
 	 * @return instance of {@link org.slf4j.ILoggerFactory}
 	 */
-	@Override public org.slf4j.ILoggerFactory getLoggerFactory() {
+	@Override public ILoggerFactory getLoggerFactory() {
 		return new IerisLogFactory();
 	}
 
@@ -42,7 +46,7 @@ public class SLF4JServiceProvider implements org.slf4j.spi.SLF4JServiceProvider 
 	 *
 	 * @return instance of {@link org.slf4j.IMarkerFactory}
 	 */
-	@Override public org.slf4j.IMarkerFactory getMarkerFactory() {
+	@Override public IMarkerFactory getMarkerFactory() {
 		return null;
 	}
 
@@ -51,7 +55,7 @@ public class SLF4JServiceProvider implements org.slf4j.spi.SLF4JServiceProvider 
 	 *
 	 * @return instance of {@link org.slf4j.spi.MDCAdapter}
 	 */
-	@Override public org.slf4j.spi.MDCAdapter getMDCAdapter() {
+	@Override public MDCAdapter getMDCAdapter() {
 		return null;
 	}
 
@@ -72,6 +76,5 @@ public class SLF4JServiceProvider implements org.slf4j.spi.SLF4JServiceProvider 
 	 * <p><b>WARNING:</b> This method is intended to be called once by
 	 * {@link org.slf4j.LoggerFactory} class and from nowhere else.
 	 */
-	@Override public void initialize() {
-	}
+	@Override public void initialize() {}
 }
