@@ -36,9 +36,12 @@
 
     <properties>
         <ieris.source.repoURL>https://github.com/Ieris19/IerisLib/tree/prime</ieris.source.repoURL>
-        <maven.compiler.source>19</maven.compiler.source>
-        <maven.compiler.target>19</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <ieris.java.version>19</ieris.java.version>
+        <ieris.encoding>UTF-8</ieris.encoding>
+        <maven.compiler.source>${ieris.java.version}</maven.compiler.source>
+        <maven.compiler.target>${ieris.java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>${ieris.encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${ieris.encoding}</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>
