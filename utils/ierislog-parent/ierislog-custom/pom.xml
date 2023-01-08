@@ -17,27 +17,27 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>IerisLib</artifactId>
-        <groupId>com.ieris19.lib</groupId>
-        <version>2.0.0</version>
+        <groupId>com.ieris19.lib.util.log</groupId>
+        <artifactId>ierislog-parent</artifactId>
+        <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.ieris19.lib.util</groupId>
-    <artifactId>utils</artifactId>
+    <artifactId>ierislog-custom</artifactId>
     <version>1.0.0</version>
-    <packaging>pom</packaging>
 
-    <modules>
-        <module>console</module>
-        <module>scoreboard</module>
-        <module>ierislog-parent</module>
-    </modules>
-
-    <name>Utilities Library</name>
-    <description>A parent artifact for all classes that provide utilities</description>
-    <url>${project.parent.url}/utils</url>
+    <name>Customizable Logger</name>
+    <description>An implementation that allows for customization of the logger through the use of tiny scripts</description>
+    <url>${project.parent.url}/custom</url>
     <inceptionYear>2022</inceptionYear>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ieris19.lib.util.log</groupId>
+            <artifactId>ierislog-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
 </project>
