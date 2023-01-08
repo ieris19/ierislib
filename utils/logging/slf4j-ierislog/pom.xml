@@ -19,25 +19,31 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.ieris19.lib.util</groupId>
-        <artifactId>utils</artifactId>
+        <groupId>com.ieris19.lib.util.log</groupId>
+        <artifactId>logging</artifactId>
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>ierislog</artifactId>
+    <artifactId>slf4j-ierislog</artifactId>
     <version>1.0.0</version>
 
-    <name>IerisLog</name>
-    <description>A tool for logging to both a file and the console</description>
-    <url>utils/log</url>
+    <name>SLF4J IerisLog</name>
+    <description>A bridge between IerisLog and the SLF4J</description>
+    <url>${project.parent.url}/log</url>
     <inceptionYear>2022</inceptionYear>
 
     <dependencies>
         <dependency>
-            <groupId>com.ieris19.lib.common</groupId>
-            <artifactId>common</artifactId>
+            <groupId>com.ieris19.lib.util</groupId>
+            <artifactId>ierislog</artifactId>
             <version>1.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.5</version>
         </dependency>
     </dependencies>
 </project>

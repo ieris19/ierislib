@@ -17,27 +17,19 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>IerisLib</artifactId>
-        <groupId>com.ieris19.lib</groupId>
-        <version>2.0.0</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ieris19.lib.util</groupId>
+        <artifactId>utils</artifactId>
+        <version>1.0.0</version>
+    </parent>
 
-    <groupId>com.ieris19.lib.util</groupId>
-    <artifactId>utils</artifactId>
-    <version>1.0.0</version>
+    <groupId>com.ieris19.lib.util.log</groupId>
+    <artifactId>logging</artifactId>
     <packaging>pom</packaging>
 
-    <modules>
-        <module>console</module>
-        <module>scoreboard</module>
-        <module>logging</module>
-    </modules>
-
-    <name>Utilities Library</name>
-    <description>A parent artifact for all classes that provide utilities</description>
-    <url>${project.parent.url}/utils</url>
-    <inceptionYear>2022</inceptionYear>
+    <name>Logging Framework</name>
+    <description>An extensive framework that allows for logging in many ways</description>
+    <url>${project.parent.url}/logging</url>
+    <inceptionYear>2023</inceptionYear>
 </project>
