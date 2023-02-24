@@ -29,8 +29,12 @@ public class TimestampHandler implements AutoCloseable {
 	/**
 	 * Singleton instance of the timestamp handler
 	 */
-	private static HashMap<TimeFormatter, TimestampHandler> instances;
+	private static final HashMap<TimeFormatter, TimestampHandler> instances;
 	private TimeFormatter defaultFormatter;
+
+	static {
+		instances = new HashMap<>();
+	}
 
 	/**
 	 * Private constructor to avoid accidentally creating multiple instances of {@link TimestampHandler}. Please refer to

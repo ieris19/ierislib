@@ -28,9 +28,9 @@
     <artifactId>ierislog-slf4j</artifactId>
     <version>1.0.0</version>
 
-    <name>SLF4J IerisLog</name>
+    <name>SLF4J Adapter</name>
     <description>A bridge between IerisLog and the SLF4J</description>
-    <url>${project.parent.url}/log</url>
+    <url>${project.parent.url}/ierislog-slf4j</url>
     <inceptionYear>2022</inceptionYear>
 
     <dependencies>

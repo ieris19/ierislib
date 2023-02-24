@@ -30,7 +30,7 @@
 
     <name>Customizable Logger</name>
     <description>An implementation that allows for customization of the logger through the use of tiny scripts</description>
-    <url>${project.parent.url}/custom</url>
+    <url>${project.parent.url}/ierislog-custom</url>
     <inceptionYear>2022</inceptionYear>
 
     <dependencies>

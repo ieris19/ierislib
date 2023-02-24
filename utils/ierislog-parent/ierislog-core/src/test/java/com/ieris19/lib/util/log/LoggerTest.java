@@ -18,7 +18,7 @@
 package com.ieris19.lib.util.log;
 
 import com.ieris19.lib.util.log.core.IerisLog;
-import com.ieris19.lib.util.log.core.Log;
+import com.ieris19.lib.util.log.core.IerisLogger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,7 +29,7 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LoggerTest {
-	private Log log;
+	private IerisLogger log;
 	private static File logFile;
 
 	@BeforeEach void setup() {

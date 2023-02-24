@@ -17,6 +17,7 @@
 
 package com.ieris19.lib.util.log;
 
+import com.ieris19.lib.util.log.common.TimeFormatter;
 import com.ieris19.lib.util.log.common.TimestampHandler;
 import org.junit.jupiter.api.*;
 
@@ -24,26 +25,25 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName ("Time Log Test")
 class TimestampHandlerTest {
 	private static TimestampHandler timestamp;
 
 	@BeforeAll @DisplayName ("Setup") static void setup() {
-		timestamp = TimestampHandler.getInstance();
+		timestamp = TimestampHandler.getInstance(TimeFormatter.ISO);
 	}
 
 	@Nested
 	@DisplayName ("Singleton Test")
 	class SingletonTest {
-		@Test @DisplayName ("A single instance exists") void instanceTest() {
-			assertSame(timestamp, TimestampHandler.getInstance());
-			TimestampHandler time1 = TimestampHandler.getInstance();
-			assertSame(timestamp, time1);
-			TimestampHandler time2 = TimestampHandler.getInstance();
-			assertSame(timestamp, time2);
+		@Test @DisplayName ("Multiton instance test") void instanceTest() {
+			assertSame(timestamp, TimestampHandler.getInstance(TimeFormatter.ISO));
+			TimestampHandler time1 = TimestampHandler.getInstance(TimeFormatter.EUROPEAN);
+			assertNotSame(timestamp, time1);
+			TimestampHandler time2 = TimestampHandler.getInstance(TimeFormatter.EUROPEAN);
+			assertSame(time1, time2);
 		}
 	}
 
@@ -52,12 +52,12 @@ class TimestampHandlerTest {
 	class FormatterTest {
 		@Test @DisplayName ("European Proper Format") void europeanFormat() {
 			LocalDateTime time = LocalDateTime.of(2022, 2, 5, 21, 21, 21);
-			assertEquals(time.format(ChronoFormat.EUROPEAN.get()), "05/02/2022 21:21:21");
+			assertEquals(time.format(TimeFormatter.EUROPEAN.get()), "05/02/2022 21:21:21");
 		}
 
 		@Test @DisplayName ("ISO Proper Format") void isoFormat() {
 			LocalDateTime time = LocalDateTime.of(2022, 2, 5, 21, 21, 21);
-			assertEquals(time.format(ChronoFormat.ISO.get()), "2022-02-05T21:21:21");
+			assertEquals(time.format(TimeFormatter.ISO.get()), "2022-02-05T21:21:21");
 		}
 	}
 

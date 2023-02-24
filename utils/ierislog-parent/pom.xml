@@ -36,7 +36,7 @@
 
     <name>Logging Framework</name>
     <description>An extensive framework that allows for logging in many ways</description>
-    <url>${project.parent.url}/logging</url>
+    <url>${project.parent.url}/ierislog-parent</url>
     <inceptionYear>2023</inceptionYear>
 
     <dependencies>

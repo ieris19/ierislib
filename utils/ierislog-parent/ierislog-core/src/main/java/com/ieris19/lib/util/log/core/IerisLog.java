@@ -303,7 +303,7 @@ public class IerisLog implements IerisLogger {
 	 * @param message messaged to be logged
 	 */
 	public void fatal(String message) {
-		log(message, FATAL, TextColor.RED);
+		log(message, FATAL, TextColor.MAGENTA);
 	}
 
 	/**

@@ -63,6 +63,8 @@ public class LogBuilder {
 		defaultElements = new HashMap<>();
 		setDefaultElements();
 		openSection = false;
+		enabledANSI = true;
+		logLevel = Level.INFO;
 	}
 
 	/**
@@ -74,9 +76,9 @@ public class LogBuilder {
 		defaultElements.put("start-section", (args) -> "[");
 		defaultElements.put("close-section", (args) -> "] ");
 
-		defaultElements.put("timestamp", (args) -> TimestampHandler.getInstance().getFormatted());
-		defaultElements.put("date", (args) -> TimestampHandler.getInstance().getFormattedDate());
-		defaultElements.put("time", (args) -> TimestampHandler.getInstance().getFormattedTime());
+		defaultElements.put("timestamp", (args) -> TimestampHandler.getInstance(TimeFormatter.ISO).getFormatted());
+		defaultElements.put("date", (args) -> TimestampHandler.getInstance(TimeFormatter.DATE_ONLY).getFormatted());
+		defaultElements.put("time", (args) -> TimestampHandler.getInstance(TimeFormatter.TIME_ONLY).getFormatted());
 
 		defaultElements.put("severity", (args) -> args[0]);
 		defaultElements.put("thread", (args) -> Thread.currentThread().getName());
@@ -218,7 +220,9 @@ public class LogBuilder {
 			closeSection();
 		}
 		CustomLog log = new CustomLog(name, headerBuilder.toArray(new TextField[0]));
-		log.changeLogDirectory(logDirectory);
+		if (logDirectory != null) {
+			log.changeLogDirectory(logDirectory);
+		}
 		log.useANSI(enabledANSI);
 		log.setLogLevel(logLevel);
 		log.debug("IerisLog has been initialized");
