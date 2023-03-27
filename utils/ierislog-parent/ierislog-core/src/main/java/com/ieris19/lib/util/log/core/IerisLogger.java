@@ -62,7 +62,7 @@ public interface IerisLogger {
 	 * @return fully printed
 	 */
 	default String timestamp() {
-		return "[" + TimestampHandler.getInstance(TimeFormatter.ISO).getFormatted() + "] ";
+		return "[" + TimestampHandler.getInstance(TimeFormatter.TIME_ONLY).getFormatted() + "] ";
 	}
 
 	/**
