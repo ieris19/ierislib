@@ -25,22 +25,18 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <modules>
-        <module>cards</module>
-        <module>dice</module>
-    </modules>
-
-    <groupId>com.ieris19.lib.games</groupId>
-    <artifactId>games</artifactId>
+    <groupId>com.ieris19.lib.economy</groupId>
+    <artifactId>economy</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-    <properties>
-        <ieris.source.repoURL>${project.parent.url}/games</ieris.source.repoURL>
-    </properties>
+    <modules>
+        <module>gamified</module>
+        <module>currency</module>
+    </modules>
 
-    <name>Game Tools</name>
-    <description>A library of reusable Java code that implements simple common game tools</description>
-    <url>${project.parent.url}</url>
-    <inceptionYear>2021</inceptionYear>
+    <name>Economy</name>
+    <description>A library of reusable Java code to provide easy handling of money</description>
+    <url>${project.parent.url}/economy</url>
+    <inceptionYear>2022</inceptionYear>
 </project>
