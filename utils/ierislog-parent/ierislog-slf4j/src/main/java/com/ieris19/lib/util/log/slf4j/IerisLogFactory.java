@@ -17,17 +17,16 @@
 
 package com.ieris19.lib.util.log.slf4j;
 
-import com.ieris19.lib.util.log.Level;
-import com.ieris19.lib.util.log.ieris.IerisLog;
+import com.ieris19.lib.util.log.common.Level;
+import com.ieris19.lib.util.log.core.IerisLog;
 import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
-
-import java.io.IOException;
 
 /**
  * Implementation of {@link ILoggerFactory} which will return the {@link IerisLog} instance.
  */
 public class IerisLogFactory implements ILoggerFactory {
+	private static String appName = null;
 
 	/**
 	 * Empty constructor as the class needs not be initialized.
@@ -52,18 +51,28 @@ public class IerisLogFactory implements ILoggerFactory {
 	 * @return a Logger instance
 	 */
 	@Override public Logger getLogger(String name) {
-		if (name == null) {
-			throw new IllegalArgumentException("Logger name cannot be null");
+		IerisLog  loggerInstance;
+		if (appName == null) {
+			if (name == null) {
+				throw new IllegalArgumentException("Logger name cannot be null");
+			}
+			if (name.equals(Logger.ROOT_LOGGER_NAME)) {
+				return new IerisLogAdapter(IerisLog.getInstance());
+			}
+			loggerInstance = IerisLog.getInstance(name);
+		} else {
+			loggerInstance = IerisLog.getInstance(appName);
 		}
-		if (name.equals(Logger.ROOT_LOGGER_NAME)) {
-			return new IerisLogAdapter(IerisLog.getInstance());
-		}
-		IerisLog loggerInstance = (IerisLog) IerisLog.getInstance(name);
 		loggerInstance.useANSI(false);
 		loggerInstance.setLogLevel(Level.INFO.value());
-		try {
-			loggerInstance.writeToFile("### Welcome to Ierislog! You're using this framework under the SLF4J facade!");
-		} catch (IOException ignored) {}
 		return new IerisLogAdapter(loggerInstance);
+	}
+
+	public Logger getLogger(Class<?> clazz) {
+		return getLogger(clazz.getName());
+	}
+
+	public static void setAppName(String givenName) {
+		IerisLogFactory.appName = givenName;
 	}
 }

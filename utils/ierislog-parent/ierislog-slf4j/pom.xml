@@ -35,8 +35,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.ieris19.lib.util</groupId>
-            <artifactId>ierislog</artifactId>
+            <groupId>com.ieris19.lib.util.log</groupId>
+            <artifactId>ierislog-core</artifactId>
             <version>1.0.0</version>
             <scope>provided</scope>
         </dependency>

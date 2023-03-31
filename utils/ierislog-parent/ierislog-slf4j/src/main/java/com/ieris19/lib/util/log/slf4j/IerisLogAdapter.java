@@ -17,25 +17,24 @@
 
 package com.ieris19.lib.util.log.slf4j;
 
-import com.ieris19.lib.util.log.Level;
-import com.ieris19.lib.util.log.Log;
-import com.ieris19.lib.util.log.ieris.IerisLog;
+import com.ieris19.lib.util.log.common.Level;
+import com.ieris19.lib.util.log.core.IerisLogger;
 import org.slf4j.Logger;
 import org.slf4j.Marker;
 
 /**
- * A wrapper over {@link com.ieris19.lib.util.log.ieris.IerisLog IerisLog} in conformity with the {@link Logger SLF4J}
+ * A wrapper over {@link com.ieris19.lib.util.log.core.IerisLog IerisLog} in conformity with the {@link Logger SLF4J}
  * facade. interface.
  */
 public final class IerisLogAdapter implements Logger {
-	transient final Log ierisLog;
+	transient final IerisLogger ierisLog;
 
-	IerisLogAdapter(Log ierisLog) {
+	IerisLogAdapter(IerisLogger ierisLog) {
 		this.ierisLog = ierisLog;
 	}
 
 	@Override public String getName() {
-		return ((IerisLog) ierisLog).getName();
+		return ierisLog.getName();
 	}
 
 	private void log(Level severity, String string, Throwable t, Marker marker) {

@@ -41,7 +41,7 @@ public class IerisLog implements IerisLogger {
 	 * The last instance of the logger that was used. Used to avoid unnecessary calls to {@link #getInstance(String)} when
 	 * a library wants to log to the same application as the one that called it
 	 */
-	private static IerisLogger latestUsedInstance;
+	private static IerisLog latestUsedInstance;
 	/**
 	 * Lock used to ensure that a single thread has access to the log file at a time
 	 */
@@ -99,7 +99,7 @@ public class IerisLog implements IerisLogger {
 	 *
 	 * @return the only instance of the logger that can exist
 	 */
-	public static synchronized IerisLogger getInstance(String appName) {
+	public static synchronized IerisLog getInstance(String appName) {
 		if (instances == null) {
 			instances = new HashMap<>();
 		}

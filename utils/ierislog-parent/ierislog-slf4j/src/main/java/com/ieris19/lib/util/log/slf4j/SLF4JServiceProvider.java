@@ -19,6 +19,9 @@ package com.ieris19.lib.util.log.slf4j;
 
 import org.slf4j.ILoggerFactory;
 import org.slf4j.IMarkerFactory;
+import org.slf4j.MarkerFactory;
+import org.slf4j.helpers.BasicMDCAdapter;
+import org.slf4j.helpers.BasicMarkerFactory;
 import org.slf4j.spi.MDCAdapter;
 
 /**
@@ -27,6 +30,11 @@ import org.slf4j.spi.MDCAdapter;
  * won't work.
  */
 public class SLF4JServiceProvider implements org.slf4j.spi.SLF4JServiceProvider {
+	private final static String apiVersion = "2.0.5";
+	private ILoggerFactory loggerFactory;
+	private IMarkerFactory markerFactory;
+	private MDCAdapter mdcAdapter;
+
 	/**
 	 * Empty constructor for the SLF4JServiceProvider class as it is not used.
 	 */
@@ -38,7 +46,7 @@ public class SLF4JServiceProvider implements org.slf4j.spi.SLF4JServiceProvider 
 	 * @return instance of {@link org.slf4j.ILoggerFactory}
 	 */
 	@Override public ILoggerFactory getLoggerFactory() {
-		return new IerisLogFactory();
+		return loggerFactory;
 	}
 
 	/**
@@ -47,7 +55,7 @@ public class SLF4JServiceProvider implements org.slf4j.spi.SLF4JServiceProvider 
 	 * @return instance of {@link org.slf4j.IMarkerFactory}
 	 */
 	@Override public IMarkerFactory getMarkerFactory() {
-		return null;
+		return markerFactory;
 	}
 
 	/**
@@ -56,7 +64,7 @@ public class SLF4JServiceProvider implements org.slf4j.spi.SLF4JServiceProvider 
 	 * @return instance of {@link org.slf4j.spi.MDCAdapter}
 	 */
 	@Override public MDCAdapter getMDCAdapter() {
-		return null;
+		return mdcAdapter;
 	}
 
 	/**
@@ -67,7 +75,7 @@ public class SLF4JServiceProvider implements org.slf4j.spi.SLF4JServiceProvider 
 	 * @return the string API version.
 	 */
 	@Override public String getRequestedApiVersion() {
-		return "2.0.1";
+		return apiVersion;
 	}
 
 	/**
@@ -76,5 +84,9 @@ public class SLF4JServiceProvider implements org.slf4j.spi.SLF4JServiceProvider 
 	 * <p><b>WARNING:</b> This method is intended to be called once by
 	 * {@link org.slf4j.LoggerFactory} class and from nowhere else.
 	 */
-	@Override public void initialize() {}
+	@Override public void initialize() {
+		loggerFactory = new IerisLogFactory();
+		markerFactory = new BasicMarkerFactory();
+		mdcAdapter = new BasicMDCAdapter();
+	}
 }
