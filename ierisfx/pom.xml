@@ -38,21 +38,21 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>19</version>
+            <version>19.0.2.1</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-media</artifactId>
-            <version>19</version>
+            <version>19.0.2.1</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-web</artifactId>
-            <version>19</version>
+            <version>19.0.2.1</version>
         </dependency>
         <dependency>
-            <groupId>com.ieris19.lib.util</groupId>
-            <artifactId>ierislog</artifactId>
+            <groupId>com.ieris19.lib.util.log</groupId>
+            <artifactId>ierislog-core</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
