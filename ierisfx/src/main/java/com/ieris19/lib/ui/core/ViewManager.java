@@ -21,8 +21,7 @@ import com.ieris19.lib.files.assets.AssetHandler;
 import com.ieris19.lib.files.config.FileProperties;
 import com.ieris19.lib.files.config.PropertyTypeException;
 import com.ieris19.lib.ui.mvvm.ViewController;
-import com.ieris19.lib.util.log.Log;
-import com.ieris19.lib.util.log.ieris.IerisLog;
+import com.ieris19.lib.util.log.core.IerisLog;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -53,11 +52,10 @@ public class ViewManager {
 	 * Properties file for the application
 	 */
 	private final FileProperties uiProperties;
-
 	/**
 	 * Logs the events that occur in the application
 	 */
-	private final Log log = IerisLog.getInstance("ierisfx");
+	private final IerisLog log = IerisLog.getInstance("ierisfx");
 
 	/**
 	 * Creates a new ViewManager to handle the views in the application
