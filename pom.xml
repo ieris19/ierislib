@@ -134,7 +134,7 @@
         <repository>
             <id>ierislib</id>
             <name>IerisLib</name>
-            <url>http://localhost:8081/repository/ierislib/</url>
+            <url>https://maven.pkg.github.com/ieris19/ierislib</url>
         </repository>
     </distributionManagement>
 
