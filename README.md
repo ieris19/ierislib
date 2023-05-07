@@ -40,8 +40,8 @@ even before I had knowledge of what git was.
 
 ### Included Modules
 
-* Game Cards (ierislib.games.cards)
-* Game Dice (ierislib.games.dice)
+* Game Cards (ierislib.games.cards) (Since 2.0.0)
+* Game Dice (ierislib.games.dice) (Since 2.0.0)
 
 --------------------------------------------------------------------------------
 
@@ -56,8 +56,8 @@ which is its own little library that I have used in many projects.
 
 ### Included Modules
 
-* Command Console (ierislib.util.console)
-* Scoreboard (ierislib.util.scoreboard)
+* Command Console (ierislib.util.console) (Since 2.0.0)
+* Scoreboard (ierislib.util.scoreboard) (Since 2.0.0)
 ### IerisLog (ierislib.util.log)
 
 IerisLog is a logging framework that I have developed for use in my projects. It
@@ -68,9 +68,9 @@ add more features to it.
 
 Currently, IerisLog is split into multiple modules:
 
-* IerisLog Core (ierislib.log.core) - Contains the core functionality
-* IerisLog Custom (ierislib.log.custom) - Allows for customizing logger output
-* IerisLog SLF4J (ierislib.log.slf4j) - Allows for using IerisLog with SLF4J
+* IerisLog Core (ierislib.log.core) - Contains the core functionality (Since 2.0.0)
+* IerisLog Custom (ierislib.log.custom) - Allows for customizing logger output (Since 2.0.0)
+* IerisLog SLF4J (ierislib.log.slf4j) - Allows for using IerisLog with SLF4J (Since 2.0.0)
 
 --------------------------------------------------------------------------------
 
@@ -84,7 +84,7 @@ big enough to warrant its own module.
 
 ### Included Modules
 
-* Common Dependencies (ierislib.common)
+* Common Dependencies (ierislib.common) (Since 2.0.0)
 
 --------------------------------------------------------------------------------
 
@@ -97,8 +97,8 @@ that is familiar to me and simple to use.
 
 ### Included Modules
 
-* Property Manager (ierislib.files.config)
-* Assets Handler (ierislib.files.assets)
+* Property Manager (ierislib.files.config) (Since 2.0.0)
+* Assets Handler (ierislib.files.assets) (Since 2.0.0)
 
 --------------------------------------------------------------------------------
 
@@ -114,6 +114,8 @@ but rather a simplified version of the way I have personally structured my UIs
 It is important to note that this scaffold is not a UI framework, it is simply
 an addition to JavaFX that I have found useful in my projects.
 
+Since 2.0.0
+
 --------------------------------------------------------------------------------
 
 ## Reflection Utilities
@@ -125,8 +127,8 @@ for anyone else, but it is still fun to write. Meta-programming is fun.
 
 ### Included Modules
 
-* Reflection Utils (ierislib.reflection.utils)
-* Extensible Annotation Processor (ierislib.reflection.annotations)
+* Reflection Utils (ierislib.reflection.utils) (Since 2.0.0)
+* Extensible Annotation Processor (ierislib.reflection.annotations) (Since 2.0.0)
 
 --------------------------------------------------------------------------------
 

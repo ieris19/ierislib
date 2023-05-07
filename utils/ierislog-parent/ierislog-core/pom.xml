@@ -25,6 +25,7 @@
     </parent>
 
     <artifactId>ierislog-core</artifactId>
+    <version>1.0.0</version>
 
     <name>Logging Core</name>
     <description>The core of the Ierislog framework. This is the heart of the other logging packages</description>
