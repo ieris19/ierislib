@@ -30,7 +30,6 @@
         <module>files</module>
         <module>ierisfx</module>
         <module>reflection</module>
-        <module>math</module>
         <module>economy</module>
     </modules>
 
