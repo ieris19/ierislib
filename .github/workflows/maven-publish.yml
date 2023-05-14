@@ -6,6 +6,7 @@ name: Publish to GitHub Packages
 on:
   release:
     types: [ published ]
+  workflow_dispatch:
 
 jobs:
   publish:
@@ -39,4 +40,3 @@ jobs:
 
       - name: Publish to GitHub Packages through Maven
         run: mvn deploy --fail-at-end --settings ${{ github.workspace }}/settings.xml
-
