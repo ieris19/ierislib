@@ -1,0 +1,46 @@
+name: Bug Report
+description: File a report to help us improve the library
+title: "[Module Name]: "
+labels: [ "bug" ]
+assignees:
+  - Ieris19
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # Thanks for taking the time to fill out this bug report!
+        Please, fill out the following information with *as much detail as possible*.
+        If this form does not apply to your issue, feel free to try a different
+        template or create a blank issue.
+  - type: input
+    id: location
+    attributes:
+      label: What module are you reporting a bug on?
+      description: Specify the module locator formatted as `groupId:artifactId:version`
+      placeholder: com.ieris19.lib:ierislib:2.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Want to share any additional information?
+      description: Tell us about your environment
+      placeholder: Tell us more!
+    validations:
+      required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
