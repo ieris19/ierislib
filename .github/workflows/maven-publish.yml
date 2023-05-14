@@ -31,3 +31,6 @@ jobs:
 
       - name: Publish to GitHub Packages through Maven
         run: mvn deploy --fail-at-end --settings ${{ github.workspace }}/settings.xml
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          
