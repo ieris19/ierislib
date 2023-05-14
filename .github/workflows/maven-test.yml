@@ -9,9 +9,6 @@
 name: Java CI with Maven
 
 on:
-  push:
-    branches:
-      - prime
   pull_request:
     branches:
       - prime
