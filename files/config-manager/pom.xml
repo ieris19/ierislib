@@ -17,19 +17,19 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>reflection</artifactId>
-        <groupId>com.ieris19.lib.reflection</groupId>
-        <version>1.0.0</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ieris19.lib.files</groupId>
+        <artifactId>files</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
-    <artifactId>annotation-lib</artifactId>
+    <artifactId>config-manager</artifactId>
+    <version>1.0.0</version>
 
-    <properties>
-        <maven.compiler.source>19</maven.compiler.source>
-        <maven.compiler.target>19</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
+    <name>Configuration Manager</name>
+    <description>A framework to ease the management of configuration files</description>
+    <url>${project.parent.url}/config-manager</url>
+    <inceptionYear>2022</inceptionYear>
 </project>

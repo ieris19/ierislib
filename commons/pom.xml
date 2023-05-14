@@ -26,12 +26,14 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.ieris19.lib.common</groupId>
-    <artifactId>common</artifactId>
+    <artifactId>commons</artifactId>
     <version>1.0.0</version>
 
-    <name>Common Dependencies</name>
-    <description>A package of shared classes in IerisLib</description>
-    <url>${project.parent.url}/common</url>
+    <name>Common Library</name>
+    <description>
+        A package of shared classes in IerisLib.
+        Mostly providing small and common utilities that would be too small to make their own module
+    </description>
+    <url>${project.parent.url}/commons</url>
     <inceptionYear>2022</inceptionYear>
 </project>

@@ -25,11 +25,11 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>assets</artifactId>
+    <artifactId>assets-manager</artifactId>
     <version>1.0.0</version>
 
     <name>Asset Manager</name>
     <description>A toolkit that manages assets (packaged resources or simple assets) for a project</description>
-    <url>${project.parent.url}/assets</url>
+    <url>${project.parent.url}/assets-manager</url>
     <inceptionYear>2022</inceptionYear>
 </project>

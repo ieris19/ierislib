@@ -24,7 +24,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>common</module>
+        <module>commons</module>
         <module>utils</module>
         <module>games</module>
         <module>files</module>
@@ -35,7 +35,7 @@
 
     <properties>
         <ieris.source.repoURL>https://github.com/Ieris19/IerisLib/tree/prime</ieris.source.repoURL>
-        <ieris.java.version>19</ieris.java.version>
+        <ieris.java.version>17</ieris.java.version>
         <ieris.encoding>UTF-8</ieris.encoding>
         <maven.compiler.source>${ieris.java.version}</maven.compiler.source>
         <maven.compiler.target>${ieris.java.version}</maven.compiler.target>
