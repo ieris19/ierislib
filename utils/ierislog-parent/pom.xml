@@ -42,8 +42,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.ieris19.lib.common</groupId>
-            <artifactId>common</artifactId>
+            <groupId>com.ieris19.lib</groupId>
+            <artifactId>commons</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>

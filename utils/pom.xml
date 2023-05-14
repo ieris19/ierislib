@@ -31,7 +31,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>console</module>
+        <module>command-console</module>
         <module>scoreboard</module>
         <module>ierislog-parent</module>
     </modules>
