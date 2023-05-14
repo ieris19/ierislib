@@ -11,18 +11,16 @@ changes since the project was started in 2021. The project hasn't kept track of
 changes until now, so this is the first changelog entry.
 
 ### Added
-This is the first public release of the library.
+This is the first public release of the module.
 
 ### Changed
-No changes have been made in this version.
+Nothing has been changed in this version.
 
 ### Deprecated
-The following modules have been deprecated in this version:
-
-* Extensible Annotation Processor (ierislib.reflection.annotations)
+Nothing has been deprecated in this version.
 
 ### Removed
-No modules have been removed in this version.
+Nothing has been removed in this version
 
 ### Fixed
 No fixes have been made in this version.
