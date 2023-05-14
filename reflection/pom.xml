@@ -32,8 +32,6 @@
     <version>1.0.0</version>
     <modules>
         <module>reflection-utils</module>
-        <module>annotation-lib</module>
-        <module>annotation-processor</module>
     </modules>
 
     <name>Reflective Library</name>
