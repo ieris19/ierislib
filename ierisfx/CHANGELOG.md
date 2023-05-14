@@ -5,24 +5,26 @@ This file is used to list all changes between the versions of the module.
 ## [Unreleased]
 No changes are currently being worked on and unreleased.
 
-## [2.0.0] - 2023-05-07
+## [2.0.0] - 2023-05-07 / 2023-05-14
 This is the first public release of the library. It is the accumulation of all
 changes since the project was started in 2021. The project hasn't kept track of
 changes until now, so this is the first changelog entry.
 
 ### Added
-This is the first public release of the library.
+This is the first public release of the module.
 
 ### Changed
-No changes have been made in this version.
+Downgraded the Java version to 17.
+This is to ensure that the library is compiled in the latest version of Java
+that has long-term support(LTS). The library can now be compatible with recent
+versions of Java, but also is compiled in a version of Java that is supported
+for a long time, as projects don't always update to the latest version of Java.
 
 ### Deprecated
-The following modules have been deprecated in this version:
-
-* Extensible Annotation Processor (ierislib.reflection.annotations)
+Nothing has been deprecated in this version.
 
 ### Removed
-No modules have been removed in this version.
+Nothing has been removed in this version
 
 ### Fixed
 No fixes have been made in this version.
