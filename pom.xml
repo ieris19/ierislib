@@ -17,6 +17,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ieris19.config</groupId>
+        <artifactId>ieris-origin</artifactId>
+        <version>1.0.0</version>
+    </parent>
 
     <artifactId>ierislib</artifactId>
     <groupId>com.ieris19.lib</groupId>
@@ -35,12 +40,6 @@
 
     <properties>
         <ieris.source.repoURL>https://github.com/Ieris19/IerisLib/tree/prime</ieris.source.repoURL>
-        <ieris.java.version>17</ieris.java.version>
-        <ieris.encoding>UTF-8</ieris.encoding>
-        <maven.compiler.source>${ieris.java.version}</maven.compiler.source>
-        <maven.compiler.target>${ieris.java.version}</maven.compiler.target>
-        <project.build.sourceEncoding>${ieris.encoding}</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>${ieris.encoding}</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>
@@ -53,71 +52,7 @@
     </dependencies>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.2.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>3.0.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-install-plugin</artifactId>
-                <version>3.0.1</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M7</version>
-                <configuration>
-                    <includes>
-                        <include>**/Manual.java</include>
-                        <include>**/Test*.java</include>
-                        <include>**/*Test.java</include>
-                        <include>**/*Tests.java</include>
-                    </includes>
-                </configuration>
-            </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.2.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.4.0</version>
-                <executions>
-                    <execution>
-                        <id>attach-docs</id>
-                        <phase>site</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
     </build>
     <reporting>
         <plugins>
@@ -136,6 +71,14 @@
             <url>https://maven.pkg.github.com/ieris19/ierislib</url>
         </repository>
     </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>ieris-origin</id>
+            <name>Ieris Origin</name>
+            <url>https://maven.pkg.github.com/ieris19/ieris-origin</url>
+        </repository>
+    </repositories>
 
     <name>IerisLib</name>
     <description>A library of reusable Java code to simplify the development of applications</description>
