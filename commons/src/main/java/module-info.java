@@ -3,6 +3,6 @@
  * own modules but too long to be repeated across projects.
  */
 module ierislib.common {
-	exports com.ieris19.lib.common.cli;
 	exports com.ieris19.lib.common;
+    exports com.ieris19.lib.common.text;
 }

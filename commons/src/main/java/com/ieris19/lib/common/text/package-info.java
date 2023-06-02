@@ -16,6 +16,6 @@
  */
 
 /**
- * A package containing common elements of a Command Line Interface.
+ * A package containing common elements for text manipulation.
  */
-package com.ieris19.lib.common.cli;
+package com.ieris19.lib.common.text;

@@ -5,6 +5,12 @@ This file is used to list all changes between the versions of the module.
 ## [Unreleased]
 No changes are currently being worked on and unreleased.
 
+## [2.0.0] - XXXX-XX-XX
+A reworked version of the Commons dependencies, which now contains mostly text utilities (and a Script interface).
+
+### Changed
+- TextColor class has been moved to the commons module
+
 
 ## [1.0.0] - 2023-05-07 / 2023-05-14
 This is the first public release of the library. It is the accumulation of all
@@ -16,8 +22,8 @@ This is the first public release of the module.
 
 ### Changed
 The locator has been changed and thus the version released twice
-- com.ieris19.lib.files:config:1.0.0 ->
-  com.ieris19.lib.files:config-manager:1.0.0
+- com.ieris19.lib.common:common:1.0.0 ->
+  com.ieris19.lib:commons:1.0.0
 
 ### Deprecated
 Nothing has been deprecated in this version.

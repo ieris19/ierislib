@@ -15,7 +15,7 @@
  *
  */
 
-package com.ieris19.lib.common.cli;
+package com.ieris19.lib.common.text;
 
 import java.io.PrintStream;
 
@@ -87,50 +87,19 @@ public enum TextColor {
 	}
 
 	/**
-	 * Appends the ANSI code required to color text to the provided string, many shells will interpret this by coloring
-	 * the text, many will ignore it and many will simply add the code as if it was text
+	 * Appends the ANSI code required to color the provided string, many shells will interpret this by coloring
+	 * the text, many will ignore it, and many will simply add the code as if it was plain-text.
 	 *
 	 * @param string Text to be colored
 	 * @param color  Desired Text color
-	 * @param stream {@link PrintStream} to print the colored {@code String}
+	 *
+	 * @return the colored string
 	 */
-	public static void print(String string, TextColor color, PrintStream stream) {
-		stream.print(color + string + RESET);
+	public static String format(String string, TextColor color) {
+		return color + string + RESET;
 	}
 
-	/**
-	 * Appends the ANSI code required to color text to the provided string, many shells will interpret this by coloring
-	 * the text, many will ignore it and many will simply add the code as if it was text. This method will use the default
-	 * print stream, {@link System#out}
-	 *
-	 * @param string Text to be colored
-	 * @param color  Desired Text color
-	 */
-	public static void print(String string, TextColor color) {
-		print(string, color, System.out);
-	}
-
-	/**
-	 * Appends the ANSI code required to color text to the provided string, many shells will interpret this by coloring
-	 * the text, many will ignore it and many will simply add the code as if it was text
-	 *
-	 * @param string Text to be colored
-	 * @param color  Desired Text color
-	 * @param stream {@link PrintStream} to print the colored {@code String}
-	 */
-	public static void println(String string, TextColor color, PrintStream stream) {
-		stream.println(color + string + RESET);
-	}
-
-	/**
-	 * Appends the ANSI code required to color text to the provided string, many shells will interpret this by coloring
-	 * the text, many will ignore it and many will simply add the code as if it was text. This method will use the default
-	 * print stream, {@link System#out}
-	 *
-	 * @param string Text to be colored
-	 * @param color  Desired Text color
-	 */
-	public static void println(String string, TextColor color) {
-		println(string, color, System.out);
+	public static String clear(String string) {
+		return string.replaceAll("\\u001b\\[\\d{1,2}m", "");
 	}
 }
