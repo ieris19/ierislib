@@ -19,16 +19,31 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.ieris19.lib.util.log</groupId>
-        <artifactId>ierislog-parent</artifactId>
-        <version>1.0.0</version>
+        <groupId>com.ieris19.lib</groupId>
+        <artifactId>ierislib</artifactId>
+        <version>2.1.1</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>ierislog-core</artifactId>
-    <version>1.0.0</version>
+    <modules>
+        <module>ierislog-core</module>
+    </modules>
 
-    <name>Logging Core</name>
-    <description>The core of the Ierislog framework. This is the heart of the other logging packages</description>
-    <url>${project.parent.url}/core</url>
-    <inceptionYear>2023</inceptionYear>
+    <groupId>com.ieris19.lib.log</groupId>
+    <artifactId>ierislog</artifactId>
+    <version>2.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>Logging Framework</name>
+    <description>An extensive framework that allows for logging in many ways</description>
+    <url>${project.parent.url}/ierislog-parent</url>
+    <inceptionYear>2022</inceptionYear>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ieris19.lib</groupId>
+            <artifactId>commons</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+    </dependencies>
 </project>

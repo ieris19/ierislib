@@ -33,7 +33,6 @@
     <modules>
         <module>command-console</module>
         <module>scoreboard</module>
-        <module>ierislog-parent</module>
     </modules>
 
     <name>Utilities Library</name>
