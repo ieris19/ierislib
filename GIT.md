@@ -1,6 +1,6 @@
 # Version Control Strategy
 
-A well-structured repository, needs a good structure to be followed. While this
+A well-structured repository needs a good structure to be followed. While this
 project did not necessarily have that from the beginning, adding one later on is
 always better than nothing. That is the reason of this document, and it should
 help clear any doubts about the desired conventions to be followed by this project.
@@ -8,10 +8,15 @@ help clear any doubts about the desired conventions to be followed by this proje
 Some of these guidelines are not strictly enforced, but it is strongly encouraged
 to follow them as tightly as possible.
 
+These guidelines are not set in stone, and they are subject to change.
+If you have any suggestions, please open an issue or a pull request.
+After all, the goal of this document is to help the project and improve
+the development experience.
+
 ## General Considerations
 
-The chosen tool for version control in for this project is Git. For more
-information please refer to the [official website](https://git-scm.com).
+The chosen tool for version control in for this project is Git.
+For more information, please refer to the [official website](https://git-scm.com).
 
 Additionally, the repository is hosted on [GitHub](https://github.com/Ieris19/IerisLib),
 where the "origin" remote is located. Further references to origin will refer
@@ -19,14 +24,15 @@ to the repository hosted there, as opposed to local repositories where developer
 make their changes.
 
 Finally, although usual, the official language of this project is English, and
-as such, it should be the natural language used across the project.
+as such, it should be the natural language used across the project, specially
+within the version control system.
 
 ## Commits
 
 ### Commit Goals
 
 Commits are supposed to be units of changes. As such, they should contain the
-smallest possible amount of changes individually. In general, if your commit
+smallest possible number of changes individually. In general, if your commit
 can't be described with a single verb (eg. add, fix, delete, etc.) then it is
 likely the commit could be broken down into multiple.
 
@@ -61,37 +67,39 @@ by..."
 
 ### Naming Convention
 
-Git branches can be named anything really. However, in order to stay consistent
-a convention must be established:
+Git branches can be named anything really. 
+However, in order to stay consistent, a convention must be established:
 
-**Main Branch**  
+**Main Branch** 
 The branch where the most up to date, stable and approved code lives is called
-"prime", it is named such because, like prime numbers, it cannot be divided,
-and it is the base of all other branches
+"prime", it is named such because, like prime numbers, and it is the base of 
+all other branches
 
-**Branching Changes**  
+**Branching Changes** 
 Branches where new changes are taking place should follow this pattern:  
 *{module-affected}/{overarching-branch-goal}*  
 This pattern ensures the context is always clear. As far as the contents,
 the module name should match the artifactId of the module being modified, while
-the overarching goal should define a general direction for the branch. For 
+the overarching goal should define a general direction for the branch. For
 example, commons/2.0.0 could be a good branch name if the goal was to completely
-rewrite the commons module, or for example, ieris-log/exception-handling would
+rewrite the common module, or for example, ieris-log/exception-handling would
 be a branch that aims to modify/improve/create exception handling in the ieris-log
 module
 
 Additionally, for non-module specific changes, another descriptive scope should
 be used. A short list of the commonly recurring scopes is as follows
-- **document/** for those branches that only modified documents 
+
+- **document/** for those branches that only modified documents
 - **maven/** for those branches that work on dependencies and/or maven infrastructure
 - **hotfix/** for those branches that include minute changes or urgent bugfixes
 
-Consider breaking th overarching goal into further categories if necessary such
-as document/ieris-log/javadoc for example
+Consider breaking the overarching goal into further categories if necessary, such
+as document/ieris-log/javadoc, for example
 
 ## Releases
 
 The word release can mean multiple things depending on the context:
+
 * Library releases are published as GitHub Releases.
 * Module releases are published as GitHub Packages.
 
