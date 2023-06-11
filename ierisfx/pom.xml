@@ -35,6 +35,8 @@
 
     <properties>
         <ieris.versionDependency.javafx>17.0.7</ieris.versionDependency.javafx>
+        <ieris.versionDependency.lombok>1.18.28</ieris.versionDependency.lombok>
+        <ieris.versionDependency.slf4j>2.0.5</ieris.versionDependency.slf4j>
     </properties>
 
     <dependencies>
@@ -54,11 +56,6 @@
             <version>${ieris.versionDependency.javafx}</version>
         </dependency>
         <dependency>
-            <groupId>com.ieris19.lib.util.log</groupId>
-            <artifactId>ierislog-core</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
             <groupId>com.ieris19.lib.files</groupId>
             <artifactId>config-manager</artifactId>
             <version>1.0.0</version>
@@ -67,6 +64,22 @@
             <groupId>com.ieris19.lib.files</groupId>
             <artifactId>assets-manager</artifactId>
             <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ieris19.lib</groupId>
+            <artifactId>commons</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${ieris.versionDependency.lombok}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${ieris.versionDependency.slf4j}</version>
         </dependency>
     </dependencies>
 </project>

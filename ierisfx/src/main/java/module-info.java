@@ -31,12 +31,14 @@ import com.ieris19.lib.ui.mvvm.ViewModel;
  *  </pre>
  */
 module ierislib.ui {
+	requires static lombok;
+	requires org.slf4j;
+
 	requires javafx.base;
 	requires javafx.graphics;
 	requires javafx.fxml;
 
 	requires ierislib.common;
-	requires ierislib.log.core;
 	requires ierislib.files.config;
 	requires ierislib.files.assets;
 
