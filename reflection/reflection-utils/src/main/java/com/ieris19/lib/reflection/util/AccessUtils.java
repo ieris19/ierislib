@@ -75,6 +75,39 @@ public class AccessUtils {
     }
 
     /**
+     * Sets a constructor to be permanently accessible.
+     * <p>
+     * This method uses internal methods to set the constructor to be permanently accessible.
+     * This method is not guaranteed to work on all JVMs. If it does not work, it will throw an
+     * {@link ReflectiveOperationException}. If it does work, the method will be permanently accessible.
+     * </p>
+     * <p>
+     * Note that the implications of this method mean changing the accessibility of a method completely.
+     * This means that the method will be accessible regardless of the modifiers set on the method.
+     * This method should be used with EXTREME CAUTION.
+     * </p>
+     *
+     * @param clazz          The class to get the method from.
+     * @param parameterTypes The parameter types taken in as arguments by the method.
+     * @throws ReflectiveOperationException If the method could not be found or made accessible.
+     * @see Class#getConstructor(Class[]) Class.getMethod()
+     * @see java.lang.reflect.AccessibleObject AccessibleObject
+     */
+    public static void setPermanentAccessibleConstructor(Class<?> clazz, Class<?>... parameterTypes)
+            throws ReflectiveOperationException {
+        Method constructorAccessor;
+        try {
+            constructorAccessor = Class.class.getDeclaredMethod("getConstructor0", Class[].class, int.class);
+            constructorAccessor.setAccessible(true);
+        } catch (NoSuchMethodException e) {
+            throw new ReflectiveOperationException
+                    ("Could not find internal accessor method, your JVM runtime is not supported.");
+        }
+        Method target = (Method) constructorAccessor.invoke(clazz, parameterTypes, 1);
+        target.setAccessible(true);
+    }
+
+    /**
      * Sets a method to be permanently accessible.
      * <p>
      * This method uses internal methods to set the method to be permanently accessible.
