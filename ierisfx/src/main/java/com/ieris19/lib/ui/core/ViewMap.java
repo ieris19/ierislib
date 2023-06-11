@@ -17,6 +17,8 @@
 
 package com.ieris19.lib.ui.core;
 
+import com.ieris19.lib.ui.core.components.Component;
+
 import java.util.HashMap;
 
 /**
@@ -26,43 +28,42 @@ public class ViewMap {
 	/**
 	 * An empty private constructor of the ViewMap to prevent instantiation
 	 */
-	private ViewMap() {
-	}
+	private ViewMap() {}
 
 	/**
 	 * An absolute map of the views included in the program running, it will be the source of truth for the
-	 * {@link ViewManager ViewManager}
+	 * {@link ViewManager View Manager}
 	 */
-	private static final HashMap<String, UIComponent> views = new HashMap<>();
+	private static final HashMap<String, Component> components = new HashMap<>();
 
 	/**
-	 * Fetches the {@link UIComponent UI Component} from the map
+	 * Fetches the {@link Component Component} from the map
 	 *
-	 * @param key unique name identifier for the View
+	 * @param id unique name identifier for the View
 	 *
-	 * @return the corresponding UI Component
+	 * @return the corresponding Component
 	 *
-	 * @throws IllegalArgumentException if the UI component is null
+	 * @throws IllegalArgumentException if the component is null
 	 */
-	public synchronized static UIComponent get(String key) {
-		UIComponent view = views.get(key);
-		if (view != null) {
-			return view;
+	public synchronized static Component get(String id) {
+		Component component = components.get(id);
+		if (component != null) {
+			return component;
 		} else {
 			throw new IllegalArgumentException("View does not exist");
 		}
 	}
 
 	/**
-	 * Adds a new {@link UIComponent UI Component} to the map
+	 * Adds a new {@link Component Component} to the map
 	 *
-	 * @param key  unique name identifier for the View
-	 * @param view the UI Component to add to the map
+	 * @param id  unique name identifier for the View
+	 * @param component the Component to add to the map
 	 */
-	public synchronized static void add(String key, UIComponent view) {
-		if (views.get(key) != null) {
-			throw new IllegalArgumentException("View ID is not unique, it already exists");
+	public synchronized static void add(String id, Component component) {
+		if (components.get(id) != null) {
+			throw new IllegalArgumentException("Component ID is not unique, it already exists");
 		}
-		views.put(key, view);
+		components.put(id, component);
 	}
 }

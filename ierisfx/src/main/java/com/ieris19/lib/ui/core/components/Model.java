@@ -15,7 +15,7 @@
  *
  */
 
-package com.ieris19.lib.ui.mvvm;
+package com.ieris19.lib.ui.core.components;
 
 /**
  * This interface represents a model. A model is responsible for handling all operations that are not directly related

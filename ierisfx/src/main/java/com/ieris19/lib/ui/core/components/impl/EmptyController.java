@@ -15,10 +15,10 @@
  *
  */
 
-package com.ieris19.lib.ui.mvvm.defaults;
+package com.ieris19.lib.ui.core.components.impl;
 
-import com.ieris19.lib.ui.mvvm.ViewController;
-import com.ieris19.lib.ui.mvvm.ViewModel;
+import com.ieris19.lib.ui.core.components.ViewController;
+import com.ieris19.lib.ui.core.components.ViewModel;
 import javafx.beans.property.Property;
 
 /**

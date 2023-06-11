@@ -15,9 +15,9 @@
  *
  */
 
-package com.ieris19.lib.ui.mvvm.defaults;
+package com.ieris19.lib.ui.core.components.impl;
 
-import com.ieris19.lib.ui.mvvm.Model;
+import com.ieris19.lib.ui.core.components.Model;
 
 /**
  * Empty model that can be used when a view does not need a model
