@@ -66,11 +66,6 @@
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>com.ieris19.lib</groupId>
-            <artifactId>commons</artifactId>
-            <version>2.0.0</version>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${ieris.versionDependency.lombok}</version>

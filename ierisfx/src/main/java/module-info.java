@@ -38,7 +38,6 @@ module ierislib.ui {
 	requires javafx.graphics;
 	requires javafx.fxml;
 
-	requires ierislib.common;
 	requires ierislib.files.config;
 	requires ierislib.files.assets;
 
