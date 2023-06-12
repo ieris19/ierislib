@@ -74,9 +74,9 @@
 
     <repositories>
         <repository>
-            <id>ieris-origin</id>
-            <name>Ieris Origin</name>
-            <url>https://maven.pkg.github.com/ieris19/ieris-origin</url>
+            <id>ieris</id>
+            <name>Ieris Repository</name>
+            <url>https://maven.pkg.github.com/ieris19/*</url>
         </repository>
     </repositories>
 

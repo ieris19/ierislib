@@ -5,7 +5,7 @@
 
     <servers>
         <server>
-            <id>ieris-origin</id>
+            <id>ieris</id>
             <!--
               This user has only read access to packages, so that it can always download packages even though
               GitHub doesn't allow unauthorized users to download packages.
