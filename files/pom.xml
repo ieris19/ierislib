@@ -22,7 +22,6 @@
         <artifactId>ierislib</artifactId>
         <groupId>com.ieris19.lib</groupId>
         <version>2.0.0</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>com.ieris19.lib.files</groupId>

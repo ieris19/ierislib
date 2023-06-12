@@ -23,7 +23,6 @@
         <artifactId>ierislib</artifactId>
         <groupId>com.ieris19.lib</groupId>
         <version>2.1.1</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>com.ieris19.lib.reflection</groupId>
