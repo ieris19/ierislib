@@ -15,7 +15,7 @@
  *
  */
 
-package com.ieris19.lib.reflection.context;
+package com.ieris19.lib.context.reflection;
 
 import com.ieris19.lib.reflection.error.NoSuchPackageException;
 import com.ieris19.lib.reflection.util.ClassUtils;

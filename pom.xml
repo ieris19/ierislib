@@ -36,6 +36,7 @@
         <module>ierisfx</module>
         <module>reflection</module>
         <module>economy</module>
+        <module>context</module>
     </modules>
 
     <properties>

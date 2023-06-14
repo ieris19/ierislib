@@ -30,7 +30,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>reflection-utils</module>
-        <module>context</module>
     </modules>
 
     <name>Reflective Library</name>

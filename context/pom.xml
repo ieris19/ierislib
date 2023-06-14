@@ -21,8 +21,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.ieris19.lib.reflection</groupId>
-        <artifactId>reflection</artifactId>
+        <groupId>com.ieris19.lib</groupId>
+        <artifactId>ierislib</artifactId>
         <version>2.1.1</version>
     </parent>
 
@@ -35,14 +35,13 @@
             <artifactId>reflection-utils</artifactId>
             <version>2.1.0</version>
         </dependency>
-
     </dependencies>
 
     <name>Context Manager</name>
     <description>
-        Inspired by the Spring Framework, this library provides a simple way to scan and manage
-        annotated classes. Its implementation is based on the implementation of the Spring
-        Framework.
+        This module provides a simple way to access the context of the application.
+        This includes the access to properties, assets and runtime information,
+        such as annotations and classes.
     </description>
     <url>${project.parent.url}/context</url>
     <inceptionYear>2023</inceptionYear>
