@@ -34,12 +34,13 @@ module ierislib.ui {
 	requires javafx.base;
 	requires javafx.graphics;
 	requires javafx.fxml;
+	requires org.slf4j;
 
 	requires ierislib.common;
-	requires ierislib.log.core;
 	requires ierislib.files.config;
 	requires ierislib.files.assets;
 
-	exports com.ieris19.lib.ui.core;
+    exports com.ieris19.lib.ui.core;
 	exports com.ieris19.lib.ui.mvvm;
+	exports com.ieris19.lib.ui.mvvm.defaults;
 }
