@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Ieris19
+ * Copyright 2024 Ieris19
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -24,21 +24,23 @@ import java.util.Scanner;
  * starting the console.
  */
 public class Main {
-	/**
-	 * This class is static and shouldn't be instantiated
-	 */
-	private Main() {}
+    /**
+     * This class is static and shouldn't be instantiated
+     */
+    private Main() {
+    }
 
-	/**
-	 * The entrypoint of the interactive scoreboard.
-	 * @param args the command line arguments
-	 */
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("How many players are playing?");
-		System.out.println("Enter a number: ");
-		int amountOfPlayers = Integer.parseInt(scanner.nextLine());
-		ScoreConsole console = new ScoreConsole(amountOfPlayers);
-		console.start();
-	}
+    /**
+     * The entrypoint of the interactive scoreboard.
+     *
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("How many players are playing?");
+        System.out.println("Enter a number: ");
+        int amountOfPlayers = Integer.parseInt(scanner.nextLine());
+        ScoreConsole console = new ScoreConsole(amountOfPlayers);
+        console.start();
+    }
 }

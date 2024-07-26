@@ -1,3 +1,20 @@
+/*
+ * Copyright 2024 Ieris19
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ *
+ */
+
 package com.ieris19.lib.economy;
 
 import java.io.BufferedReader;
@@ -14,69 +31,69 @@ import java.time.ZonedDateTime;
 import java.util.HashMap;
 
 public class ECBRates {
-	private static ECBRates instance;
-	private final HashMap<String, BigDecimal> rates;
-	private ZonedDateTime lastUpdate;
+    private static ECBRates instance;
+    private final HashMap<String, BigDecimal> rates;
+    private ZonedDateTime lastUpdate;
 
-	public static ECBRates getInstance() {
-		if (instance == null)
-			instance = new ECBRates();
-		if (!instance.isUpToDate())
-			instance.update();
-		return instance;
-	}
+    public static ECBRates getInstance() {
+        if (instance == null)
+            instance = new ECBRates();
+        if (!instance.isUpToDate())
+            instance.update();
+        return instance;
+    }
 
-	public static Currency convert(Currency from, String codeTo) {
-		ECBRates ecb = ECBRates.getInstance();
-		if (!from.getCode().equals("EUR")) {
-			BigDecimal rate = ecb.getRate(from.getCode());
-			if (rate == null)
-				throw new IllegalArgumentException("Currency " + from.getCode() + " is not supported by the ECB");
-			from = new Currency(from.getValue().divide(rate, 2, RoundingMode.HALF_UP), "EUR");
-		}
-		BigDecimal transactionRate = ecb.getRate(codeTo);
-		if (transactionRate == null)
-			throw new IllegalArgumentException("Currency " + codeTo + " is not supported by the ECB");
-		return new Currency(from.getValue().multiply(transactionRate), codeTo);
-	}
+    public static Currency convert(Currency from, String codeTo) {
+        ECBRates ecb = ECBRates.getInstance();
+        if (!from.getCode().equals("EUR")) {
+            BigDecimal rate = ecb.getRate(from.getCode());
+            if (rate == null)
+                throw new IllegalArgumentException("Currency " + from.getCode() + " is not supported by the ECB");
+            from = new Currency(from.getValue().divide(rate, 2, RoundingMode.HALF_UP), "EUR");
+        }
+        BigDecimal transactionRate = ecb.getRate(codeTo);
+        if (transactionRate == null)
+            throw new IllegalArgumentException("Currency " + codeTo + " is not supported by the ECB");
+        return new Currency(from.getValue().multiply(transactionRate), codeTo);
+    }
 
-	private ECBRates() {
-		rates = new HashMap<String, BigDecimal>();
-		//ECB exchange rates are always relative to the Euro, so Euro to Euro rate is always 1
-		rates.put("EUR", new BigDecimal(1));
-		update();
-	}
+    private ECBRates() {
+        rates = new HashMap<String, BigDecimal>();
+        //ECB exchange rates are always relative to the Euro, so Euro to Euro rate is always 1
+        rates.put("EUR", new BigDecimal(1));
+        update();
+    }
 
-	public BigDecimal getRate(String code) {
-		return rates.get(code);
-	}
+    public BigDecimal getRate(String code) {
+        return rates.get(code);
+    }
 
-	boolean isUpToDate() {
-		return lastUpdate != null && lastUpdate.isAfter(ZonedDateTime.now().minusDays(1));
-	}
+    boolean isUpToDate() {
+        return lastUpdate != null && lastUpdate.isAfter(ZonedDateTime.now().minusDays(1));
+    }
 
-	protected void update() {
-		URL ecbXMLAddress = null;
-		try {
-			ecbXMLAddress = new URI("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml").toURL();
-		} catch (URISyntaxException | MalformedURLException e) {
-			e.printStackTrace();
-		}
-		if (ecbXMLAddress == null)
-			return;
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(ecbXMLAddress.openStream()))) {
-			String line;
-			while ((line = reader.readLine()) != null) {
-				if (line.contains("Cube currency=")) {
-					String[] parts = line.split(" ");
-					String code = parts[1].substring(10, 13);
-					String rate = parts[2].substring(6, parts[2].length() - 3);
-					rates.put(code, new BigDecimal(rate));
-				}
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		lastUpdate = ZonedDateTime.now(ZoneId.of("UTC"));
-	}
+    protected void update() {
+        URL ecbXMLAddress = null;
+        try {
+            ecbXMLAddress = new URI("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml").toURL();
+        } catch (URISyntaxException | MalformedURLException e) {
+            e.printStackTrace();
+        }
+        if (ecbXMLAddress == null)
+            return;
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(ecbXMLAddress.openStream()))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.contains("Cube currency=")) {
+                    String[] parts = line.split(" ");
+                    String code = parts[1].substring(10, 13);
+                    String rate = parts[2].substring(6, parts[2].length() - 3);
+                    rates.put(code, new BigDecimal(rate));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        lastUpdate = ZonedDateTime.now(ZoneId.of("UTC"));
+    }
 }

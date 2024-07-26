@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Ieris19
+ * Copyright 2024 Ieris19
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -23,8 +23,9 @@ import com.ieris19.lib.ui.mvvm.Model;
  * Empty model that can be used when a view does not need a model
  */
 public class EmptyModel implements Model {
-	/**
-	 * Constructs an empty model that can be used when a view does not need a model
-	 */
-	public EmptyModel() {}
+    /**
+     * Constructs an empty model that can be used when a view does not need a model
+     */
+    public EmptyModel() {
+    }
 }

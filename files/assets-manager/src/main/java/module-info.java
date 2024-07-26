@@ -3,5 +3,5 @@
  * interface to load and save assets.
  */
 module ierislib.files.assets {
-	exports com.ieris19.lib.files.assets;
+    exports com.ieris19.lib.files.assets;
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Ieris19
+ * Copyright 2024 Ieris19
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -22,19 +22,19 @@ package com.ieris19.lib.util.console;
  */
 public class InvalidCommandException extends RuntimeException {
 
-	/**
-	 * Constructs an {@code InvalidCommandException} with no detail message.
-	 */
-	public InvalidCommandException() {
-		super();
-	}
+    /**
+     * Constructs an {@code InvalidCommandException} with no detail message.
+     */
+    public InvalidCommandException() {
+        super();
+    }
 
-	/**
-	 * Constructs an {@code InvalidCommandException} with the specified detail message.
-	 *
-	 * @param message the detail message.
-	 */
-	public InvalidCommandException(String message) {
-		super(message);
-	}
+    /**
+     * Constructs an {@code InvalidCommandException} with the specified detail message.
+     *
+     * @param message the detail message.
+     */
+    public InvalidCommandException(String message) {
+        super(message);
+    }
 }

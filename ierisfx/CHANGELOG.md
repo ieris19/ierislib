@@ -5,6 +5,18 @@ This file is used to list all changes between the versions of the module.
 ## [Unreleased]
 No changes are currently being worked on and unreleased.
 
+## [3.0.0] - 2024-05-18
+This major version reworks from the ground how JavaFX works
+
+### Added
+- The IerisFXBuilder class now handles setup for the project and allows to check
+  for errors configuring before the application is launched. It aditionally 
+  gathers the setup stage of a IerisFx into a single place, everything that can
+  be configured is done through IerisFXBuilder.
+
+### Changed
+- UIComponents have been renamed to Views
+
 ## [2.0.0] - 2023-05-07 / 2023-05-14
 This is the first public release of the library. It is the accumulation of all
 changes since the project was started in 2021. The project hasn't kept track of

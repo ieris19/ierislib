@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Ieris19
+ * Copyright 2024 Ieris19
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -19,49 +19,49 @@ package com.ieris19.lib.economy.games;
 
 public class Manual {
 
-	public static void main(String[] args) {
-		testPrecision();
-		basicTesting();
-		testSet();
-		System.out.println(5D);
-		Money money = new Money(50.50);
-		System.out.println(money.getAmount());
-		System.out.println(money);
-		money.subtractMoney(0.50, true);
-		System.out.println(money.getAmount());
-		System.out.println(money);
-	}
+    public static void main(String[] args) {
+        testPrecision();
+        basicTesting();
+        testSet();
+        System.out.println(5D);
+        Money money = new Money(50.50);
+        System.out.println(money.getAmount());
+        System.out.println(money);
+        money.subtractMoney(0.50, true);
+        System.out.println(money.getAmount());
+        System.out.println(money);
+    }
 
-	public static void testSet() {
-		Money wallet = new Money(5);
-		System.out.println(wallet);
-		wallet.setAmount(5.4);
-		System.out.println(wallet);
-		wallet.setAmount(5.00521);
-		System.out.println(wallet);
-		System.out.println("True value: " + wallet.getAmount());
-	}
+    public static void testSet() {
+        Money wallet = new Money(5);
+        System.out.println(wallet);
+        wallet.setAmount(5.4);
+        System.out.println(wallet);
+        wallet.setAmount(5.00521);
+        System.out.println(wallet);
+        System.out.println("True value: " + wallet.getAmount());
+    }
 
-	public static void testPrecision() {
-		Money account = new Money(0);
-		for (int i = 0; i < 10000; i++) {
-			System.out.println(account.getAmount());
-			account.addMoney(0.2545);
-		}
-	}
+    public static void testPrecision() {
+        Money account = new Money(0);
+        for (int i = 0; i < 10000; i++) {
+            System.out.println(account.getAmount());
+            account.addMoney(0.2545);
+        }
+    }
 
-	public static void basicTesting() {
-		Money wallet = new Money(100);
-		Money account = new Money(300);
-		System.out.println("Account: " + account);
-		System.out.println("Wallet: " + wallet);
-		Money.transfer(wallet, account, 50.2512);
-		System.out.println(wallet);
-		System.out.println(account);
-		wallet.addMoney(100);
-		System.out.println(wallet);
-		System.out.println(account);
-	}
+    public static void basicTesting() {
+        Money wallet = new Money(100);
+        Money account = new Money(300);
+        System.out.println("Account: " + account);
+        System.out.println("Wallet: " + wallet);
+        Money.transfer(wallet, account, 50.2512);
+        System.out.println(wallet);
+        System.out.println(account);
+        wallet.addMoney(100);
+        System.out.println(wallet);
+        System.out.println(account);
+    }
 }
 /*
 	System.out.println(wallet);

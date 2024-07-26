@@ -1,3 +1,20 @@
+/*
+ * Copyright 2024 Ieris19
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ *
+ */
+
 package com.ieris19.lib.economy;
 
 import org.junit.jupiter.api.Test;
@@ -12,60 +29,64 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ECBRatesTest {
 
-	@Test void isUpToDate() {
-		ECBRates rates = ECBRates.getInstance();
-		assertTrue(rates.isUpToDate());
-	}
+    @Test
+    void isUpToDate() {
+        ECBRates rates = ECBRates.getInstance();
+        assertTrue(rates.isUpToDate());
+    }
 
-	@Test void isNotUpToDate() {
-		ECBRates rates = ECBRates.getInstance();
-		ZonedDateTime oldUpdate = ZonedDateTime.now().minusDays(5);
-		try {
-			Field update = rates.getClass().getDeclaredField("lastUpdate");
-			update.setAccessible(true);
-			update.set(rates, oldUpdate);
-		} catch (NoSuchFieldException | IllegalAccessException e) {
-			e.printStackTrace();
-			fail();
-		}
-		assertFalse(rates.isUpToDate());
-	}
+    @Test
+    void isNotUpToDate() {
+        ECBRates rates = ECBRates.getInstance();
+        ZonedDateTime oldUpdate = ZonedDateTime.now().minusDays(5);
+        try {
+            Field update = rates.getClass().getDeclaredField("lastUpdate");
+            update.setAccessible(true);
+            update.set(rates, oldUpdate);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+            fail();
+        }
+        assertFalse(rates.isUpToDate());
+    }
 
-	@Test void update() {
-		ECBRates rates = ECBRates.getInstance();
-		HashMap<String, BigDecimal> data = null;
-		try {
-			Field ecbRate = rates.getClass().getDeclaredField("rates");
-			ecbRate.setAccessible(true);
-			data = (HashMap<String, BigDecimal>) ecbRate.get(rates);
-		} catch (NoSuchFieldException | IllegalAccessException e) {
-			e.printStackTrace();
-			fail();
-		}
-		String[] currencies = {"USD", "JPY", "BGN", "CZK", "DKK", "GBP", "HUF", "PLN", "RON", "SEK", "CHF", "ISK", "NOK",
-													 "TRY", "AUD", "BRL", "CAD", "CNY", "HKD", "IDR", "ILS", "INR", "KRW", "MXN", "MYR", "NZD",
-													 "PHP", "SGD", "THB", "ZAR", "EUR"};
-		for (String code : currencies) {
-			assertTrue(data.containsKey(code));
-		}
-	}
+    @Test
+    void update() {
+        ECBRates rates = ECBRates.getInstance();
+        HashMap<String, BigDecimal> data = null;
+        try {
+            Field ecbRate = rates.getClass().getDeclaredField("rates");
+            ecbRate.setAccessible(true);
+            data = (HashMap<String, BigDecimal>) ecbRate.get(rates);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+            fail();
+        }
+        String[] currencies = {"USD", "JPY", "BGN", "CZK", "DKK", "GBP", "HUF", "PLN", "RON", "SEK", "CHF", "ISK", "NOK",
+                "TRY", "AUD", "BRL", "CAD", "CNY", "HKD", "IDR", "ILS", "INR", "KRW", "MXN", "MYR", "NZD",
+                "PHP", "SGD", "THB", "ZAR", "EUR"};
+        for (String code : currencies) {
+            assertTrue(data.containsKey(code));
+        }
+    }
 
-	@Test void convert() {
-		ECBRates rates = ECBRates.getInstance();
-		try {
-			Field ecbRate = ECBRates.class.getDeclaredField("rates");
-			ecbRate.setAccessible(true);
-			HashMap<String, BigDecimal> data = (HashMap<String, BigDecimal>) ecbRate.get(rates);
-			data.put("USD", new BigDecimal("0.8"));
-			ecbRate.set(rates, data);
-		} catch (NoSuchFieldException | IllegalAccessException e) {
-			e.printStackTrace();
-			fail();
-		}
-		BigDecimal expected = new BigDecimal(125).setScale(2, RoundingMode.HALF_UP);
-		Currency currency = new Currency(new BigDecimal(100), "USD");
-		Currency converted = ECBRates.convert(currency, "EUR");
-		assertEquals("EUR", converted.getCode());
-		assertEquals(expected, converted.getValue());
-	}
+    @Test
+    void convert() {
+        ECBRates rates = ECBRates.getInstance();
+        try {
+            Field ecbRate = ECBRates.class.getDeclaredField("rates");
+            ecbRate.setAccessible(true);
+            HashMap<String, BigDecimal> data = (HashMap<String, BigDecimal>) ecbRate.get(rates);
+            data.put("USD", new BigDecimal("0.8"));
+            ecbRate.set(rates, data);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+            fail();
+        }
+        BigDecimal expected = new BigDecimal(125).setScale(2, RoundingMode.HALF_UP);
+        Currency currency = new Currency(new BigDecimal(100), "USD");
+        Currency converted = ECBRates.convert(currency, "EUR");
+        assertEquals("EUR", converted.getCode());
+        assertEquals(expected, converted.getValue());
+    }
 }

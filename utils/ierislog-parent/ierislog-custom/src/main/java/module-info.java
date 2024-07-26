@@ -4,8 +4,8 @@
  */
 module ierislib.log.custom {
 
-	requires ierislib.common;
-	requires ierislib.log.core;
+    requires ierislib.common;
+    requires ierislib.log.core;
 
-	exports com.ieris19.lib.util.log.custom;
+    exports com.ieris19.lib.util.log.custom;
 }

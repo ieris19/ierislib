@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Ieris19
+ * Copyright 2024 Ieris19
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -26,10 +26,10 @@ package com.ieris19.lib.common;
  */
 @FunctionalInterface
 public interface Script {
-	/**
-	 * A concrete implementation of this method is the body of a command object
-	 *
-	 * @param arguments arguments to be used by the command
-	 */
-	void execute(String... arguments);
+    /**
+     * A concrete implementation of this method is the body of a command object
+     *
+     * @param arguments arguments to be used by the command
+     */
+    void execute(String... arguments);
 }

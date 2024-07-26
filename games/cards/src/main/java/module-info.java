@@ -3,5 +3,5 @@
  */
 module ierislib.games.cards {
 
-	exports com.ieris19.lib.games.cards;
+    exports com.ieris19.lib.games.cards;
 }

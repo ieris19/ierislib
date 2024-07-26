@@ -4,6 +4,6 @@
  */
 module ierislib.reflection.utils {
 
-	exports com.ieris19.lib.reflection.util;
-	exports com.ieris19.lib.reflection.error;
+    exports com.ieris19.lib.reflection.util;
+    exports com.ieris19.lib.reflection.error;
 }

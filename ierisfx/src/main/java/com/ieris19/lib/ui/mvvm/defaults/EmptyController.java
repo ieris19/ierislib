@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Ieris19
+ * Copyright 2024 Ieris19
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -25,25 +25,30 @@ import javafx.beans.property.Property;
  * Empty controller that can be used when a view does not need a controller
  */
 public class EmptyController extends ViewController {
-	/**
-	 * Constructs an empty controller that can be used when a view does not need a controller
-	 */
-	public EmptyController() {}
+    /**
+     * Constructs an empty controller that can be used when a view does not need a controller
+     */
+    public EmptyController() {
+    }
 
-	/**
-	 * Returns the view to the initial state, regardless of the current state.
-	 * <p>
-	 *   As a view without a controller is not interactive, this method does nothing.
-	 * </p>
-	 */
-	@Override public void reset() {}
+    /**
+     * Returns the view to the initial state, regardless of the current state.
+     * <p>
+     * As a view without a controller is not interactive, this method does nothing.
+     * </p>
+     */
+    @Override
+    public void reset() {
+    }
 
-	/**
-	 * This method should be called loading the view, after the {@link ViewModel} is set. It should call
-	 * {@link ViewModel#bind(String, Property)} for every property that needs to be bound.
-	 * <p>
-	 *   As a view without a controller is not interactive, this method does nothing.
-	 * </p>
-	 */
-	@Override public void setBindings() {}
+    /**
+     * This method should be called loading the view, after the {@link ViewModel} is set. It should call
+     * {@link ViewModel#bind(String, Property)} for every property that needs to be bound.
+     * <p>
+     * As a view without a controller is not interactive, this method does nothing.
+     * </p>
+     */
+    @Override
+    public void setBindings() {
+    }
 }

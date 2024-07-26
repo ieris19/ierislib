@@ -3,7 +3,7 @@
  * running them on a loop
  */
 module ierislib.util.console {
-	requires ierislib.common;
+    requires ierislib.common;
 
-	exports com.ieris19.lib.util.console;
+    exports com.ieris19.lib.util.console;
 }

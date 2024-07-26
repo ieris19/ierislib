@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><!--
-  ~ Copyright 2021 Ieris19
+  ~ Copyright 2024 Ieris19
   ~
   ~    Licensed under the Apache License, Version 2.0 (the "License");
   ~    you may not use this file except in compliance with the License.
@@ -40,6 +40,6 @@
 
     <name>File Manager</name>
     <description>An opinionated toolkit that manages configuration and resources for a project</description>
-    <url>${project.parent.url}</url>
+    <url>${project.parent.url}/files</url>
     <inceptionYear>2022</inceptionYear>
 </project>

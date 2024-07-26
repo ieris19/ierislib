@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Ieris19
+ * Copyright 2024 Ieris19
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -15,16 +15,15 @@
  *
  */
 
-package com.ieris19.lib.common.text;import com.ieris19.lib.common.text.TextColor;
-import org.junit.jupiter.api.Test;
+package com.ieris19.lib.common.text;
 
-import java.util.Arrays;
+import org.junit.jupiter.api.Test;
 
 public class TextColorTest {
     @Test
     public void testFormatter() {
         String test = "test";
-        String result = TextColor.format(test, TextColor.RED);
+        String result = AnsiColorCodes.format(test, AnsiColorCodes.RED);
         String expected = "\u001B[31mtest\u001B[0m";
         assert result.equals(expected);
     }
@@ -32,8 +31,8 @@ public class TextColorTest {
     @Test
     public void testFormatterSubsequent() {
         String test = "test";
-        String middle = TextColor.format(test, TextColor.RED);
-        String result = TextColor.format(middle, TextColor.GREEN);
+        String middle = AnsiColorCodes.format(test, AnsiColorCodes.RED);
+        String result = AnsiColorCodes.format(middle, AnsiColorCodes.GREEN);
         String expected = "\u001B[32m\u001B[31mtest\u001B[0m\u001B[0m";
         assert result.equals(expected);
     }

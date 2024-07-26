@@ -1,5 +1,5 @@
 module ierislib.economy.currency {
-	requires java.base;
+    requires java.base;
 
-	exports com.ieris19.lib.economy;
+    exports com.ieris19.lib.economy;
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Ieris19
+ * Copyright 2024 Ieris19
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -25,58 +25,58 @@ import com.ieris19.lib.common.Script;
  * must be Strings, thus, any parsing needed must be performed in the runnable class
  */
 public class Command {
-	/**
-	 * Command script designating the code to be called upon when the command is executed
-	 */
-	private final Script script;
-	/**
-	 * A name to be used in order to call this command
-	 */
-	private final String name;
-	/**
-	 * A detailed description of the command, its parameters and functioning, to be displayed through the {@code help}
-	 * command
-	 */
-	private final String description;
+    /**
+     * Command script designating the code to be called upon when the command is executed
+     */
+    private final Script script;
+    /**
+     * A name to be used in order to call this command
+     */
+    private final String name;
+    /**
+     * A detailed description of the command, its parameters and functioning, to be displayed through the {@code help}
+     * command
+     */
+    private final String description;
 
-	/**
-	 * Constructs a command object
-	 *
-	 * @param name        the name of the command is the instruction that will be used to call upon it
-	 * @param description the description is the text that will be provided as help through the console
-	 * @param script      the script is the method that will be run when the command is called. Preferably a lambda
-	 *                    expression, but it can also be an anonymous or regular class
-	 */
-	public Command(String name, String description, Script script) {
-		this.script = script;
-		this.name = name;
-		this.description = description;
-	}
+    /**
+     * Constructs a command object
+     *
+     * @param name        the name of the command is the instruction that will be used to call upon it
+     * @param description the description is the text that will be provided as help through the console
+     * @param script      the script is the method that will be run when the command is called. Preferably a lambda
+     *                    expression, but it can also be an anonymous or regular class
+     */
+    public Command(String name, String description, Script script) {
+        this.script = script;
+        this.name = name;
+        this.description = description;
+    }
 
-	/**
-	 * Returns the name of the command
-	 *
-	 * @return the designated name of the command
-	 */
-	public String getName() {
-		return name;
-	}
+    /**
+     * Returns the name of the command
+     *
+     * @return the designated name of the command
+     */
+    public String getName() {
+        return name;
+    }
 
-	/**
-	 * A method to be called in order to obtain the description of the command
-	 *
-	 * @return helpful text explaining the usage of the command
-	 */
-	public String help() {
-		return description;
-	}
+    /**
+     * A method to be called in order to obtain the description of the command
+     *
+     * @return helpful text explaining the usage of the command
+     */
+    public String help() {
+        return description;
+    }
 
-	/**
-	 * Executes whatever instructions are stored in this command
-	 *
-	 * @param args the arguments to be passed to the command
-	 */
-	public void execute(String[] args) {
-		this.script.execute(args);
-	}
+    /**
+     * Executes whatever instructions are stored in this command
+     *
+     * @param args the arguments to be passed to the command
+     */
+    public void execute(String[] args) {
+        this.script.execute(args);
+    }
 }

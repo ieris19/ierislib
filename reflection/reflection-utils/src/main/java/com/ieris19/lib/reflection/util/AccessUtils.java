@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Ieris19
+ * Copyright 2024 Ieris19
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -35,8 +35,7 @@ public class AccessUtils {
      * @throws ReflectiveOperationException If the constructor could not be found or made accessible.
      * @see Class#getConstructor(Class...) Class.getConstructor()
      */
-    public static Constructor<?> getAccessibleConstructor(Class<?> clazz, Class<?>... parameterTypes)
-            throws ReflectiveOperationException {
+    public static Constructor<?> getAccessibleConstructor(Class<?> clazz, Class<?>... parameterTypes) throws ReflectiveOperationException {
         Constructor<?> target = clazz.getConstructor(parameterTypes);
         target.setAccessible(true);
         return target;
@@ -52,8 +51,7 @@ public class AccessUtils {
      * @throws ReflectiveOperationException If the method could not be found or made accessible.
      * @see Class#getMethod(String, Class...) Class.getMethod()
      */
-    public static Method getAccessibleMethod(Class<?> clazz, String methodName, Class<?>... parameterTypes)
-            throws ReflectiveOperationException {
+    public static Method getAccessibleMethod(Class<?> clazz, String methodName, Class<?>... parameterTypes) throws ReflectiveOperationException {
         Method target = clazz.getMethod(methodName, parameterTypes);
         target.setAccessible(true);
         return target;
@@ -93,15 +91,13 @@ public class AccessUtils {
      * @see Class#getConstructor(Class[]) Class.getMethod()
      * @see java.lang.reflect.AccessibleObject AccessibleObject
      */
-    public static void setPermanentAccessibleConstructor(Class<?> clazz, Class<?>... parameterTypes)
-            throws ReflectiveOperationException {
+    public static void setPermanentAccessibleConstructor(Class<?> clazz, Class<?>... parameterTypes) throws ReflectiveOperationException {
         Method constructorAccessor;
         try {
             constructorAccessor = Class.class.getDeclaredMethod("getConstructor0", Class[].class, int.class);
             constructorAccessor.setAccessible(true);
         } catch (NoSuchMethodException e) {
-            throw new ReflectiveOperationException
-                    ("Could not find internal accessor method, your JVM runtime is not supported.");
+            throw new ReflectiveOperationException("Could not find internal accessor method, your JVM runtime is not supported.");
         }
         Method target = (Method) constructorAccessor.invoke(clazz, parameterTypes, 1);
         target.setAccessible(true);
@@ -127,15 +123,13 @@ public class AccessUtils {
      * @see Class#getMethod(String, Class...) Class.getMethod()
      * @see java.lang.reflect.AccessibleObject AccessibleObject
      */
-    public static void setPermanentAccessibleMethod(Class<?> clazz, String methodName, Class<?>... parameterTypes)
-            throws ReflectiveOperationException {
+    public static void setPermanentAccessibleMethod(Class<?> clazz, String methodName, Class<?>... parameterTypes) throws ReflectiveOperationException {
         Method methodAccessor;
         try {
             methodAccessor = Class.class.getDeclaredMethod("getMethod0", String.class, Class[].class);
             methodAccessor.setAccessible(true);
         } catch (NoSuchMethodException e) {
-            throw new ReflectiveOperationException
-                    ("Could not find internal accessor method, your JVM runtime is not supported.");
+            throw new ReflectiveOperationException("Could not find internal accessor method, your JVM runtime is not supported.");
         }
         Method target = (Method) methodAccessor.invoke(clazz, new Object[]{methodName, parameterTypes});
         target.setAccessible(true);
@@ -159,15 +153,13 @@ public class AccessUtils {
      * @see Class#getField(String) Class.getField()
      * @see java.lang.reflect.AccessibleObject AccessibleObject
      */
-    public static void setPermanentAccessibleField(Class<?> clazz, String fieldName)
-            throws ReflectiveOperationException {
+    public static void setPermanentAccessibleField(Class<?> clazz, String fieldName) throws ReflectiveOperationException {
         Method fieldAccessor;
         try {
             fieldAccessor = Class.class.getDeclaredMethod("privateGetDeclaredFields", boolean.class);
             fieldAccessor.setAccessible(true);
         } catch (NoSuchMethodException e) {
-            throw new ReflectiveOperationException
-                    ("Could not find internal accessor method, your JVM runtime is not supported.");
+            throw new ReflectiveOperationException("Could not find internal accessor method, your JVM runtime is not supported.");
         }
         Field[] fields = (Field[]) fieldAccessor.invoke(clazz, false);
         for (Field field : fields) {

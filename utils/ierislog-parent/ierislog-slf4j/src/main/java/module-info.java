@@ -3,10 +3,10 @@
  * use slf4j.
  */
 module ierislib.log.slf4j {
-	requires org.slf4j;
-	requires ierislib.log.core;
+    requires org.slf4j;
+    requires ierislib.log.core;
 
-	provides org.slf4j.spi.SLF4JServiceProvider with com.ieris19.lib.util.log.slf4j.SLF4JServiceProvider;
+    provides org.slf4j.spi.SLF4JServiceProvider with com.ieris19.lib.util.log.slf4j.SLF4JServiceProvider;
 
-	exports com.ieris19.lib.util.log.slf4j;
+    exports com.ieris19.lib.util.log.slf4j;
 }
