@@ -5,7 +5,7 @@ This file is used to list all changes between the versions of the module.
 ## [Unreleased]
 No changes are currently being worked on and unreleased.
 
-## [2.0.0] - TODO: Set release date
+## [2.0.0] - 2024-28-07
 General improvements to the reflection utilities have been made.
 
 ### Added

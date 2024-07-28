@@ -5,7 +5,16 @@ This file is used to list all changes between the versions of the module.
 ## [Unreleased]
 No changes are currently being worked on and unreleased.
 
-## [2.0.0] - XXXX-XX-XX
+## [3.1.0] - 2024-28-07
+### Added
+- Added the math utilities to the commons module. For now, it includes a hexadecimal
+  helper class that can convert byte arrays to Strings and vice versa.
+## [3.0.0] - 2024-28-07
+A reworked version of the Commons library that now contains further utilities for
+text manipulation and Null safety. Major release since renaming and reworkig the
+existing API is not backwards compatible.
+
+## [2.0.0] - ????-??-?? 
 A reworked version of the Commons dependencies, which now contains mostly text utilities (and a Script interface).
 
 ### Changed

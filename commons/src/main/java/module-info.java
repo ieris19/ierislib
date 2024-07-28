@@ -6,4 +6,5 @@ module ierislib.common {
     exports com.ieris19.lib.common;
     exports com.ieris19.lib.common.text;
     exports com.ieris19.lib.common.utils;
+    exports com.ieris19.lib.common.math;
 }
