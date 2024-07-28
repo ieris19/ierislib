@@ -20,7 +20,7 @@
     <parent>
         <groupId>com.ieris19.config</groupId>
         <artifactId>ieris-origin</artifactId>
-        <version>1.0.0</version>
+        <version>17.0.0</version>
     </parent>
 
     <artifactId>ierislib</artifactId>
@@ -86,7 +86,7 @@
 
     <repositories>
         <repository>
-            <id>ieris</id>
+            <id>ieris-github</id>
             <name>Ieris Repository</name>
             <url>https://maven.pkg.github.com/ieris19/*</url>
         </repository>
