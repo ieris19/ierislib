@@ -5,6 +5,23 @@ This file is used to list all changes between the versions of the module.
 ## [Unreleased]
 No changes are currently being worked on and unreleased.
 
+## [3.1.0] - 2024-08-04
+This release increases the configuration manager capabilities and adds several
+customization options. More information can be found in the new documentation
+found at `ierisfx-config.html`
+
+### Added
+- The framework now supports extra configuration settings for the application.
+  These settings can be used to customize the application further.
+- The configuration has been documented in the new `ierisfx-config.html` file.
+- You can now set the `StageStyle` of the application window.
+- You can now set applications to start in fullscreen mode.
+- You can now set the application to be always on top of other windows.
+
+## [3.0.1] - ????-??-??
+Undocumented bugfix release. This release was made to fix a bug that was found
+in the previous version, but the changes were not documented.
+
 ## [3.0.0] - 2024-05-18
 This major version reworks from the ground how JavaFX works
 

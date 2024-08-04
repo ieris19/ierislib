@@ -17,30 +17,30 @@
 
 package com.ieris19.lib.ui.core.config;
 
+import com.ieris19.lib.files.config.api.ConfigFactory;
+import com.ieris19.lib.files.config.api.ConfigFormat;
+import com.ieris19.lib.files.config.api.ConfigManager;
 import com.ieris19.lib.ui.core.control.View;
 
 import java.util.Collection;
+import java.util.Optional;
 
 /**
  * This class represents the settings required by IerisFx
  */
 public class FxConfig {
+    private static final FxConfig DEFAULTS = new FxConfig("ierisFx Application", "", "main", false);
+
+    public static FxConfig getDefaults() {
+        return DEFAULTS;
+    }
+
     private String title;
     private String icon;
     private String mainView;
     private boolean resizable;
     private ViewMap map;
-
-    /**
-     * Constructs an instance of FxConfig with default values
-     */
-    public FxConfig() {
-        this.title = "IerisFx Application";
-        this.icon = "";
-        this.mainView = "main";
-        this.resizable = false;
-        this.map = new ViewMap();
-    }
+    private ConfigManager settings;
 
     /**
      * Constructs an instance of FxConfig with all the provided values
@@ -49,13 +49,29 @@ public class FxConfig {
      * @param icon the icon path to be shown by the application
      * @param mainView the first view to load when starting the application
      * @param resizable whether the window will be resizable
+     * @param settings the views to be added to the application
      */
-    public FxConfig(String title, String icon, String mainView, boolean resizable) {
+    public FxConfig(String title, String icon, String mainView, boolean resizable, ConfigManager settings) {
         this.title = title;
         this.icon = icon;
         this.mainView = mainView;
         this.resizable = resizable;
         this.map = new ViewMap();
+        this.settings = settings;
+    }
+
+    public FxConfig(String title, String icon, String mainView, boolean resizable) {
+        this(title, icon, mainView, resizable, ConfigFactory.getConfig(title, ConfigFormat.MEMORY));
+    }
+
+    public FxConfig(ConfigManager manager) {
+        this(
+                manager.getProperty("ierisfx/title").orElse(DEFAULTS.title),
+                manager.getProperty("ierisfx/main_view").orElse(DEFAULTS.mainView),
+                manager.getProperty("ierisfx/icon_path").orElse(DEFAULTS.icon),
+                manager.getBooleanProperty("ierisfx/resizable").orElse(DEFAULTS.resizable),
+                manager
+        );
     }
 
     //TODO: Document Class
@@ -101,5 +117,9 @@ public class FxConfig {
 
     public void addView(View view) {
         map.add(view);
+    }
+
+    public ConfigManager getAdditionalSettings() {
+        return settings;
     }
 }

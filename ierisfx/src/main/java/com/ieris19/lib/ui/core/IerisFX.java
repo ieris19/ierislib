@@ -18,6 +18,7 @@
 package com.ieris19.lib.ui.core;
 
 import com.ieris19.lib.common.Script;
+import com.ieris19.lib.files.config.api.ConfigManager;
 import com.ieris19.lib.ui.core.config.FxConfig;
 import com.ieris19.lib.ui.core.control.ViewManager;
 import javafx.application.Application;

@@ -17,12 +17,15 @@
 
 package com.ieris19.lib.ui.core.control;
 
+import com.ieris19.lib.files.config.api.ConfigManager;
+import com.ieris19.lib.ui.core.IerisFX;
 import com.ieris19.lib.ui.core.config.FxConfig;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -72,10 +75,27 @@ public class ViewManager {
      */
     public void start(Stage stage) {
         this.stage = stage;
+        configureStage();
         this.currentScene = new Scene(new Region());
-        setIcon();
         log.trace("Trying to load the view");
         openView(settings.getMainView());
+        this.stage.centerOnScreen();
+    }
+
+    /**
+     * Configures the stage properties
+     */
+    public void configureStage() {
+        ConfigManager configExtras = settings.getAdditionalSettings();
+        StageStyle style = switch (configExtras.getProperty("ierisfx.extra/windowStyle").orElse("DECORATED").toUpperCase()) {
+            default -> StageStyle.DECORATED;
+            case "UNDECORATED" -> StageStyle.UNDECORATED;
+            case "TRANSPARENT" -> StageStyle.TRANSPARENT;
+        };
+        this.stage.initStyle(style);
+        this.stage.setFullScreen(configExtras.getBooleanProperty("ierisfx.extra/fullscreen").orElse(false));
+        this.stage.setAlwaysOnTop(configExtras.getBooleanProperty("ierisfx.extra/always_on_top").orElse(false));
+        setIcon();
     }
 
     /**
@@ -114,7 +134,6 @@ public class ViewManager {
             this.stage.setMinWidth(root.getMinWidth());
         }
         this.stage.show();
-        this.stage.centerOnScreen();
     }
 
     /**

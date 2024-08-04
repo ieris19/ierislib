@@ -18,8 +18,8 @@
 package com.ieris19.lib.ui.core;
 
 import com.ieris19.lib.common.Script;
-import com.ieris19.lib.files.config.ConfigFactory;
-import com.ieris19.lib.files.config.ConfigManager;
+import com.ieris19.lib.files.config.api.ConfigFactory;
+import com.ieris19.lib.files.config.api.ConfigManager;
 import com.ieris19.lib.ui.core.config.FxConfig;
 import com.ieris19.lib.ui.core.control.View;
 import javafx.application.Application;
@@ -27,13 +27,13 @@ import javafx.application.Application;
 import java.net.URI;
 import java.util.Collection;
 
-import static com.ieris19.lib.files.config.ConfigFactory.*;
+import static com.ieris19.lib.files.config.api.ConfigFactory.*;
 
 public class IerisFxBuilder {
-    private final FxConfig settings;
+    private FxConfig settings;
 
     public IerisFxBuilder() {
-        this.settings = new FxConfig();
+        this.settings = FxConfig.getDefaults();
     }
 
     public IerisFxBuilder setInit(Script initScript) {
@@ -53,10 +53,7 @@ public class IerisFxBuilder {
 
     public IerisFxBuilder loadSettings(URI settingsPath) {
         ConfigManager manager = ConfigFactory.getConfig(settingsPath, ConfigFormat.INI);
-        this.settings.setTitle(manager.getProperty("ierisfx/title").orElse(settings.getTitle()));
-        this.settings.setMainView(manager.getProperty("ierisfx/main_view").orElse(settings.getMainView()));
-        this.settings.setIcon(manager.getProperty("ierisfx/icon_path").orElse(settings.getIcon()));
-        this.settings.setResizable(manager.getBooleanProperty("ierisfx/resizable").orElse(settings.isResizable()));
+        this.settings = new FxConfig(manager);
         return this;
     }
 
