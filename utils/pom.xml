@@ -37,6 +37,6 @@
 
     <name>Utilities Library</name>
     <description>A parent artifact for all classes that provide utilities</description>
-    <url>${project.parent.url}/utils</url>
+    <url>${ieris.source.repoURL}/utils</url>
     <inceptionYear>2022</inceptionYear>
 </project>

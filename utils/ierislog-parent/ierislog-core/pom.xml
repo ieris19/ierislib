@@ -29,6 +29,6 @@
 
     <name>Logging Core</name>
     <description>The core of the Ierislog framework. This is the heart of the other logging packages</description>
-    <url>${project.parent.url}/core</url>
+    <url>${ieris.source.repoURL}/core</url>
     <inceptionYear>2023</inceptionYear>
 </project>

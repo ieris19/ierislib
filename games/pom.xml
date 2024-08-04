@@ -34,12 +34,8 @@
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-    <properties>
-        <ieris.source.repoURL>${project.parent.url}/games</ieris.source.repoURL>
-    </properties>
-
     <name>Game Tools</name>
     <description>A library of reusable Java code that implements simple common game tools</description>
-    <url>${project.parent.url}</url>
+    <url>${ieris.source.repoURL}</url>
     <inceptionYear>2021</inceptionYear>
 </project>

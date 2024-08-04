@@ -30,6 +30,6 @@
 
     <name>Reflective Interface</name>
     <description>An interface for simplifying interactions with the Java Reflection API</description>
-    <url>${project.parent.url}/reflection-utils</url>
+    <url>${ieris.source.repoURL}/reflection/reflection-utils</url>
     <inceptionYear>2022</inceptionYear>
 </project>

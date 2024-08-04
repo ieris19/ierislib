@@ -30,6 +30,6 @@
 
     <name>Game Economy</name>
     <description>A simplified, game-ready economy system</description>
-    <url>${project.parent.url}/game-economy</url>
+    <url>${ieris.source.repoURL}/economy/game-economy</url>
     <inceptionYear>2022</inceptionYear>
 </project>

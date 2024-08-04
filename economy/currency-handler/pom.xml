@@ -30,6 +30,6 @@
 
     <name>Currency Handler</name>
     <description>A library that can handle storing and converting different currencies</description>
-    <url>${project.parent.url}/currency-handler</url>
+    <url>${ieris.source.repoURL}/economy/currency-handler</url>
     <inceptionYear>2023</inceptionYear>
 </project>

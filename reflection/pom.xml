@@ -30,10 +30,11 @@
     <packaging>pom</packaging>
     <modules>
         <module>reflection-utils</module>
+        <module>chaos-annotations</module>
     </modules>
 
     <name>Reflective Library</name>
     <description>A specialized module focused on interactions with the Reflection API in Java</description>
-    <url>${project.parent.url}/reflection</url>
+    <url>${ieris.source.repoURL}/reflection</url>
     <inceptionYear>2022</inceptionYear>
 </project>

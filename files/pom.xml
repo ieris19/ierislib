@@ -34,12 +34,8 @@
         <module>assets-manager</module>
     </modules>
 
-    <properties>
-        <ieris.source.repoURL>${project.parent.url}/files</ieris.source.repoURL>
-    </properties>
-
     <name>File Manager</name>
     <description>An opinionated toolkit that manages configuration and resources for a project</description>
-    <url>${project.parent.url}/files</url>
+    <url>${ieris.source.repoURL}/files</url>
     <inceptionYear>2022</inceptionYear>
 </project>

@@ -36,6 +36,6 @@
 
     <name>Economy</name>
     <description>A library of reusable Java code to provide easy handling of money</description>
-    <url>${project.parent.url}/economy</url>
+    <url>${ieris.source.repoURL}/economy</url>
     <inceptionYear>2022</inceptionYear>
 </project>

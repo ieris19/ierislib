@@ -30,7 +30,7 @@
 
     <name>SLF4J Adapter</name>
     <description>A bridge between IerisLog and the SLF4J</description>
-    <url>${project.parent.url}/ierislog-slf4j</url>
+    <url>${ieris.source.repoURL}/ierislog-slf4j</url>
     <inceptionYear>2022</inceptionYear>
 
     <dependencies>

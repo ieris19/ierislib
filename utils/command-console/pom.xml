@@ -38,6 +38,6 @@
 
     <name>Command Console</name>
     <description>A tool that takes over a shell in order to provide easy command parsing from a Java application</description>
-    <url>${project.parent.url}/console</url>
+    <url>${ieris.source.repoURL}/utils/console</url>
     <inceptionYear>2021</inceptionYear>
 </project>

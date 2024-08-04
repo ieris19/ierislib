@@ -30,6 +30,6 @@
 
     <name>Game Cards</name>
     <description>An implementation of a cards and decks to use in card game implementations</description>
-    <url>${project.parent.url}/cards</url>
+    <url>${ieris.source.repoURL}/games/cards</url>
     <inceptionYear>2021</inceptionYear>
 </project>

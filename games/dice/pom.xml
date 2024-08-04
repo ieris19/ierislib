@@ -30,6 +30,6 @@
 
     <name>Game Dice</name>
     <description>A simple implementation of a dice</description>
-    <url>${project.parent.url}/dice</url>
+    <url>${ieris.source.repoURL}/games/dice</url>
     <inceptionYear>2022</inceptionYear>
 </project>

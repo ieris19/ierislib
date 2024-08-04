@@ -47,6 +47,13 @@ public class StringUtils {
         return new String(string);
     }
 
+    /**
+     * Capitalizes the first character of the string
+     */
+    public static String capitalize(String str) {
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+
     //------------------------------------------------------------------------------------------------------------------
     // CONCATENATION
     //------------------------------------------------------------------------------------------------------------------
@@ -141,5 +148,32 @@ public class StringUtils {
         } else {
             return padRight(trim(str, desiredLength), desiredLength, filler);
         }
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    // CONTENT
+    //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Removes all characters from the string that match the regex pattern and returns the rest of the string.
+     *
+     * @param str The string to remove characters from
+     * @param regex A regex pattern to match the characters to remove, e.g. "[^a-zA-Z0-9]"
+     * @return The string with the matching characters removed
+     */
+    public static String removeMatching(String str, String regex) {
+        return str.replaceAll(regex, "");
+    }
+
+    /**
+     * Removes all characters from the string that do not match the regex pattern and returns the rest of the string.
+     * This is the opposite of {@link #removeMatching(String, String)}
+     *
+     * @param str The string to remove characters from
+     * @param regex A regex pattern to match the characters to remove, e.g. "[^a-zA-Z0-9]"
+     * @return The string with the non-matching characters removed
+     */
+    public static String keepMatching(String str, String regex) {
+        return removeMatching("(?!(" + regex + ").", str);
     }
 }
