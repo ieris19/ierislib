@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!--
-  ~ Copyright 2024 Ieris19
-  ~
-  ~    Licensed under the Apache License, Version 2.0 (the "License");
-  ~    you may not use this file except in compliance with the License.
-  ~    You may obtain a copy of the License at
-  ~
-  ~        http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~    Unless required by applicable law or agreed to in writing, software
-  ~    distributed under the License is distributed on an "AS IS" BASIS,
-  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~    See the License for the specific language governing permissions and
-  ~    limitations under the License.
-  ~
-  -->
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -84,20 +69,31 @@
         <repository>
             <id>ierislib</id>
             <name>IerisLib</name>
-            <url>https://maven.pkg.github.com/ieris19/ierislib</url>
+            <!-- https://maven.pkg.github.com/ieris19/ierislib -->
+            <url>file:///media/ieris19/development-drive/Development/Repositories/Maven</url>
         </repository>
     </distributionManagement>
 
     <repositories>
         <repository>
-            <id>ieris-github</id>
-            <name>Ieris Repository</name>
-            <url>https://maven.pkg.github.com/ieris19/*</url>
+            <id>ieris-linux</id>
+            <name>Ieris Local Repository</name>
+            <url>file:///media/ieris19/development-drive/Development/Repositories/Maven</url>
+        </repository>
+        <repository>
+            <id>ieris-windows</id>
+            <name>Ieris Local Repository</name>
+            <url>file:///D:/Development/Repositories/Maven</url>
         </repository>
         <repository>
             <id>maven_central</id>
             <name>Maven Central</name>
             <url>https://repo.maven.apache.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>ieris-github</id>
+            <name>Ieris Repository</name>
+            <url>https://maven.pkg.github.com/ieris19/*</url>
         </repository>
     </repositories>
 
