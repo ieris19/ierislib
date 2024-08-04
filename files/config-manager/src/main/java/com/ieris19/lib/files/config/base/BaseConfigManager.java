@@ -15,8 +15,9 @@
  *
  */
 
-package com.ieris19.lib.files.config;
+package com.ieris19.lib.files.config.base;
 
+import com.ieris19.lib.files.config.api.ConfigManager;
 import com.ieris19.lib.files.config.error.IncorrectPropertyStatusException;
 import com.ieris19.lib.files.config.error.IncorrectPropertyTypeException;
 
@@ -24,17 +25,6 @@ import java.net.URI;
 import java.util.Optional;
 
 public abstract class BaseConfigManager implements ConfigManager {
-    URI path;
-
-    public BaseConfigManager(URI path) {
-        this.path = path;
-    }
-
-    @Override
-    public URI getPropertiesPath() {
-        return path;
-    }
-
     @Override
     public void modifyProperty(String key, String value) throws IncorrectPropertyStatusException {
         if (this.propertyPresent(key)) {

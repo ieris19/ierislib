@@ -6,6 +6,6 @@ module ierislib.files.config {
     requires java.base;
     requires ini4j;
 
-    exports com.ieris19.lib.files.config;
     exports com.ieris19.lib.files.config.error;
+    exports com.ieris19.lib.files.config.api;
 }

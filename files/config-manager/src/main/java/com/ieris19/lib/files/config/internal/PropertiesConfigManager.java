@@ -15,8 +15,11 @@
  *
  */
 
-package com.ieris19.lib.files.config;
+package com.ieris19.lib.files.config.internal;
 
+import com.ieris19.lib.files.config.api.FileConfigManager;
+import com.ieris19.lib.files.config.base.BaseConfigManager;
+import com.ieris19.lib.files.config.base.BaseFileConfigManager;
 import org.ini4j.Options;
 
 import java.io.IOError;
@@ -24,7 +27,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Optional;
 
-public class PropertiesConfigManager extends BaseConfigManager {
+public class PropertiesConfigManager extends BaseFileConfigManager {
     Options config;
 
     public PropertiesConfigManager(URI path) {

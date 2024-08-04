@@ -15,8 +15,10 @@
  *
  */
 
-package com.ieris19.lib.files.config;
+package com.ieris19.lib.files.config.internal;
 
+import com.ieris19.lib.files.config.base.BaseConfigManager;
+import com.ieris19.lib.files.config.base.BaseFileConfigManager;
 import org.ini4j.Ini;
 
 import java.io.IOError;
@@ -24,7 +26,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Optional;
 
-public class IniConfigManager extends BaseConfigManager {
+public class IniConfigManager extends BaseFileConfigManager {
     Ini config;
 
     public IniConfigManager(URI path) {

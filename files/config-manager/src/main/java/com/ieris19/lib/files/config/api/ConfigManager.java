@@ -15,7 +15,7 @@
  *
  */
 
-package com.ieris19.lib.files.config;
+package com.ieris19.lib.files.config.api;
 
 import com.ieris19.lib.files.config.error.IncorrectPropertyStatusException;
 import com.ieris19.lib.files.config.error.IncorrectPropertyTypeException;
@@ -28,18 +28,6 @@ import java.util.Optional;
  * implemented by classes that provide configuration management.
  */
 public interface ConfigManager {
-    /**
-     * Loads the properties from file
-     */
-    void loadProperties();
-
-    /**
-     * Returns the path to the properties file
-     *
-     * @return the path to the properties file
-     */
-    URI getPropertiesPath();
-
     /**
      * Returns the value of the property with the given key
      *
@@ -92,11 +80,6 @@ public interface ConfigManager {
      * @return true if the property is present, false otherwise
      */
     boolean propertyPresent(String key);
-
-    /**
-     * Saves the properties to file
-     */
-    void save();
 
     /**
      * Returns the value of the property with the given key as a byte
