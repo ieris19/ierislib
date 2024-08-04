@@ -7,6 +7,9 @@ This file is used to list all changes between the versions of the module.
 - Use reflection to automatically load views from a package.
 - Dynamically update FxConfig class and documentation to include new settings.
 
+## [3.2.1] - 2024-08-05
+This release bumps the version of the `ierislib.commons` package from `1.0.0`
+
 ## [3.2.0] - 2024-08-04
 This release changes the way the configuration manager works and improves the
 way that configuration is handled and the way that the configuration is used.
