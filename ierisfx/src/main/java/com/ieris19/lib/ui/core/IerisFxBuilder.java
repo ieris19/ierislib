@@ -19,21 +19,20 @@ package com.ieris19.lib.ui.core;
 
 import com.ieris19.lib.common.Script;
 import com.ieris19.lib.files.config.api.ConfigFactory;
+import com.ieris19.lib.files.config.api.ConfigFormat;
 import com.ieris19.lib.files.config.api.ConfigManager;
-import com.ieris19.lib.ui.core.config.FxConfig;
+import com.ieris19.lib.ui.core.config.FxConfigurer;
 import com.ieris19.lib.ui.core.control.View;
 import javafx.application.Application;
 
 import java.net.URI;
 import java.util.Collection;
 
-import static com.ieris19.lib.files.config.api.ConfigFactory.*;
-
 public class IerisFxBuilder {
-    private FxConfig settings;
+    private FxConfigurer settings;
 
     public IerisFxBuilder() {
-        this.settings = FxConfig.getDefaults();
+        this.settings = new FxConfigurer();
     }
 
     public IerisFxBuilder setInit(Script initScript) {
@@ -53,7 +52,7 @@ public class IerisFxBuilder {
 
     public IerisFxBuilder loadSettings(URI settingsPath) {
         ConfigManager manager = ConfigFactory.getConfig(settingsPath, ConfigFormat.INI);
-        this.settings = new FxConfig(manager);
+        this.settings = new FxConfigurer(manager);
         return this;
     }
 
@@ -88,7 +87,7 @@ public class IerisFxBuilder {
     }
 
     public void launch() {
-        IerisFX.setConfig(this.settings);
+        IerisFX.setConfig(settings.freezeData());
         Application.launch(IerisFX.class);
     }
 }

@@ -3,7 +3,32 @@
 This file is used to list all changes between the versions of the module.
 
 ## [Unreleased]
-No changes are currently being worked on and unreleased.
+### Proposed:
+- Use reflection to automatically load views from a package.
+- Dynamically update FxConfig class and documentation to include new settings.
+
+## [3.2.0] - 2024-08-04
+This release changes the way the configuration manager works and improves the
+way that configuration is handled and the way that the configuration is used.
+The changes are slightly breaking, but keeping the major version the same since
+the configuration package is somewhat internal. The main change required to
+update is to rename the `FXConfig` class to `FXConfigurer` unless your application
+uses ierisFx in non-standard ways.
+
+### Changed
+- The `FXConfig` class has been revamped!
+  - The name has changed to `FXConfigurer`.
+  - The class is now a builder class that can be used to load config files, alter
+    the values and export to the new `FXConfiguration` class.
+  - The `FXConfigurer` class now has getters and setters for all the configuration
+    values.
+- The `FXConfiguration` class is now a class that holds the configuration values
+  and can be used to get the values from the configuration.
+
+### Fixed
+- There were several leftover snippets that were not removed from the codebase
+  when the configuration manager was updated in the previous release. These have
+  been removed in this release.
 
 ## [3.1.0] - 2024-08-04
 This release increases the configuration manager capabilities and adds several

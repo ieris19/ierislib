@@ -17,15 +17,12 @@
 
 package com.ieris19.lib.ui.core.control;
 
-import com.ieris19.lib.files.config.api.ConfigManager;
-import com.ieris19.lib.ui.core.IerisFX;
-import com.ieris19.lib.ui.core.config.FxConfig;
+import com.ieris19.lib.ui.core.config.FxConfiguration;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,7 +35,7 @@ import java.io.InputStream;
  * displaying it.
  */
 public class ViewManager {
-    private final FxConfig settings;
+    private final FxConfiguration settings;
     /**
      * Logs the events that occur in the application
      */
@@ -55,7 +52,7 @@ public class ViewManager {
     /**
      * Creates a new ViewManager to handle the views in the application
      */
-    public ViewManager(FxConfig settings) {
+    public ViewManager(FxConfiguration settings) {
         log.debug("Initializing ViewManager");
         this.settings = settings;
         log.debug("ViewManager initialized");
@@ -78,7 +75,7 @@ public class ViewManager {
         configureStage();
         this.currentScene = new Scene(new Region());
         log.trace("Trying to load the view");
-        openView(settings.getMainView());
+        openView(settings.mainView());
         this.stage.centerOnScreen();
     }
 
@@ -86,15 +83,9 @@ public class ViewManager {
      * Configures the stage properties
      */
     public void configureStage() {
-        ConfigManager configExtras = settings.getAdditionalSettings();
-        StageStyle style = switch (configExtras.getProperty("ierisfx.extra/windowStyle").orElse("DECORATED").toUpperCase()) {
-            default -> StageStyle.DECORATED;
-            case "UNDECORATED" -> StageStyle.UNDECORATED;
-            case "TRANSPARENT" -> StageStyle.TRANSPARENT;
-        };
-        this.stage.initStyle(style);
-        this.stage.setFullScreen(configExtras.getBooleanProperty("ierisfx.extra/fullscreen").orElse(false));
-        this.stage.setAlwaysOnTop(configExtras.getBooleanProperty("ierisfx.extra/always_on_top").orElse(false));
+        this.stage.initStyle(settings.windowStyle());
+        this.stage.setFullScreen(settings.fullScreen());
+        this.stage.setAlwaysOnTop(settings.alwaysOnTop());
         setIcon();
     }
 
@@ -118,14 +109,14 @@ public class ViewManager {
         Region root = view.getLoader().loadView(this);
         log.debug("Correctly loaded view: {}", view.getId());
         this.currentScene.setRoot(root);
-        String title = settings.getTitle();
+        String title = settings.title();
         if (view.getTitle() != null && !view.getTitle().isEmpty()) {
             title += title.isEmpty() ? view.getTitle() : " - " + view.getTitle();
         }
         this.stage.setTitle(title);
         log.debug("Window title set to: {}", title);
         this.stage.sizeToScene();
-        this.stage.setResizable(settings.isResizable());
+        this.stage.setResizable(settings.resizable());
         this.stage.setScene(this.currentScene);
         if (root.getMinHeight() > 0) {
             this.stage.setMinHeight(root.getMinHeight());
@@ -143,7 +134,7 @@ public class ViewManager {
         log.debug("Obtaining icon from file");
         InputStream iconStream = null;
         try {
-            iconStream = Thread.currentThread().getStackTrace()[2].getClass().getResourceAsStream(settings.getIcon());
+            iconStream = Thread.currentThread().getStackTrace()[2].getClass().getResourceAsStream(settings.icon());
         } catch (Exception e) {
             log.error("Cannot load icon", e);
         }

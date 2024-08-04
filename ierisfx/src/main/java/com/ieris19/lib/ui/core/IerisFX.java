@@ -18,8 +18,7 @@
 package com.ieris19.lib.ui.core;
 
 import com.ieris19.lib.common.Script;
-import com.ieris19.lib.files.config.api.ConfigManager;
-import com.ieris19.lib.ui.core.config.FxConfig;
+import com.ieris19.lib.ui.core.config.FxConfiguration;
 import com.ieris19.lib.ui.core.control.ViewManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -47,7 +46,7 @@ public class IerisFX extends Application {
     /**
      * Configuration Manager for the application
      */
-    private static FxConfig settings;
+    private static FxConfiguration settings;
 
     static {
         Script empty = (args) -> { };
@@ -88,7 +87,7 @@ public class IerisFX extends Application {
         IerisFX.stopScript = stopScript;
     }
 
-    static void setConfig(FxConfig settings) {
+    static void setConfig(FxConfiguration settings) {
         IerisFX.settings = settings;
     }
 

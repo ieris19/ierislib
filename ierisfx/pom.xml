@@ -30,10 +30,11 @@
 
     <name>IerisFX</name>
     <description>A framework to quickly scaffold JavaFX applications</description>
-    <url>${project.parent.url}/ierisfx</url>
+    <url>${ieris.source.repoURL}/ierisfx</url>
     <inceptionYear>2021</inceptionYear>
 
     <properties>
+        <ieris.java.version>21</ieris.java.version>
         <ieris.dependencyVersion.javafx>21</ieris.dependencyVersion.javafx>
     </properties>
 
