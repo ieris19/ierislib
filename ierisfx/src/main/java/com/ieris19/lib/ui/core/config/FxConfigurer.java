@@ -61,12 +61,18 @@ public class FxConfigurer {
 
     public FxConfigurer(ConfigManager manager) {
         this.title = manager.getProperty(SETTINGS_KEY+"/title").orElse(DEFAULTS.title());
-        this.icon = manager.getProperty(SETTINGS_KEY+"/main_view").orElse(DEFAULTS.mainView());
-        this.mainView = manager.getProperty(SETTINGS_KEY+"/icon_path").orElse(DEFAULTS.icon());
+        this.icon = manager.getProperty(SETTINGS_KEY+"/icon").orElse(DEFAULTS.icon());
+        this.mainView = manager.getProperty(SETTINGS_KEY+"/mainView").orElse(DEFAULTS.mainView());
         this.resizable = manager.getBooleanProperty(SETTINGS_KEY+"/resizable").orElse(DEFAULTS.resizable());
         this.fullscreen = manager.getBooleanProperty(EXTRAS_KEY+"/fullscreen").orElse(DEFAULTS.fullScreen());
-        this.alwaysOnTop = manager.getBooleanProperty(EXTRAS_KEY+"/always_on_top").orElse(DEFAULTS.alwaysOnTop());
-        this.windowStyle = manager.getProperty(EXTRAS_KEY+"/window_style").map(StageStyle::valueOf).orElse(DEFAULTS.windowStyle());
+        this.alwaysOnTop = manager.getBooleanProperty(EXTRAS_KEY+"/alwaysOnTop").orElse(DEFAULTS.alwaysOnTop());
+        this.windowStyle = manager.getProperty(EXTRAS_KEY+"/windowStyle").map(s -> {
+            try {
+                return StageStyle.valueOf(s.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                return null;
+            }
+        }).orElse(DEFAULTS.windowStyle());
 
         this.map = new ViewMap();
         this.settings = manager;

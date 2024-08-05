@@ -7,7 +7,21 @@ This file is used to list all changes between the versions of the module.
 - Use reflection to automatically load views from a package.
 - Dynamically update FxConfig class and documentation to include new settings.
 
-## [3.2.1] - 2024-08-05
+## [3.2.2] - 2024-08-05
+This release fixes bugs that were found in the previous version.
+
+### Fixed
+- The `FXConfigurer` class was not properly setting the configuration values
+  when the `load` method was called, and it was reading different keys than the
+  ones that were documented. It should now properly read configuration values
+  as documented.
+- The way that the `ViewManager` would set the new properties resulted in a 
+  conflict between fullscreen and windowStyle. The `ViewManager` now sets the
+  `StageStyle` conditionally based on whether the default style is used or not,
+   as such, setting the config value to `DECORATED` will now work as expected
+   when combined with fullscreen mode. This bug was observed on Gnome 46
+
+## [3.2.1] - 2024-08-04
 This release bumps the version of the `ierislib.commons` package from `1.0.0`
 
 ## [3.2.0] - 2024-08-04

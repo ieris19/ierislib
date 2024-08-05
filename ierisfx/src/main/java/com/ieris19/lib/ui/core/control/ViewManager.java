@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -66,7 +67,9 @@ public class ViewManager {
      * Configures the stage properties
      */
     public void configureStage() {
-        this.stage.initStyle(settings.windowStyle());
+        if (settings.windowStyle() != StageStyle.DECORATED) {
+            this.stage.initStyle(settings.windowStyle());
+        }
         this.stage.setFullScreen(settings.fullScreen());
         this.stage.setAlwaysOnTop(settings.alwaysOnTop());
         setIcon();
