@@ -7,6 +7,14 @@ This file is used to list all changes between the versions of the module.
 - Add SPI support for the `ConfigManager` class so that it can be loaded dynamically
   from the classpath.
 
+## [3.1.0] - 2025-08-5
+This release expands the `ConfigManager` API slightly
+
+### Added
+- Added an alias for `ConfigManager#propertyPresent()` called 
+  `ConfigManager#containsProperty()` which is perhaps more intuitive and
+  consistent with the Collections API from the standard Java library.
+
 ## [3.0.0] - 2025-08-3
 This release breaks the public API of the module. In doing so, it establishes a
 new API that is much more flexible and easier to use. It should NOT be a problem

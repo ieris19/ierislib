@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>config-manager</artifactId>
-    <version>3.0.0</version>
+    <version>3.1.0</version>
 
     <name>Configuration Manager</name>
     <description>A framework to ease the management of configuration files</description>

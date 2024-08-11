@@ -65,6 +65,14 @@ public interface ConfigManager {
     boolean propertyPresent(String key);
 
     /**
+     * An alias for {@link #propertyPresent(String)} that is perhaps more
+     * similar to the Java {@link java.util.Collection#contains(Object)}
+     */
+    default boolean containsProperty(String key) {
+        return propertyPresent(key);
+    }
+
+    /**
      * Returns the value of the property with the given key as a byte
      *
      * @param key the key of the property
