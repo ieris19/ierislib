@@ -16,7 +16,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>reflection-utils</module>
-        <module>chaos-annotations</module>
     </modules>
 
     <name>Reflective Library</name>
