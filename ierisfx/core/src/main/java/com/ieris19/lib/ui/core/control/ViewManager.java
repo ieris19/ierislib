@@ -1,9 +1,11 @@
 package com.ieris19.lib.ui.core.control;
 
 import com.ieris19.lib.ui.core.config.FxConfiguration;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -56,8 +58,8 @@ public class ViewManager {
      */
     public void start(Stage stage) {
         this.stage = stage;
-        configureStage();
         this.currentScene = new Scene(new Region());
+        configureWindow();
         log.trace("Trying to load the view");
         openView(settings.mainView());
         this.stage.centerOnScreen();
@@ -66,9 +68,14 @@ public class ViewManager {
     /**
      * Configures the stage properties
      */
-    public void configureStage() {
+    private void configureWindow() {
         if (settings.windowStyle() != StageStyle.DECORATED) {
             this.stage.initStyle(settings.windowStyle());
+        }
+        if (settings.windowStyle() == StageStyle.TRANSPARENT && settings.sceneFill().isOpaque()) {
+            currentScene.setFill(Color.TRANSPARENT);
+        } else if (settings.sceneFill() != null) {
+            currentScene.setFill(settings.sceneFill());
         }
         this.stage.setFullScreen(settings.fullScreen());
         this.stage.setAlwaysOnTop(settings.alwaysOnTop());
@@ -94,6 +101,7 @@ public class ViewManager {
     protected void showScene(View view) {
         Region root = view.getLoader().loadView(this);
         log.debug("Correctly loaded view: {}", view.getId());
+        Rectangle2D oldBounds = new Rectangle2D(this.stage.getX(), this.stage.getY(), this.stage.getWidth(), this.stage.getHeight());
         this.currentScene.setRoot(root);
         String title = settings.title();
         if (view.getTitle() != null && !view.getTitle().isEmpty()) {
@@ -110,7 +118,16 @@ public class ViewManager {
         if (root.getMinWidth() > 0) {
             this.stage.setMinWidth(root.getMinWidth());
         }
+        this.centerNewBounds(oldBounds);
         this.stage.show();
+    }
+
+    private void centerNewBounds(Rectangle2D oldBounds) {
+        Rectangle2D newBounds = new Rectangle2D(this.stage.getX(), this.stage.getY(), this.stage.getWidth(), this.stage.getHeight());
+        double x = Math.max(0, oldBounds.getMinX() - (0.5 * (newBounds.getWidth() - oldBounds.getWidth())));
+        double y = Math.max(0, oldBounds.getMinY() - (0.5 * (newBounds.getHeight() - oldBounds.getHeight())));
+        this.stage.setX(x);
+        this.stage.setY(y);
     }
 
     /**

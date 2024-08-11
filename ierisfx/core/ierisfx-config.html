@@ -1,0 +1,362 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ierisFX Configuration Doc</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-dark.min.css"
+          rel="stylesheet"/>
+    <style>
+        language-ini {
+            color: #d4d4d4;
+        }
+
+        html {
+            background: linear-gradient(to bottom, #434343 0%, #131313 100%);
+            background-attachment: fixed;
+            color: #f5f5f5;
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 1rem 3rem;
+        }
+
+        header {
+            position: relative;
+            top: -1rem;
+            left: -3rem;
+            width: 100vw;
+            padding: 1rem;
+            background: linear-gradient(-20deg, #6e45e2 0%, #88d3ce 100%);
+        }
+
+        .backdrop {
+            position: relative;
+        }
+
+        a {
+            color: #7599ff;
+        }
+
+        a:visited {
+            color: #7599ff;
+        }
+
+        a:hover {
+            color: #994599;
+        }
+
+        div.center {
+            display: flex;
+            justify-content: center;
+        }
+
+        pre, .inline-snippet {
+            background: #1d1d1d;
+            padding: 0.1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        pre {
+            padding: 0.1rem 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #1d1d1d;
+        }
+
+        table, th, td {
+            border: 1px solid #ffffff75;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        th, td {
+            font-size: 1rem;
+            padding: 0.5rem;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+        }
+
+        table.minConfig th:first-child,
+        table.minConfig th:last-child,
+        table.minConfig td:first-child,
+        table.minConfig td:last-child {
+            word-wrap: break-word;
+            max-width: 150px;
+        }
+
+        table.extraConfig th:nth-child(3),
+        table.extraConfig td:nth-child(3) {
+            word-wrap: break-word;
+            max-width: 150px;
+        }
+
+        table.extraConfig td:nth-child(3),
+        table.extraConfig td:nth-child(4) {
+            font-family: monospace;
+            font-size: 0.9rem;
+            line-height: 1.5rem;
+        }
+
+        table.extraConfig td:nth-child(4) {
+            color: #f0a445;
+        }
+
+        .default {
+            color: #f0a445;
+        }
+
+        .highlighted {
+            color: #f0a4f5;
+        }
+
+        .warning {
+            color: #cf2f2f
+        }
+
+        .quote-block {
+            background: #1d1d1d;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>ierisFX configuration file documentation</h1>
+</header>
+<main class="backdrop">
+    <h2>Minimum Configuration:</h2>
+
+    <table class="minConfig">
+        <thead>
+        <tr>
+            <th>Key</th>
+            <th>Description</th>
+            <th>Possible Values</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>title</td>
+            <td>The title of the application</td>
+            <td>String</td>
+        </tr>
+        <tr>
+            <td>mainView</td>
+            <td>The first view the application will show upon launch</td>
+            <td>String</td>
+        </tr>
+        <tr>
+            <td>resizable</td>
+            <td>
+                Deprecated since 3.2.3, next breaking version 4.0.0 will remove
+                this
+                key. Use the <code>ierisfx.extras.resizable</code> key instead.
+            </td>
+            <td>DEPRECATED</td>
+        </tr>
+        <tr>
+            <td>icon</td>
+            <td>
+                Deprecated since 3.2.3, next breaking version 4.0.0 will remove
+                this
+                key. Use the <code>ierisfx.extras.resizable</code> key instead.
+            </td>
+            <td>DEPRECATED</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p class="quote-block">
+        <b class="warning">WARNING:</b>
+        Since version 3.2.3, the default values for the above properties have
+        been
+        deprecated. The configuration file will still work with the deprecated
+        values, but ierisFx will log a warning message to the console. The next
+        breaking version 4.0.0 will remove the deprecated default values
+        permanently.
+
+        Upon release of 4.0.0, this documentation will be updated to the new
+        format
+        and this notice will be removed, along with the deprecation warnings.
+    </p>
+    <p>
+        This is the minimum configuration that ierisFX requires to function, any
+        further configuration should be placed in the configuration file is
+        completely extensible and custom. Additionally, the configuration file
+        can
+        contain an additional section called <code class="inline-snippet">[ierisfx.extras]</code>
+        that will be used to configure the ierisFX application further.
+    </p>
+    <h2>Additional Configuration:</h2>
+
+    <table class="extraConfig">
+        <thead>
+        <tr>
+            <th>Key</th>
+            <th>Description</th>
+            <th>Possible Values</th>
+            <th>Default Value</th>
+            <th>Since</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <tr>
+            <td>resizable</td>
+            <td>If the application window is resizable</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>1.0.0 (moved in 3.2.3)</td>
+        </tr>
+        <tr>
+            <td>icon</td>
+            <td>The icon of the application</td>
+            <td>String</td>
+            <td>&lt;empty&gt;</td>
+            <td>1.0.0 (moved in 3.2.3)</td>
+        </tr>
+        <td>fullscreen</td>
+        <td>
+            If the application should start in fullscreen mode.
+            <br>
+            <strong>Note:</strong> If this is set to true, the
+            <code>resizable</code> key will be ignored.
+        </td>
+        <td>Boolean</td>
+        <td>false</td>
+        <td>3.1.0</td>
+        </tr>
+        <tr>
+            <td>alwaysOnTop</td>
+            <td>
+                If the application should always render on top of other windows.
+            </td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>3.1.0</td>
+        </tr>
+        <tr>
+            <td>windowStyle</td>
+            <td>
+                Sets the main JavaFX stage's
+                <a href="https://docs.oracle.com/javase/8/javafx/api/javafx/stage/StageStyle.html">StageStyle</a>.
+                The values are case-insensitive.
+            </td>
+            <td>
+                <span class="default">DECORATED</span><br>
+                <code>UNDECORATED</code><br>
+                <code>TRANSPARENT</code><br>
+            </td>
+            <td>DECORATED</td>
+            <td>3.1.0</td>
+        </tr>
+        <tr>
+            <td>sceneFill</td>
+            <td>
+                <ul>
+                    <li>
+                        Defines the background color that will be used as a fill
+                        for
+                        the
+                        scene.
+                    </li>
+                    <li>
+                        The scene does not support opacity, unless the stage is
+                        <code>TRANSPARENT</code>.
+                    </li>
+                    <li>
+                        If the stage is <code>TRANSPARENT</code>, but the
+                        sceneFill
+                        has no transparency,
+                        the scene will be opaque.
+                    </li>
+                </ul>
+            </td>
+            <td>Color</td>
+            <td>Color.TRANSPARENT</td>
+            <td>3.2.3</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>Supporting documentation</h2>
+    <h3>Color Type</h3>
+    <p>
+        ieriFX configuration defines Colors using the `javafx.scene.paint.Color`
+        class. More specifically, the color is parsed using `Color#web(String)`.
+        For ease of use, the following is an extract of the documentation. More
+        information <a
+            href="https://openjfx.io/javadoc/21/javafx.graphics/javafx/scene/paint/Color.html">here</a>
+    </p>
+
+    <ul>
+        <li>Any standard <b class="highlighted">HTML color name</b></li>
+        <li>
+            An HTML long or short format <b class="highlighted">hex string</b>
+            with an optional hex alpha channel. Hexadecimal values may be
+            preceded
+            by either "0x" or "#" and can either be 2 digits in the range 00 to
+            0xFF or a single digit in the range 0 to F.
+        </li>
+        <li>
+            An <b class="highlighted">rgb(r,g,b) or rgba(r,g,b,a)</b> format
+            string.
+            Each of the r, g, or b values can be an integer from 0 to 255 or a
+            floating point percentage value from 0.0 to 100.0 followed by the
+            percent (%) character. The alpha component, if present, is a
+            floating
+            point value from 0.0 to 1.0. Spaces are allowed before or after the
+            numbers and between the percentage number and its percent sign (%).
+        </li>
+        <li>
+            An <b class="highlighted">hsl(h,s,l) or hsla(h,s,l,a)</b> format
+            string.
+            The h value is a floating point number from 0.0 to 360.0
+            representing
+            the hue angle on a color wheel in degrees with 0.0 or 360.0
+            representing
+            red, 120.0 representing green, and 240.0 representing blue. The s
+            value
+            is the saturation of the desired color represented as a floating
+            point
+            percentage from gray (0.0) to the fully saturated color (100.0) and
+            the
+            l value is the desired lightness or brightness of the desired color
+            represented as a floating point percentage from black (0.0) to the
+            full
+            brightness of the color (100.0). The alpha component, if present, is
+            a
+            floating point value from 0.0 to 1.0. Spaces are allowed before or
+            after
+            the numbers and between the percentage number and its percent sign
+            (%).
+        </li>
+    </ul>
+    <h2>Example Configuration file</h2>
+    <div class="center">
+<pre>
+    <code class="language-ini">
+[ierisfx]
+title = ierisFx Application
+main_view = main
+    </code>
+</pre>
+    </div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-ini.min.js"
+        integrity="sha512-BEknrL2CnuVpqnSTwO4a9y9uW5bQ/nabkJeahZ5seRXvmzAMq59Ja9OxZe3lVGrnKEcVlamL4nUBl03wzPM/nA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

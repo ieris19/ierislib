@@ -1,6 +1,7 @@
 package com.ieris19.lib.ui.core.config;
 
 import com.ieris19.lib.ui.core.control.View;
+import javafx.scene.paint.Color;
 import javafx.stage.StageStyle;
 
 public record FxConfiguration(
@@ -11,6 +12,7 @@ public record FxConfiguration(
         boolean fullScreen,
         boolean alwaysOnTop,
         StageStyle windowStyle,
+        Color sceneFill,
         ViewMap views
         ) {
         public static FxConfiguration of(FxConfigurer settings) {
@@ -22,6 +24,7 @@ public record FxConfiguration(
                         settings.isFullscreen(),
                         settings.isAlwaysOnTop(),
                         settings.getWindowStyle(),
+                        settings.getSceneFill(),
                         settings.getViewMap()
                 );
         }

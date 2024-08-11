@@ -4,7 +4,7 @@ import com.ieris19.lib.ui.mvvm.Model;
 import com.ieris19.lib.ui.mvvm.ViewModel;
 import javafx.beans.property.Property;
 
-public class EmptyViewModel extends ViewModel {
+public class EmptyViewModel implements ViewModel {
     /**
      * The model of the business logic of the view. This model should handle all operations that are not directly related
      * to the view.

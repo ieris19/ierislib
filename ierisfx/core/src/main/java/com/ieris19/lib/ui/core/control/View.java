@@ -1,9 +1,5 @@
 package com.ieris19.lib.ui.core.control;
 
-import com.ieris19.lib.ui.mvvm.Model;
-import com.ieris19.lib.ui.mvvm.ViewController;
-import com.ieris19.lib.ui.mvvm.ViewModel;
-
 /**
  * This class represents a user-interface component that is completely standalone, containing all that is needed to run
  * this specific View. This makes UIComponents encapsulated, reusable and easy to manage.
