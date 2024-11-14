@@ -1,5 +1,15 @@
 # IerisLib
 
+## Deprecation notice
+ierislib became a project where I kind of coded a lot of useless libraries
+that I thought might be useful but only ever used a small subset of it in
+real projects. This is mostly a collection of beginner projects that never
+really went anywhere. I am deprecating this project and certain hand picked
+projects that I feel can have some utility will be moved to their own 
+repositories probably under the organization ierislab on github.
+
+## Introduction
+
 IerisLib is a passion project for me, it is a collection of code that I have 
 written over the course of my studies, as part of my projects and assignments,
 that I have decided to extract from said projects and turn into reusable modules
